@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://6w0a4tkjoppq"]
+
+[ext_resource type="Script" uid="uid://ccbapdniijhxj" path="res://scripts/fuel_pickup.gd" id="1_vj5se"]
+[ext_resource type="Texture2D" uid="uid://lk0ms1kw6k4i" path="res://icon.svg" id="1_ygles"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_08bde"]
+size = Vector2(133, 135)
+
+[node name="Area2D" type="Area2D"]
+scale = Vector2(0.370158, 0.48705)
+script = ExtResource("1_vj5se")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 2.5)
+shape = SubResource("RectangleShape2D_08bde")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ygles")
+
+[connection signal="area_entered" from="." to="." method="_on_body_entered"]

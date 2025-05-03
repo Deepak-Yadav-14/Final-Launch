@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://b30qi74eiin68"]
+
+[ext_resource type="Script" uid="uid://sp5o6i7kx14o" path="res://scripts/destructive_object.gd" id="1_pubtt"]
+[ext_resource type="Texture2D" uid="uid://lk0ms1kw6k4i" path="res://icon.svg" id="1_yrcrx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pubtt"]
+size = Vector2(1208, 1187)
+
+[node name="Destructive Object" type="Node2D"]
+
+[node name="Crate" type="Area2D" parent="."]
+script = ExtResource("1_pubtt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Crate"]
+position = Vector2(-1, 1)
+scale = Vector2(0.0888077, 0.0888077)
+shape = SubResource("RectangleShape2D_pubtt")
+
+[node name="Sprite2D" type="Sprite2D" parent="Crate"]
+scale = Vector2(0.842084, 0.842084)
+texture = ExtResource("1_yrcrx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Crate"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="area_entered" from="Crate" to="Crate" method="_on_body_entered"]
+[connection signal="input_event" from="Crate" to="Crate" method="_on_input_event"]
