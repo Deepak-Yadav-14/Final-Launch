@@ -14,4 +14,8 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 	
 	
-	 
+func _on_area_entered(body):
+	if body.is_in_group("destructible") or body.is_in_group("enemy"):
+		# Implement take damage function for each enemy or destructible object
+		body.take_damage()
+	queue_free() 

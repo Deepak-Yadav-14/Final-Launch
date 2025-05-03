@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pubtt"]
 size = Vector2(1208, 1187)
 
-[node name="Destructive Object" type="Node2D"]
+[node name="Destructive Object" type="Node2D" groups=["destructible"]]
 
 [node name="Crate" type="Area2D" parent="."]
 script = ExtResource("1_pubtt")

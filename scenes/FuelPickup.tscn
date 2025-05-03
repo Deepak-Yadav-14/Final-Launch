@@ -6,8 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_08bde"]
 size = Vector2(133, 135)
 
-[node name="Area2D" type="Area2D"]
+[node name="Fuel Pickup" type="Area2D"]
 scale = Vector2(0.370158, 0.48705)
+collision_layer = 2
 script = ExtResource("1_vj5se")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -17,4 +18,4 @@ shape = SubResource("RectangleShape2D_08bde")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_ygles")
 
-[connection signal="area_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

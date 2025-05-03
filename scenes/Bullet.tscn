@@ -17,3 +17,5 @@ region_rect = Rect2(102.271, 69.3469, 27.3591, 27.1668)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_p1sfj")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
