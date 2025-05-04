@@ -10,7 +10,7 @@ extends CharacterBody2D
 @export var is_detected: bool = false
 @export var melee_cooldown_time: float = 0.6
 
-@onready var melee_area: Area2D = $"Melee/Weapon Pivot/Melee_Area"
+@onready var melee_area: Node2D = $"Melee"
 @onready var melee_cooldown: Timer = $MeleeCooldown
 var collected_fuel_tank: int = 0
 var is_hiding: bool = false
@@ -62,10 +62,10 @@ func perform_melee_attack() -> void:
 	# Optional: Add animation or visual feedback here
 	print("Player performs melee attack")
 	
-	var bodies = melee_area.get_overlapping_bodies()
-	for body in bodies:
-		if body.is_in_group("enemy"):
-			body.take_damage(100)
+	#var bodies = melee_area.get_overlapping_bodies()
+	#for body in bodies:
+		#if body.is_in_group("enemy"):
+			#body.take_damage(100)
 			
 	is_attacking = false
 

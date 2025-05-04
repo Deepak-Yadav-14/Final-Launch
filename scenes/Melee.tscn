@@ -1,23 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://dj7tnqmmp6kxg"]
 
+[ext_resource type="Script" uid="uid://dicowc8vcibao" path="res://scripts/melee_attack.gd" id="1_iew0g"]
 [ext_resource type="Texture2D" uid="uid://lxdrakooejus" path="res://assets/Melee/model (1).png" id="2_wlxw1"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y3rc2"]
-size = Vector2(126, 268)
-
 [node name="Melee" type="Node2D"]
+script = ExtResource("1_iew0g")
 
 [node name="Weapon Pivot" type="Marker2D" parent="."]
 
-[node name="Melee_Area" type="Area2D" parent="Weapon Pivot"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon Pivot/Melee_Area"]
-position = Vector2(192, 7)
-shape = SubResource("RectangleShape2D_y3rc2")
-
-[node name="Gun Right" type="Sprite2D" parent="Weapon Pivot/Melee_Area/CollisionShape2D"]
+[node name="Gun Right" type="Sprite2D" parent="Weapon Pivot"]
 visible = false
-position = Vector2(32, -44)
+position = Vector2(224, -37)
 rotation = 3.14159
 scale = Vector2(0.281477, -0.281477)
 texture = ExtResource("2_wlxw1")
@@ -25,8 +18,9 @@ offset = Vector2(41, 21)
 region_enabled = true
 region_rect = Rect2(392.169, 2.01801, 201.34, 953.642)
 
-[node name="Gun Left" type="Sprite2D" parent="Weapon Pivot/Melee_Area/CollisionShape2D"]
-position = Vector2(13, -10)
+[node name="Gun Left" type="Sprite2D" parent="Weapon Pivot"]
+visible = false
+position = Vector2(205, -3)
 rotation = -0.341704
 scale = Vector2(0.281, 0.281)
 texture = ExtResource("2_wlxw1")
@@ -34,9 +28,9 @@ offset = Vector2(-41.1888, 23.1702)
 region_enabled = true
 region_rect = Rect2(357.932, -0.13427, 302.43, 952.941)
 
-[node name="Gun Up" type="Sprite2D" parent="Weapon Pivot/Melee_Area/CollisionShape2D"]
+[node name="Gun Up" type="Sprite2D" parent="Weapon Pivot"]
 visible = false
-position = Vector2(8, -7)
+position = Vector2(200, 0)
 rotation = 1.5708
 scale = Vector2(0.281, 0.281)
 texture = ExtResource("2_wlxw1")
@@ -44,9 +38,9 @@ offset = Vector2(1.0034, -57.3045)
 region_enabled = true
 region_rect = Rect2(278.044, -5.84051, 373.758, 967.207)
 
-[node name="Gun Down" type="Sprite2D" parent="Weapon Pivot/Melee_Area/CollisionShape2D"]
+[node name="Gun Down" type="Sprite2D" parent="Weapon Pivot"]
 visible = false
-position = Vector2(8, -7)
+position = Vector2(200, 0)
 rotation = -1.5708
 scale = Vector2(0.281, -0.281)
 texture = ExtResource("2_wlxw1")
