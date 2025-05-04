@@ -1,9 +1,9 @@
-extends Node2D
+extends Area2D
 
-@onready var gun_right: Sprite2D = $"Weapon Pivot/Gun Right"
-@onready var gun_left: Sprite2D = $"Weapon Pivot/Gun Left"
-@onready var gun_up: Sprite2D = $"Weapon Pivot/Gun Up"
-@onready var gun_down: Sprite2D = $"Weapon Pivot/Gun Down"
+@onready var gun_right: Area2D = $"Weapon Pivot/Gun Right"
+@onready var gun_left: Area2D = $"Weapon Pivot/Gun Left"
+@onready var gun_up: Area2D = $"Weapon Pivot/Gun Up"
+@onready var gun_down: Area2D = $"Weapon Pivot/Gun Down"
 @onready var shoot_point: Marker2D = $"Weapon Pivot/Shoot Point"
 
 @export var fire_rate:float = 0.2
@@ -13,9 +13,6 @@ const BULLET = preload("res://scenes/Bullet.tscn")
 var time_since_last_shot: float = 0.0
 
 func _process(delta: float) -> void:
-
-	if not is_visible_in_tree():
-		return
 	var mouse_pos = get_global_mouse_position()
 	var to_mouse = (mouse_pos - global_position).normalized()
 	var angle = to_mouse.angle()
@@ -40,11 +37,12 @@ func _process(delta: float) -> void:
 		gun_right.visible = true
 	
 	time_since_last_shot += delta
-	if Input.is_action_pressed("shoot") and time_since_last_shot >= fire_rate:
-		shoot_bullet(to_mouse)
+	if Input.is_action_pressed("melee_attack") and time_since_last_shot >= fire_rate:
+		melee_attack(to_mouse)
+		
 		time_since_last_shot = 0.0
 		
-func shoot_bullet(direction: Vector2):
+func melee_attack(direction: Vector2):
 	var bullet = BULLET.instantiate()
 	get_tree().current_scene.add_child(bullet)
 	bullet.global_position = shoot_point.global_position

@@ -15,7 +15,7 @@ enum States{
 
 var current_state = States.PETROLLING
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if player_entered:
 		var to_player = player.global_position - global_position
 		rotation = to_player.angle() - PI / 2
@@ -60,8 +60,13 @@ func shoot() -> void:
 func petrolling(delta):
 	pass
 
-func take_damage():
-	health -= 1
+func take_damage(amount):
+	health -= amount
 	if health <= 0:
 		print("Enemie Dies")
-		queue_free()
+		die()
+
+
+func die() -> void:
+	queue_free()
+	print("Enemy defeated")

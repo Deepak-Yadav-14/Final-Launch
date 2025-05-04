@@ -8,8 +8,8 @@ const FUEL_PICKUP = preload("res://scenes/FuelPickup.tscn")
 #@onready var anim: AnimationPlayer = $RigidBody2D/AnimationPlayer
 #const BREAK_ANIM: String = "break"
 
-func take_damage():
-	health -= 1
+func take_damage(amount):
+	health -= amount
 	print("damage_happens")
 	# Details can be added after each hit
 	if health <= 0:

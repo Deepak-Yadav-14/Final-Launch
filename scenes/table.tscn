@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://c84g0ufpcvp1"]
+
+[ext_resource type="Script" uid="uid://dr5hbc26djtad" path="res://scripts/table.gd" id="1_02ppr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eotx8"]
+size = Vector2(158, 69)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_02ppr"]
+size = Vector2(156, 67)
+
+[node name="Table" type="StaticBody2D"]
+z_index = 1
+collision_layer = 2
+script = ExtResource("1_02ppr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(79, 34.5)
+shape = SubResource("RectangleShape2D_eotx8")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 158.0
+offset_bottom = 69.0
+
+[node name="HideZone" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HideZone"]
+position = Vector2(79, 34.5)
+shape = SubResource("RectangleShape2D_02ppr")
+debug_color = Color(4.76494e-06, 0.642695, 0.313287, 0.42)
+
+[connection signal="body_entered" from="HideZone" to="." method="_on_hide_zone_body_entered"]
+[connection signal="body_exited" from="HideZone" to="." method="_on_hide_zone_body_exited"]
