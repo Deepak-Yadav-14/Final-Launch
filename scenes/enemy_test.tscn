@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckcgvcs48y6ck"]
+
+[ext_resource type="Script" uid="uid://gef8yrdf72be" path="res://scripts/enemy_test.gd" id="1_ainam"]
+[ext_resource type="Texture2D" uid="uid://lk0ms1kw6k4i" path="res://icon.svg" id="1_y7jog"]
+[ext_resource type="PackedScene" uid="uid://bndlpdy07kq5q" path="res://scenes/Enemy_bullet.tscn" id="2_ainam"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ainam"]
+size = Vector2(128, 128)
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_ainam")
+bullet = ExtResource("2_ainam")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-14.3315, -7.62939e-06)
+scale = Vector2(1.04608, 1)
+color = Color(0.980392, 1, 0.917647, 0.462745)
+polygon = PackedVector2Array(13.7002, 7.62939e-06, 311, 553, -258.745, 553)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_y7jog")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ainam")
+
+[node name="RayCast" type="RayCast2D" parent="."]
+collision_mask = 3
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+
+[node name="Visiblity" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Visiblity"]
+position = Vector2(0, 105)
+scale = Vector2(1.70685, 1.70685)
+polygon = PackedVector2Array(0, -61.5168, 182.207, 262.472, -166.974, 262.472)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Visiblity" to="." method="_on_visiblity_body_entered"]
+[connection signal="body_exited" from="Visiblity" to="." method="_on_visiblity_body_exited"]

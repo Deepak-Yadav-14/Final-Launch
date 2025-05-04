@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dr7avmgcyp350"]
+
+[ext_resource type="PackedScene" uid="uid://cawa06wk802cf" path="res://scenes/Player.tscn" id="1_j3d4n"]
+[ext_resource type="PackedScene" uid="uid://ckcgvcs48y6ck" path="res://scenes/enemy_test.tscn" id="2_274oi"]
+[ext_resource type="PackedScene" uid="uid://b30qi74eiin68" path="res://scenes/destructive_object.tscn" id="3_274oi"]
+
+[node name="Enemy test window" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_j3d4n")]
+position = Vector2(130, 136)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_274oi")]
+position = Vector2(820, 133)
+player = NodePath("../Player")
+
+[node name="Destructive Object" parent="." instance=ExtResource("3_274oi")]
+position = Vector2(774, 422)
