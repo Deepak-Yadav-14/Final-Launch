@@ -8,16 +8,31 @@ extends CharacterBody2D
 @export var speed: float = 400
 @export var health: float = 10
 @export var is_detected: bool = false
+@export var melee_cooldown_time: float = 0.6
 
+@onready var melee_area: Area2D = $"Melee/Weapon Pivot/Melee_Area"
+@onready var melee_cooldown: Timer = $MeleeCooldown
 var collected_fuel_tank: int = 0
 var is_hiding: bool = false
 var can_assasinate: bool = false
 var is_in_hide_zone: bool = true
+var is_attacking: bool = false
+
+
+func _ready() -> void:
+	melee_cooldown.wait_time = melee_cooldown_time
+	melee_cooldown.one_shot   = true
+	melee_cooldown.autostart  = false
+	melee_cooldown.stop()
 
 func _physics_process(_delta: float) -> void:
 	if is_detected:
 		handle_normal_movement()
 		return
+	
+	if Input.is_action_just_pressed("melee_attack") and melee_cooldown.is_stopped():
+		perform_melee_attack()
+		
 	
 	if is_hiding:
 		if Input.get_vector("move_left","move_right","move_up","move_down") != Vector2.ZERO:
@@ -29,7 +44,7 @@ func _physics_process(_delta: float) -> void:
 	handle_normal_movement()
 		
 func handle_normal_movement():
-	var direction = Input.get_vector("moasve_left","move_right","move_up","move_down")
+	var direction = Input.get_vector("move_left","move_right","move_up","move_down")
 	velocity = direction * speed
 	move_and_slide()
 	
@@ -40,6 +55,19 @@ func _process(delta: float) -> void:
 			hide_under_table()
 		else:
 			unhide()
+
+func perform_melee_attack() -> void:
+	is_attacking=true
+	melee_cooldown.start()
+	# Optional: Add animation or visual feedback here
+	print("Player performs melee attack")
+	
+	var bodies = melee_area.get_overlapping_bodies()
+	for body in bodies:
+		if body.is_in_group("enemy"):
+			body.take_damage(100)
+			
+	is_attacking = false
 
 func unhide():
 	is_hiding = false

@@ -61,4 +61,9 @@ func take_damage():
 	health -= 1
 	if health <= 0:
 		print("Enemie Dies")
-		queue_free()
+		die()
+
+
+func die() -> void:
+	queue_free()
+	print("Enemy defeated")
