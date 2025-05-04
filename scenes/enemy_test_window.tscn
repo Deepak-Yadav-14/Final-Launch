@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cawa06wk802cf" path="res://scenes/Player.tscn" id="1_j3d4n"]
 [ext_resource type="PackedScene" uid="uid://ckcgvcs48y6ck" path="res://scenes/enemy_test.tscn" id="2_274oi"]
-[ext_resource type="PackedScene" uid="uid://b30qi74eiin68" path="res://scenes/destructive_object.tscn" id="3_274oi"]
+[ext_resource type="PackedScene" uid="uid://bvhc5v4lsjkmy" path="res://scenes/Destructible.tscn" id="3_274oi"]
 
 [node name="Enemy test window" type="Node2D"]
 
@@ -15,5 +15,5 @@ position = Vector2(130, 136)
 position = Vector2(820, 133)
 player = NodePath("../Player")
 
-[node name="Destructive Object" parent="." instance=ExtResource("3_274oi")]
-position = Vector2(774, 422)
+[node name="Destructible" parent="." instance=ExtResource("3_274oi")]
+position = Vector2(822, 598)

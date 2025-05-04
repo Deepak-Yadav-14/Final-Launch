@@ -10,6 +10,7 @@ const FUEL_PICKUP = preload("res://scenes/FuelPickup.tscn")
 
 func take_damage():
 	health -= 1
+	print("damage_happens")
 	# Details can be added after each hit
 	if health <= 0:
 		# Add destroying animation than add the queue free in that animation
