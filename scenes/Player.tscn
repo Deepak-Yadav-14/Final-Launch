@@ -13,6 +13,7 @@ radius = 334.006
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
+collision_mask = 3
 script = ExtResource("1_kpjcp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -23,10 +24,11 @@ position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_v6fml")
 
 [node name="Gun" parent="." instance=ExtResource("3_3li8b")]
-visible = false
+unique_name_in_owner = true
 scale = Vector2(0.483301, 0.483301)
 
 [node name="Melee" parent="." instance=ExtResource("4_mdl7e")]
+visible = false
 
 [node name="AssasinateZone" type="Area2D" parent="."]
 collision_layer = 0

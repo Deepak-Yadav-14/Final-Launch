@@ -15,7 +15,7 @@ enum States{
 
 var current_state = States.PETROLLING
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if player_entered:
 		var to_player = player.global_position - global_position
 		rotation = to_player.angle() - PI / 2
