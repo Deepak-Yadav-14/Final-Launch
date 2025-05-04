@@ -9,5 +9,5 @@
 
 [node name="Player" parent="." instance=ExtResource("1_elqb8")]
 
-[node name="Destructible" parent="." groups=["destructible"] instance=ExtResource("2_rvslj")]
+[node name="Destructible" parent="." instance=ExtResource("2_rvslj")]
 position = Vector2(414, -6)

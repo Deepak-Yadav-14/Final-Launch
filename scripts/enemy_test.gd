@@ -61,3 +61,4 @@ func take_damage():
 	health -= 1
 	if health <= 0:
 		print("Enemie Dies")
+		queue_free()
