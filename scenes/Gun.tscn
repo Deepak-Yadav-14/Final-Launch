@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c76y1ybmgjtgc"]
 
-[ext_resource type="Script" uid="uid://bdtinpvndnge3" path="res://scripts/gun_shoot.gd" id="1_gp53h"]
+[ext_resource type="Script" path="res://scripts/gun_shoot.gd" id="1_gp53h"]
 [ext_resource type="Texture2D" uid="uid://cl0lyeklk1am4" path="res://assets/Gun/Prototype Gun.png" id="2_h5px7"]
 
 [node name="Gun" type="Node2D"]
