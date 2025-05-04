@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bndlpdy07kq5q"]
 
-[ext_resource type="Script" uid="uid://dvtggd3sj54m6" path="res://scripts/enemy_bullet.gd" id="1_2s13c"]
-[ext_resource type="Texture2D" uid="uid://cl0lyeklk1am4" path="res://assets/Gun/Prototype Gun.png" id="1_rpp37"]
+[ext_resource type="Script" uid="uid://dvtggd3sj54m6" path="res://scripts/Enemy Scripts/enemy_bullet.gd" id="1_qhs8y"]
+[ext_resource type="Texture2D" uid="uid://cl0lyeklk1am4" path="res://assets/Gun/Prototype Gun.png" id="2_45ome"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p1sfj"]
 radius = 14.0357
@@ -10,10 +10,10 @@ radius = 14.0357
 scale = Vector2(0.461948, 0.461948)
 collision_layer = 4
 collision_mask = 5
-script = ExtResource("1_2s13c")
+script = ExtResource("1_qhs8y")
 
 [node name="PrototypeGun" type="Sprite2D" parent="."]
-texture = ExtResource("1_rpp37")
+texture = ExtResource("2_45ome")
 region_enabled = true
 region_rect = Rect2(102.271, 69.3469, 27.3591, 27.1668)
 
