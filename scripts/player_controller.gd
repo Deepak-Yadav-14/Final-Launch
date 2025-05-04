@@ -29,7 +29,7 @@ func _physics_process(_delta: float) -> void:
 	handle_normal_movement()
 		
 func handle_normal_movement():
-	var direction = Input.get_vector("moasve_left","move_right","move_up","move_down")
+	var direction = Input.get_vector("move_left","move_right","move_up","move_down")
 	velocity = direction * speed
 	move_and_slide()
 	
