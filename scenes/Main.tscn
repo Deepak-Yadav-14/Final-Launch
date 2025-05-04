@@ -11,12 +11,14 @@
 
 [node name="Player" parent="." instance=ExtResource("1_elqb8")]
 
-[node name="Destructible" parent="." instance=ExtResource("2_rvslj")]
-position = Vector2(414, -6)
-
 [node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_0bbpv")]
 position = Vector2(399, -211)
+collision_layer = 6
 player = NodePath("../Player")
+
+[node name="Destructible" parent="." instance=ExtResource("2_rvslj")]
+position = Vector2(414, -6)
+collision_layer = 6
 
 [node name="Table" parent="." instance=ExtResource("4_rarhs")]
 position = Vector2(-91, -285)

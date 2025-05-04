@@ -18,12 +18,12 @@ func _physics_process(delta: float) -> void:
 func _on_area_entered(area):
 	if area.is_in_group("destructible"):
 		# Implement take damage function for each enemy or destructible object
-		area.take_damage()
+		area.take_damage(1)
 	queue_free()
 	
 func _on_body_entered(body):
 	if body.is_in_group("enemy"):
 		# Implement take damage function for each enemy or destructible object
 		
-		body.take_damage()
+		body.take_damage(1)
 	queue_free() 

@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 @onready var assasinate_zone: Area2D = $AssasinateZone
-@onready var melee_area: Node2D = $"Melee"
+@onready var melee_area: Area2D = $"Melee/Melee"
 @onready var melee_cooldown: Timer = $MeleeCooldown
 
 #@export var table_sprite: Sprite2D
@@ -63,13 +63,22 @@ func perform_melee_attack() -> void:
 	is_attacking=true
 	melee_cooldown.start()
 	# Optional: Add animation or visual feedback here
+	
 	print("Player performs melee attack")
 	
-	#var bodies = melee_area.get_overlapping_bodies()
-	#for body in bodies:
-		#if body.is_in_group("enemy"):
-			#body.take_damage(100)
-			
+	var bodies = melee_area.get_overlapping_bodies()
+	var objects =  melee_area.get_overlapping_areas() 
+	print(bodies)
+	
+	for body in bodies:
+		if body.is_in_group("enemy") or body.is_in_group("destructible") :
+			print("Enemy Detected")
+			body.take_damage(100)
+	for area in objects:
+		if area.is_in_group("destructible") :
+			print("Object Detected")
+			area.take_damage(100)
+	
 	is_attacking = false
 
 func check_for_assasination() -> void:
@@ -77,6 +86,7 @@ func check_for_assasination() -> void:
 		return
 	
 	var enemies = assasinate_zone.get_overlapping_bodies()
+	print(enemies)
 	for enemy in enemies:
 		if enemy.is_in_group("enemy"):
 			perform_assasination(enemy)

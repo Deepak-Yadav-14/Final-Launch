@@ -57,8 +57,8 @@ func shoot() -> void:
 func petrolling(delta):
 	pass
 
-func take_damage():
-	health -= 1
+func take_damage(amount):
+	health -= amount
 	if health <= 0:
 		print("Enemie Dies")
 		die()
