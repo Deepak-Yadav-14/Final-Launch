@@ -1,0 +1,99 @@
+[gd_scene load_steps=4 format=3 uid="uid://hd3piv3lxek8"]
+
+[ext_resource type="Texture2D" uid="uid://ctsach410nhxe" path="res://assets/TileSets/Lab Tileset.png" id="1_2tmsx"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hicwo"]
+texture = ExtResource("1_2tmsx")
+0:0/size_in_atlas = Vector2i(4, 4)
+0:0/0 = 0
+4:0/size_in_atlas = Vector2i(4, 4)
+4:0/0 = 0
+8:0/size_in_atlas = Vector2i(4, 4)
+8:0/0 = 0
+0:4/size_in_atlas = Vector2i(4, 4)
+0:4/0 = 0
+4:4/size_in_atlas = Vector2i(4, 4)
+4:4/0 = 0
+8:4/size_in_atlas = Vector2i(4, 4)
+8:4/0 = 0
+0:8/size_in_atlas = Vector2i(4, 4)
+0:8/0 = 0
+4:8/size_in_atlas = Vector2i(4, 4)
+4:8/0 = 0
+8:8/size_in_atlas = Vector2i(4, 4)
+8:8/0 = 0
+12:0/size_in_atlas = Vector2i(4, 4)
+12:0/0 = 0
+16:0/size_in_atlas = Vector2i(4, 4)
+16:0/0 = 0
+20:0/size_in_atlas = Vector2i(4, 4)
+20:0/0 = 0
+12:4/size_in_atlas = Vector2i(4, 4)
+12:4/0 = 0
+16:4/size_in_atlas = Vector2i(4, 4)
+16:4/0 = 0
+20:4/size_in_atlas = Vector2i(4, 4)
+20:4/0 = 0
+12:8/size_in_atlas = Vector2i(4, 4)
+12:8/0 = 0
+16:8/size_in_atlas = Vector2i(4, 4)
+16:8/0 = 0
+20:8/size_in_atlas = Vector2i(4, 4)
+20:8/0 = 0
+24:0/size_in_atlas = Vector2i(4, 4)
+24:0/0 = 0
+24:4/size_in_atlas = Vector2i(4, 4)
+24:4/0 = 0
+24:8/size_in_atlas = Vector2i(4, 4)
+24:8/0 = 0
+16:12/size_in_atlas = Vector2i(4, 4)
+16:12/0 = 0
+20:12/size_in_atlas = Vector2i(4, 4)
+20:12/0 = 0
+24:12/size_in_atlas = Vector2i(4, 4)
+24:12/0 = 0
+24:16/size_in_atlas = Vector2i(4, 4)
+24:16/0 = 0
+20:16/size_in_atlas = Vector2i(4, 4)
+20:16/0 = 0
+16:16/size_in_atlas = Vector2i(4, 4)
+16:16/0 = 0
+12:12/size_in_atlas = Vector2i(4, 4)
+12:12/0 = 0
+4:12/size_in_atlas = Vector2i(4, 4)
+4:12/0 = 0
+8:12/size_in_atlas = Vector2i(4, 4)
+8:12/0 = 0
+0:12/size_in_atlas = Vector2i(4, 4)
+0:12/0 = 0
+0:16/size_in_atlas = Vector2i(4, 4)
+0:16/0 = 0
+4:16/size_in_atlas = Vector2i(4, 4)
+4:16/0 = 0
+8:16/size_in_atlas = Vector2i(4, 4)
+8:16/0 = 0
+12:16/size_in_atlas = Vector2i(4, 4)
+12:16/0 = 0
+0:20/size_in_atlas = Vector2i(4, 4)
+0:20/0 = 0
+4:20/size_in_atlas = Vector2i(4, 4)
+4:20/0 = 0
+8:20/size_in_atlas = Vector2i(4, 4)
+8:20/0 = 0
+12:20/size_in_atlas = Vector2i(4, 4)
+12:20/0 = 0
+16:20/size_in_atlas = Vector2i(4, 4)
+16:20/0 = 0
+20:20/size_in_atlas = Vector2i(4, 4)
+20:20/0 = 0
+24:20/size_in_atlas = Vector2i(4, 4)
+24:20/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_k7q2f"]
+sources/0 = SubResource("TileSetAtlasSource_hicwo")
+
+[node name="Laboratory level" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray(0, 0, 254, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 255, 255, 0, 0, 4, 0, 0, 0, 0, 0, 6, 0, 255, 255, 0, 0, 4, 0, 0, 0, 0, 0, 10, 0, 255, 255, 0, 0, 4, 0, 0, 0, 0, 0, 14, 0, 255, 255, 0, 0, 4, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_k7q2f")
