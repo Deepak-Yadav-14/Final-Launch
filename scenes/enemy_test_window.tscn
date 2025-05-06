@@ -51,6 +51,7 @@ loop = false
 [node name="Marker2D" type="Marker2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(-1122, 394)
+gizmo_extents = 105.5
 
 [node name="Melee Enemey" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_ewvbb")]
 position = Vector2(-1122, 394)

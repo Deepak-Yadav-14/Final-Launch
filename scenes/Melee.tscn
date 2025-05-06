@@ -6,22 +6,20 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iew0g"]
 size = Vector2(23.0276, 86.0855)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tus3i"]
-size = Vector2(159.989, 23.5954)
+[sub_resource type="CircleShape2D" id="CircleShape2D_iew0g"]
+radius = 44.4018
 
-[node name="Melee" type="Node2D"]
-
-[node name="Melee" type="Area2D" parent="."]
+[node name="Melee" type="Area2D"]
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_iew0g")
 
-[node name="Weapon Pivot" type="Marker2D" parent="Melee"]
+[node name="Weapon Pivot" type="Marker2D" parent="."]
 
-[node name="Gun Right" type="Area2D" parent="Melee/Weapon Pivot"]
+[node name="Gun Right" type="Area2D" parent="Weapon Pivot"]
 scale = Vector2(0.737862, 0.737862)
 
-[node name="Gun Right" type="Sprite2D" parent="Melee/Weapon Pivot/Gun Right"]
+[node name="Gun Right" type="Sprite2D" parent="Weapon Pivot/Gun Right"]
 position = Vector2(158, -34)
 rotation = -2.7491
 scale = Vector2(0.281477, -0.281477)
@@ -30,23 +28,23 @@ offset = Vector2(41, 21)
 region_enabled = true
 region_rect = Rect2(392.169, 2.01801, 201.34, 953.642)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Melee/Weapon Pivot/Gun Right"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon Pivot/Gun Right"]
 position = Vector2(141, -40.5)
 rotation = -2.7491
 scale = Vector2(3.09007, -3.09007)
 shape = SubResource("RectangleShape2D_iew0g")
 
-[node name="Gun Left" type="Area2D" parent="Melee/Weapon Pivot"]
+[node name="Gun Left" type="Area2D" parent="Weapon Pivot"]
 visible = false
 scale = Vector2(0.760031, 0.760031)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Melee/Weapon Pivot/Gun Left"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon Pivot/Gun Left"]
 position = Vector2(126, -13)
 rotation = -2.30434
 scale = Vector2(3.09007, -3.09007)
 shape = SubResource("RectangleShape2D_iew0g")
 
-[node name="Gun Left" type="Sprite2D" parent="Melee/Weapon Pivot/Gun Left"]
+[node name="Gun Left" type="Sprite2D" parent="Weapon Pivot/Gun Left"]
 position = Vector2(134, -3)
 rotation = 0.943934
 scale = Vector2(0.281, 0.281)
@@ -55,11 +53,11 @@ offset = Vector2(-41.1888, 23.1702)
 region_enabled = true
 region_rect = Rect2(357.932, -0.13427, 302.43, 952.941)
 
-[node name="Gun Up" type="Area2D" parent="Melee/Weapon Pivot"]
+[node name="Gun Up" type="Area2D" parent="Weapon Pivot"]
 visible = false
 scale = Vector2(0.768419, 0.768419)
 
-[node name="Gun Up" type="Sprite2D" parent="Melee/Weapon Pivot/Gun Up"]
+[node name="Gun Up" type="Sprite2D" parent="Weapon Pivot/Gun Up"]
 position = Vector2(124, -1.72804e-11)
 rotation = 1.5708
 scale = Vector2(0.281, 0.281)
@@ -68,17 +66,17 @@ offset = Vector2(1.0034, -57.3045)
 region_enabled = true
 region_rect = Rect2(278.044, -5.84051, 373.758, 967.207)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Melee/Weapon Pivot/Gun Up"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon Pivot/Gun Up"]
 position = Vector2(147, 9)
 rotation = -1.55225
 scale = Vector2(3.09007, -3.09007)
 shape = SubResource("RectangleShape2D_iew0g")
 
-[node name="Gun Down" type="Area2D" parent="Melee/Weapon Pivot"]
+[node name="Gun Down" type="Area2D" parent="Weapon Pivot"]
 visible = false
 scale = Vector2(0.865866, 0.865866)
 
-[node name="Gun Down" type="Sprite2D" parent="Melee/Weapon Pivot/Gun Down"]
+[node name="Gun Down" type="Sprite2D" parent="Weapon Pivot/Gun Down"]
 position = Vector2(163, 8.41282e-12)
 rotation = -1.5708
 scale = Vector2(0.281, -0.281)
@@ -87,18 +85,15 @@ offset = Vector2(-0.579302, 51.3672)
 region_enabled = true
 region_rect = Rect2(349.372, -11.5467, 279.606, 944.382)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Melee/Weapon Pivot/Gun Down"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon Pivot/Gun Down"]
 position = Vector2(149, -10)
 rotation = -1.4849
 scale = Vector2(3.09007, -3.09007)
 shape = SubResource("RectangleShape2D_iew0g")
 
-[node name="Shoot Point" type="Marker2D" parent="Melee/Weapon Pivot"]
-position = Vector2(103, -2)
+[node name="Shoot Point" type="Marker2D" parent="Weapon Pivot"]
+position = Vector2(130, -1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Melee"]
-position = Vector2(120, -1.66982)
-rotation = 0.00241363
-shape = SubResource("RectangleShape2D_tus3i")
-
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(93, 0)
+shape = SubResource("CircleShape2D_iew0g")
