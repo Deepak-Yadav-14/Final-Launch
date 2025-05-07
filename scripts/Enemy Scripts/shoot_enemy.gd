@@ -3,56 +3,86 @@ class_name ShootingEnemy
 
 @onready var ray_cast: RayCast2D = $RayCast
 @onready var timer: Timer = $Timer
+@onready var Marker: Marker2D = %ShootMarker
+
 @export var player: CharacterBody2D
 @export var health: int = 10
-@onready var player_rotation: float
+@export var search_time: float = 10.0
 
-var player_entered = false
+var enemy_rotation: float
+var enemy_position: Vector2
+var Marker_position: Vector2
 
-enum States{
-    PETROLLING,
-    FIGHTING
-}
-
-var current_state = States.PETROLLING
+var move_speed: float = 100.0
+var search_rotation_speed: float = 1.0  
+var search_timer: float = 0.0
+var player_rotation
 
 const bullet = preload("res://scenes/Enemy Scenes/Enemy_bullet.tscn")
 
-func _ready() -> void:
-    player_rotation = rotation
+enum States {
+    PATROLLING,
+    FIGHTING,
+    SEARCHING
+}
 
-func custome_process(delta: float) -> void:
-    if player_entered:
-        #var to_player = player.global_position - global_position
-        var target_angle = (player.global_position - global_position).angle() - PI / 2
-        rotation = lerp_angle(rotation, target_angle, 5 * delta)
-        aim(player)
-        check_player_collision(player)
+var current_state = States.PATROLLING
+
+func _ready() -> void:
+    Marker_position = Marker.global_position
+    enemy_rotation = global_rotation
+    enemy_position = Marker_position
+    print(enemy_position)
 
 func _physics_process(delta: float) -> void:
-    if current_state == States.PETROLLING and rotation != player_rotation:
-        rotation = lerp_angle(rotation, player_rotation, 0.1)
-    custome_process(delta)
+    match current_state:
+        States.FIGHTING:
+            var to_player = player.global_position - global_position
+            var target_angle = to_player.angle() - PI / 2
+            rotation = lerp_angle(rotation, target_angle, 5 * delta)
 
-func check_player_collision(player) -> void:
-    if ray_cast.get_collider() == player and timer.is_stopped():
-        timer.start()
-    elif ray_cast.get_collider() != player and not timer.is_stopped():
-        timer.stop()
+            ray_cast.target_position = to_local(player.position)
+
+            if ray_cast.get_collider() == player:
+                if timer.is_stopped():
+                    timer.start()
+            else:
+                if not timer.is_stopped():
+                    timer.stop()
+                    
+            velocity = Vector2.ZERO  
+
+        States.SEARCHING:
+            rotation += search_rotation_speed * delta
+            search_timer -= delta
+            if search_timer <= 0:
+                current_state = States.PATROLLING
+            velocity = Vector2.ZERO
+
+        States.PATROLLING:
+            var distance_to_target = global_position.distance_to(enemy_position)
+            if distance_to_target > 1.0:
+                var target = enemy_position - global_position
+                var return_angle = target.angle() - PI / 2
+                rotation = lerp_angle(rotation, return_angle, 5 * delta)
+                velocity = target.normalized() * move_speed
+            else:
+                rotation = lerp_angle(rotation, enemy_rotation, 0.1)
+                velocity = Vector2.ZERO
+
+    move_and_slide()
 
 func _on_visiblity_body_entered(body: Node2D) -> void:
     if body == player:
-        current_state = States.FIGHTING
-        player_entered = true
+        if current_state == States.PATROLLING or current_state == States.SEARCHING:
+            current_state = States.FIGHTING
 
 func _on_visiblity_body_exited(body: Node2D) -> void:
-    player_entered = false
-    current_state = States.PETROLLING
-    if not timer.is_stopped():
-        timer.stop()
-
-func aim(player) -> void:
-    ray_cast.target_position = to_local(player.position)
+    if body == player and current_state == States.FIGHTING:
+        current_state = States.SEARCHING
+        search_timer = search_time
+        if not timer.is_stopped():
+            timer.stop()
 
 func _on_timer_timeout() -> void:
     shoot()
@@ -67,5 +97,5 @@ func shoot() -> void:
 func take_damage(value):
     health -= value
     if health <= 0:
-        print("Enemie Dies")
+        print("Enemy Dies")
         queue_free()

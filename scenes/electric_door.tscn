@@ -1,0 +1,142 @@
+[gd_scene load_steps=21 format=3 uid="uid://tby0b5ajxgki"]
+
+[ext_resource type="Texture2D" uid="uid://bk4fujxpavtnk" path="res://assets/Objects/door1-Sheet.png" id="1_nfpkp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nfpkp"]
+size = Vector2(128, 149)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_skuv8"]
+atlas = ExtResource("1_nfpkp")
+region = Rect2(0, 0, 256, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7x1m"]
+atlas = ExtResource("1_nfpkp")
+region = Rect2(256, 0, 256, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xd6ne"]
+atlas = ExtResource("1_nfpkp")
+region = Rect2(512, 0, 256, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_beh6q"]
+atlas = ExtResource("1_nfpkp")
+region = Rect2(768, 0, 256, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8m4cd"]
+atlas = ExtResource("1_nfpkp")
+region = Rect2(1024, 0, 256, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4sry"]
+atlas = ExtResource("1_nfpkp")
+region = Rect2(1280, 0, 256, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3vhb"]
+atlas = ExtResource("1_nfpkp")
+region = Rect2(1536, 0, 256, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fl05s"]
+atlas = ExtResource("1_nfpkp")
+region = Rect2(1792, 0, 256, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tk8cr"]
+atlas = ExtResource("1_nfpkp")
+region = Rect2(2048, 0, 256, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2n4lm"]
+atlas = ExtResource("1_nfpkp")
+region = Rect2(2304, 0, 256, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8gej"]
+atlas = ExtResource("1_nfpkp")
+region = Rect2(2560, 0, 256, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pruev"]
+atlas = ExtResource("1_nfpkp")
+region = Rect2(2816, 0, 256, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_807xe"]
+atlas = ExtResource("1_nfpkp")
+region = Rect2(3072, 0, 256, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6rj8"]
+atlas = ExtResource("1_nfpkp")
+region = Rect2(3328, 0, 256, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3rfp"]
+atlas = ExtResource("1_nfpkp")
+region = Rect2(3584, 0, 256, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0axgr"]
+atlas = ExtResource("1_nfpkp")
+region = Rect2(3840, 0, 256, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrltk"]
+atlas = ExtResource("1_nfpkp")
+region = Rect2(4096, 0, 256, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kruxe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_skuv8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7x1m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xd6ne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_beh6q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8m4cd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4sry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3vhb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fl05s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tk8cr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2n4lm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8gej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pruev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_807xe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6rj8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3rfp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0axgr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrltk")
+}],
+"loop": false,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="Electric Door" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, 5.5)
+shape = SubResource("RectangleShape2D_nfpkp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kruxe")
