@@ -3,8 +3,7 @@ class_name ShootingEnemy
 
 @onready var ray_cast: RayCast2D = $RayCast
 @onready var timer: Timer = $Timer
-@onready var Marker: Marker2D = %ShootMarker
-
+@export var Marker: Marker2D
 @export var player: CharacterBody2D
 @export var health: int = 10
 @export var search_time: float = 10.0
@@ -12,11 +11,9 @@ class_name ShootingEnemy
 var enemy_rotation: float
 var enemy_position: Vector2
 var Marker_position: Vector2
-
-var move_speed: float = 100.0
-var search_rotation_speed: float = 1.0  
+var move_speed: float = 150.0
+var search_rotation_speed: float = 1.0
 var search_timer: float = 0.0
-var player_rotation
 
 const bullet = preload("res://scenes/Enemy Scenes/Enemy_bullet.tscn")
 
@@ -50,7 +47,7 @@ func _physics_process(delta: float) -> void:
                 if not timer.is_stopped():
                     timer.stop()
                     
-            velocity = Vector2.ZERO  
+            velocity = Vector2.ZERO  # Standing while shooting
 
         States.SEARCHING:
             rotation += search_rotation_speed * delta
