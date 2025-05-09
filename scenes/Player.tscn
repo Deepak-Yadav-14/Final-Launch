@@ -726,6 +726,9 @@ size = Vector2(115, 112)
 [sub_resource type="CircleShape2D" id="CircleShape2D_3li8b"]
 radius = 334.006
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3li8b"]
+polygon = PackedVector2Array(-65, -64, 63, -64, 63, 65, -64, 65)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
 scale = Vector2(0.5, 0.5)
@@ -863,3 +866,6 @@ collision_mask = 3
 shape = SubResource("CircleShape2D_3li8b")
 
 [node name="MeleeCooldown" type="Timer" parent="."]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_3li8b")

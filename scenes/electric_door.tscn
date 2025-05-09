@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://tby0b5ajxgki"]
+[gd_scene load_steps=23 format=3 uid="uid://tby0b5ajxgki"]
 
 [ext_resource type="Texture2D" uid="uid://bk4fujxpavtnk" path="res://assets/Objects/door1-Sheet.png" id="1_nfpkp"]
+[ext_resource type="Script" uid="uid://hj6s63yb63xn" path="res://scripts/electric_door.gd" id="1_skuv8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nfpkp"]
-size = Vector2(128, 149)
+size = Vector2(128, 136)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_skuv8"]
 atlas = ExtResource("1_nfpkp")
@@ -132,11 +133,34 @@ animations = [{
 "speed": 6.0
 }]
 
-[node name="Electric Door" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_skuv8"]
+size = Vector2(71, 150)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(5, 5.5)
+[node name="Electric Door" type="StaticBody2D"]
+script = ExtResource("1_skuv8")
+
+[node name="Door Collision" type="CollisionShape2D" parent="."]
+position = Vector2(5, 3)
 shape = SubResource("RectangleShape2D_nfpkp")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Door Animation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kruxe")
+
+[node name="Area Input" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area Input"]
+position = Vector2(103.5, 48)
+shape = SubResource("RectangleShape2D_skuv8")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 6.0
+offset_top = -12.0
+offset_right = 205.0
+offset_bottom = 11.0
+text = "Press (E) to open the door"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="Area Input" to="." method="_on_area_input_body_entered"]
+[connection signal="body_exited" from="Area Input" to="." method="_on_area_input_body_exited"]

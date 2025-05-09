@@ -1,22 +1,23 @@
 extends CharacterBody2D
-class_name ShootingEnemy
 
 @onready var ray_cast: RayCast2D = $RayCast
-@onready var timer: Timer = $Timer
-@export var Marker: Marker2D
 @export var player: CharacterBody2D
 @export var health: int = 10
 @export var search_time: float = 10.0
+@export var rotation_speed: float = 1.0 
+@export_range(-90, 0, 1) var min_angle: float = -45.0
+@export_range(0, 90, 1) var max_angle: float = 45.0
 
+var base_rotation: float
+var min_rotation: float
+var max_rotation: float
+var direction := 1 
 var enemy_rotation: float
 var enemy_position: Vector2
-var Marker_position: Vector2
-var move_speed: float = 150.0
+var move_speed: float = 250.0
 var search_rotation_speed: float = 1.0
 var search_timer: float = 0.0
 var player_in_range: bool = false
-
-const bullet = preload("res://scenes/Enemy Scenes/Enemy_bullet.tscn")
 
 enum States {
     PATROLLING,
@@ -27,58 +28,49 @@ enum States {
 var current_state = States.PATROLLING
 
 func _ready() -> void:
-    Marker_position = Marker.global_position
     enemy_rotation = global_rotation
-    enemy_position = Marker_position
-    print(enemy_position)
+    base_rotation = rotation
+    min_rotation = deg_to_rad(min_angle)
+    max_rotation = deg_to_rad(max_angle)
+
 
 func _physics_process(delta: float) -> void:
+    custome_process(delta)
+
+func custome_process(delta: float) -> void:
     if player_in_range:
         ray_cast.target_position = to_local(player.global_position)
         ray_cast.force_raycast_update()
         if ray_cast.is_colliding() and ray_cast.get_collider() == player:
             if current_state != States.FIGHTING:
                 current_state = States.FIGHTING
+
     match current_state:
         States.FIGHTING:
             var to_player = player.global_position - global_position
             var target_angle = to_player.angle() - PI / 2
             rotation = lerp_angle(rotation, target_angle, 5 * delta)
-
             ray_cast.target_position = to_local(player.position)
-
-            if ray_cast.get_collider() == player:
-                if timer.is_stopped():
-                    timer.start()
-            else:
-                if not timer.is_stopped():
-                    timer.stop()
-                    
-            velocity = Vector2.ZERO  # Standing while shooting
-
         States.SEARCHING:
-            rotation += search_rotation_speed * delta
+            velocity = Vector2.ZERO
             search_timer -= delta
             if search_timer <= 0:
                 current_state = States.PATROLLING
-            velocity = Vector2.ZERO
-
         States.PATROLLING:
-            var distance_to_target = global_position.distance_to(enemy_position)
-            if distance_to_target > 1.0:
-                var target = enemy_position - global_position
-                var return_angle = target.angle() - PI / 2
-                rotation = lerp_angle(rotation, return_angle, 5 * delta)
-                velocity = target.normalized() * move_speed
-            else:
-                rotation = lerp_angle(rotation, enemy_rotation, 0.1)
-                velocity = Vector2.ZERO
-
+            rotation += direction * rotation_speed * delta
+            var relative_rotation = rotation - base_rotation
+            if relative_rotation > max_rotation:
+                rotation = base_rotation + max_rotation
+                direction = -1
+            elif relative_rotation < min_rotation:
+                rotation = base_rotation + min_rotation
+                direction = 1
     move_and_slide()
 
 func _on_visiblity_body_entered(body: Node2D) -> void:
     if body == player:
         player_in_range = true
+
 
 func _on_visiblity_body_exited(body: Node2D) -> void:
     if body == player:
@@ -86,18 +78,6 @@ func _on_visiblity_body_exited(body: Node2D) -> void:
         if current_state == States.FIGHTING:
             current_state = States.SEARCHING
             search_timer = search_time
-        if not timer.is_stopped():
-            timer.stop()
-
-func _on_timer_timeout() -> void:
-    shoot()
-
-func shoot() -> void:
-    var ammo = bullet.instantiate()
-    ammo.position = global_position
-    var to_player = (player.global_position - global_position).normalized()
-    ammo.direction = to_player
-    get_tree().current_scene.add_child(ammo)
 
 func take_damage(value):
     health -= value
