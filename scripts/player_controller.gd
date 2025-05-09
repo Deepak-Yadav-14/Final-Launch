@@ -61,6 +61,7 @@ func _physics_process(_delta: float) -> void:
 	if is_in_hide_zone:
 		%"Gun".visible = false
 		if Input.is_action_just_pressed("assasinate"):
+			print("Hello")
 			check_for_assasination()
 		return
 	else:
@@ -71,9 +72,11 @@ func _physics_process(_delta: float) -> void:
 func _update_animation(input_vec: Vector2) -> void:
 	if is_crouching:
 		if input_vec.length() > 0:
-			animation_player.play("crouch_run")
+			#animation_player.play("crouch_run")
+			pass
 		else:
-			animation_player.play("crouch_idle")
+			#animation_player.play("crouch_idle")
+			pass
 	else:
 		if input_vec.length() > 0:
 			animation_player.play("player_run")
