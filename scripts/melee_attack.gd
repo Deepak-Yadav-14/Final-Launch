@@ -4,7 +4,6 @@ extends Area2D
 @onready var gun_left: Area2D = $"Weapon Pivot/Gun Left"
 @onready var gun_up: Area2D = $"Weapon Pivot/Gun Up"
 @onready var gun_down: Area2D = $"Weapon Pivot/Gun Down"
-@onready var shoot_point: Marker2D = $"Weapon Pivot/Shoot Point"
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @export var fire_rate:float = 0.2
 @onready var melee_cooldown: Timer = $MeleeCooldown
@@ -70,10 +69,10 @@ func perform_melee_attack() -> void:
 	#anim.play("Attack")
 	print("Player performs melee attack")
 	
-	var bodies = current_visible.get_overlapping_areas()
+	var bodies = current_visible.get_overlapping_bodies()
 	var objects =  current_visible.get_overlapping_areas() 
 	print(bodies)
-	
+	print(objects)
 	for body in bodies:
 		if body.is_in_group("enemy") or body.is_in_group("destructible") :
 			print("Enemy Detected")

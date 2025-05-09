@@ -31,7 +31,6 @@ scale = Vector2(0.483301, 0.483301)
 [node name="Melee" parent="." instance=ExtResource("4_mdl7e")]
 
 [node name="AssasinateZone" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 3
 

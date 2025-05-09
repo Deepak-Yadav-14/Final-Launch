@@ -4,14 +4,12 @@ extends CharacterBody2D
 @onready var assasinate_zone: Area2D = $AssasinateZone
 @onready var melee_area: Area2D = $"Melee"
 @onready var anim: AnimationPlayer = $"Melee/AnimationPlayer"
-@onready var melee_cooldown: Timer = $MeleeCooldown
 
 #@export var table_sprite: Sprite2D
 @export var speed: float = 400
 @export var crouch_speed_factor: float = 0.5
 @export var health: float = 10
 @export var is_detected: bool = false
-@export var melee_cooldown_time: float = 0.6
 
 
 var collected_fuel_tank: int = 0
@@ -49,13 +47,13 @@ func _physics_process(_delta: float) -> void:
 				is_crouching = false
 				curr_speed = speed
 			
-	#if is_in_hide_zone:
-		#%"Gun".visible = false
-		#if Input.is_action_just_pressed("assasinate"):
-			#check_for_assasination()
-		#return
-	#else:
-		#%"Gun".visible = true	
+	if is_in_hide_zone:
+		%"Gun".visible = false
+		if Input.is_action_just_pressed("assasinate"):
+			check_for_assasination()
+		return
+	else:
+		%"Gun".visible = true	
 		
 	if Input.is_action_just_pressed("melee_attack")  :
 		anim.play("Attack")

@@ -7,7 +7,7 @@
 size = Vector2(23.0276, 86.0855)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tus3i"]
-size = Vector2(39.1227, 200.021)
+size = Vector2(0.515532, 42.7154)
 
 [sub_resource type="Animation" id="Animation_iew0g"]
 resource_name = "Attack"
@@ -326,8 +326,7 @@ _data = {
 
 [node name="Melee" type="Area2D"]
 rotation = 0.791127
-collision_layer = 8
-collision_mask = 4
+collision_layer = 4
 script = ExtResource("1_iew0g")
 
 [node name="Weapon Pivot" type="Marker2D" parent="."]
@@ -418,9 +417,9 @@ scale = Vector2(3.09007, -3.09007)
 shape = SubResource("RectangleShape2D_iew0g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(130.268, -18.8296)
-rotation = -0.759827
-scale = Vector2(0.0230436, 0.0230436)
+position = Vector2(-4.81128, -8.08869)
+rotation = -0.764929
+scale = Vector2(5.92708, -0.184156)
 shape = SubResource("RectangleShape2D_tus3i")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
