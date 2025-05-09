@@ -69,4 +69,4 @@ func take_damage(amount):
 
 func die() -> void:
 	queue_free()
-	print("Enemy defeated")
+	print("Enemy defeated")  

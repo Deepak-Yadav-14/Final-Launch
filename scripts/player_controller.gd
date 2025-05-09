@@ -2,8 +2,9 @@ extends CharacterBody2D
 
 
 @onready var assasinate_zone: Area2D = $AssasinateZone
-#@onready var melee_area: Area2D = $"Melee"
-#@onready var melee_cooldown: Timer = $MeleeCooldown
+@onready var melee_area: Area2D = $"Melee"
+@onready var anim: AnimationPlayer = $"Melee/AnimationPlayer"
+@onready var melee_cooldown: Timer = $MeleeCooldown
 
 #@export var table_sprite: Sprite2D
 @export var speed: float = 400
@@ -21,8 +22,7 @@ var is_crouching: bool = false
 var can_assasinate: bool = false
 var curr_speed: float  = speed
 
-func _ready() -> void:
-	pass
+#func _ready() -> void:
 	#melee_cooldown.wait_time = melee_cooldown_time
 	#melee_cooldown.one_shot  = true
 	#melee_cooldown.autostart  = false
@@ -49,38 +49,18 @@ func _physics_process(_delta: float) -> void:
 				is_crouching = false
 				curr_speed = speed
 			
-	if is_in_hide_zone:
-		%"Gun".visible = false
-		if Input.is_action_just_pressed("assasinate"):
-			check_for_assasination()
-		return
-	else:
-		%"Gun".visible = true	
-	#if Input.is_action_just_pressed("melee_attack") and melee_cooldown.is_stopped():
-		#perform_melee_attack()
+	#if is_in_hide_zone:
+		#%"Gun".visible = false
+		#if Input.is_action_just_pressed("assasinate"):
+			#check_for_assasination()
+		#return
+	#else:
+		#%"Gun".visible = true	
+		
+	if Input.is_action_just_pressed("melee_attack")  :
+		anim.play("Attack")
 		
 
-#func perform_melee_attack() -> void:
-	#is_attacking=true
-	#melee_cooldown.start()
-	## Optional: Add animation or visual feedback here
-	#
-	#print("Player performs melee attack")
-	#
-	#var bodies = melee_area.get_overlapping_bodies()
-	#var objects =  melee_area.get_overlapping_areas() 
-	#print(bodies)
-	#
-	#for body in bodies:
-		#if body.is_in_group("enemy") or body.is_in_group("destructible") :
-			#print("Enemy Detected")
-			#body.take_damage(100)
-	#for area in objects:
-		#if area.is_in_group("destructible") :
-			#print("Object Detected")
-			#area.take_damage(100)
-	#
-	#is_attacking = false
 
 func check_for_assasination() -> void:
 	if not can_assasinate and not is_in_hide_zone:

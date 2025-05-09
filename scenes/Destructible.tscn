@@ -7,8 +7,7 @@
 size = Vector2(1223.32, 1187)
 
 [node name="Destructible" type="Area2D" groups=["destructible"]]
-collision_layer = 4
-collision_mask = 3
+collision_layer = 2
 script = ExtResource("1_4qrmv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

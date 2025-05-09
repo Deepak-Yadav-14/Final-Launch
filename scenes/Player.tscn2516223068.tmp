@@ -37,3 +37,5 @@ collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AssasinateZone"]
 shape = SubResource("CircleShape2D_3li8b")
+
+[node name="MeleeCooldown" type="Timer" parent="."]
