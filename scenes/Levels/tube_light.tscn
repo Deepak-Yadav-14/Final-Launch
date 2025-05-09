@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://vsyvxclkoujk"]
+
+[ext_resource type="Texture2D" uid="uid://066qijanmhgn" path="res://assets/Objects/tubelight.png" id="1_v83os"]
+[ext_resource type="Texture2D" uid="uid://bprkbc6v5a6n6" path="res://assets/Objects/circle.png" id="2_jwo6n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0jpye"]
+size = Vector2(180, 20)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_phu88"]
+polygon = PackedVector2Array(103, -10, 103, -5, -103, -5, -103, -10)
+
+[node name="TubeLight" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_v83os")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0jpye")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+shadow_enabled = true
+texture = ExtResource("2_jwo6n")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_phu88")

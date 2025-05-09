@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://cawa06wk802cf"]
 
 [ext_resource type="Script" uid="uid://befnegaheb4mi" path="res://scripts/player_controller.gd" id="1_kpjcp"]
-[ext_resource type="Texture2D" uid="uid://dtwjamgfqjkma" path="res://assets/Character/character spritesheet.png" id="2_3li8b"]
+[ext_resource type="Texture2D" uid="uid://lk0ms1kw6k4i" path="res://icon.svg" id="1_xhfnw"]
 [ext_resource type="PackedScene" uid="uid://c76y1ybmgjtgc" path="res://scenes/Gun.tscn" id="3_3li8b"]
 
 [sub_resource type="Animation" id="Animation_qu4a1"]
@@ -1223,10 +1223,8 @@ polygon = PackedVector2Array(-65, -64, 63, -64, 63, 65, -64, 65)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
-scale = Vector2(0.5, 0.5)
 collision_mask = 3
 script = ExtResource("1_kpjcp")
-metadata/_edit_vertical_guides_ = [-185.0]
 
 [node name="Hand Left" type="Node2D" parent="."]
 visible = false
@@ -1351,7 +1349,6 @@ scale = Vector2(0.483301, 0.483301)
 
 [node name="AssasinateZone" type="Area2D" parent="."]
 visible = false
-scale = Vector2(2.08485, 2.08485)
 collision_layer = 0
 collision_mask = 3
 
@@ -1364,3 +1361,8 @@ shape = SubResource("CircleShape2D_3li8b")
 position = Vector2(6, -74)
 scale = Vector2(1.61307, 2.42269)
 occluder = SubResource("OccluderPolygon2D_3li8b")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.75
+shadow_filter = 2
+texture = ExtResource("4_mdl7e")
