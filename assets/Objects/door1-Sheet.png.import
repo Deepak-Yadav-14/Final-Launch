@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4wgwwpyag8hq"
-path="res://.godot/imported/Lab Tileset.png-80f0e95caeb24c82d1641a792e8c47aa.ctex"
+uid="uid://bk4fujxpavtnk"
+path="res://.godot/imported/door1-Sheet.png-77ac0e152dedb1e4628a0b69a478fda3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/TileSets/Lab Tileset.png"
-dest_files=["res://.godot/imported/Lab Tileset.png-80f0e95caeb24c82d1641a792e8c47aa.ctex"]
+source_file="res://assets/Objects/door1-Sheet.png"
+dest_files=["res://.godot/imported/door1-Sheet.png-77ac0e152dedb1e4628a0b69a478fda3.ctex"]
 
 [params]
 

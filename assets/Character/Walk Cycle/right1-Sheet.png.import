@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4wgwwpyag8hq"
-path="res://.godot/imported/Lab Tileset.png-80f0e95caeb24c82d1641a792e8c47aa.ctex"
+uid="uid://c2jt3c4wvoyxu"
+path="res://.godot/imported/right1-Sheet.png-bf5a5bc35801a383d11d826ee78a3f2d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/TileSets/Lab Tileset.png"
-dest_files=["res://.godot/imported/Lab Tileset.png-80f0e95caeb24c82d1641a792e8c47aa.ctex"]
+source_file="res://assets/Character/Walk Cycle/right1-Sheet.png"
+dest_files=["res://.godot/imported/right1-Sheet.png-bf5a5bc35801a383d11d826ee78a3f2d.ctex"]
 
 [params]
 

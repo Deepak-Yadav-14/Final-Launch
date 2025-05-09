@@ -1,46 +1,60 @@
 extends ShootingEnemy
+class_name PatrollingShootingEnemy
 
-@export_enum ("linear","loop") var petrol_type: String = "loop"
-@onready var path_follow: PathFollow2D = get_parent() as PathFollow2D
-@onready var progress_value: float = 1.0
+@export var markers: Array[NodePath] = []
+@onready var marker_nodes: Array[Marker2D] = []
 
-var speed: int = 70
-var direction = 1
+var current_target_index: int = -1
+var current_target_position: Vector2
 
 func _ready() -> void:
-    player_rotation = rotation
+    super()  # Call parent _ready
+    for path in markers:
+        marker_nodes.append(get_node(path))
+    pick_new_marker()
 
-func  _physics_process(delta: float) -> void:
-    #current_state = States.PETROLLING
-    custome_process(delta)
-    if current_state == States.PETROLLING:
-        Petrolling(delta)
-    if current_state == States.FIGHTING and rotation != player_rotation:
-        var target_angle = (player.global_position - global_position).angle() - PI / 2
+func _physics_process(delta: float) -> void:
+    match current_state:
+        States.PATROLLING:
+            patrol_to_marker(delta)
+        States.FIGHTING:
+            var target_angle = (player.global_position - global_position).angle() - PI / 2
+            rotation = lerp_angle(rotation, target_angle, 5 * delta)
+            ray_cast.target_position = to_local(player.position)
+            if ray_cast.get_collider() == player:
+                if timer.is_stopped():
+                    timer.start()
+            else:
+                if not timer.is_stopped():
+                    timer.stop()
+            velocity = Vector2.ZERO
+        States.SEARCHING:
+            rotation += search_rotation_speed * delta
+            search_timer -= delta
+            if search_timer <= 0:
+                current_state = States.PATROLLING
+                pick_new_marker()
+            velocity = Vector2.ZERO
+
+    move_and_slide()
+
+func patrol_to_marker(delta: float) -> void:
+    var to_target = current_target_position - global_position
+    var distance = to_target.length()
+
+    if distance > 10.0:
+        var target_angle = to_target.angle() - PI / 2
         rotation = lerp_angle(rotation, target_angle, 5 * delta)
-    if current_state == States.PETROLLING and rotation != player_rotation:
-        rotation = lerp_angle(rotation,player_rotation,0.3)
-
-func Petrolling(delta: float):
-    if petrol_type == 'loop':
-        progress_value += speed * delta
-        path_follow.progress = progress_value
+        velocity = to_target.normalized() * move_speed
     else:
-        if direction == 1:
-            if path_follow.progress_ratio == 1.0:
-                await get_tree().create_timer(0.3).timeout
-                rotation = lerp_angle(rotation, player_rotation+ PI / 2, 0.2)
-                await get_tree().create_timer(1).timeout
-                direction = 0
-            else:
-                progress_value += speed * delta
-                path_follow.progress = progress_value
-        else:
-            if path_follow.progress_ratio == 0.0:
-                await get_tree().create_timer(0.3).timeout
-                rotation = lerp_angle(rotation, player_rotation, 0.2)
-                await get_tree().create_timer(1).timeout
-                direction = 1
-            else:
-                progress_value -= speed * delta
-                path_follow.progress = progress_value
+        velocity = Vector2.ZERO
+        pick_new_marker()
+
+func pick_new_marker() -> void:
+    var available_indices = []
+    for i in marker_nodes.size():
+        if i != current_target_index:
+            available_indices.append(i)
+    if available_indices.size() > 0:
+        current_target_index = available_indices[randi() % available_indices.size()]
+        current_target_position = marker_nodes[current_target_index].global_position

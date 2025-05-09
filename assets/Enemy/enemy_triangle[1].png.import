@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4wgwwpyag8hq"
-path="res://.godot/imported/Lab Tileset.png-80f0e95caeb24c82d1641a792e8c47aa.ctex"
+uid="uid://4lao71qtcp1s"
+path="res://.godot/imported/enemy_triangle[1].png-b6fec3b69c446f0b630f4d9419df26b9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/TileSets/Lab Tileset.png"
-dest_files=["res://.godot/imported/Lab Tileset.png-80f0e95caeb24c82d1641a792e8c47aa.ctex"]
+source_file="res://assets/Enemy/enemy_triangle[1].png"
+dest_files=["res://.godot/imported/enemy_triangle[1].png-b6fec3b69c446f0b630f4d9419df26b9.ctex"]
 
 [params]
 
