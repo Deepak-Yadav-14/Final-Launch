@@ -14,6 +14,7 @@ var Marker_position: Vector2
 var move_speed: float = 150.0
 var search_rotation_speed: float = 1.0
 var search_timer: float = 0.0
+var player_in_range: bool = false
 
 const bullet = preload("res://scenes/Enemy Scenes/Enemy_bullet.tscn")
 
@@ -32,6 +33,12 @@ func _ready() -> void:
     print(enemy_position)
 
 func _physics_process(delta: float) -> void:
+    if player_in_range:
+        ray_cast.target_position = to_local(player.global_position)
+        ray_cast.force_raycast_update()
+        if ray_cast.is_colliding() and ray_cast.get_collider() == player:
+            if current_state != States.FIGHTING:
+                current_state = States.FIGHTING
     match current_state:
         States.FIGHTING:
             var to_player = player.global_position - global_position
@@ -71,13 +78,14 @@ func _physics_process(delta: float) -> void:
 
 func _on_visiblity_body_entered(body: Node2D) -> void:
     if body == player:
-        if current_state == States.PATROLLING or current_state == States.SEARCHING:
-            current_state = States.FIGHTING
+        player_in_range = true
 
 func _on_visiblity_body_exited(body: Node2D) -> void:
-    if body == player and current_state == States.FIGHTING:
-        current_state = States.SEARCHING
-        search_timer = search_time
+    if body == player:
+        player_in_range = false
+        if current_state == States.FIGHTING:
+            current_state = States.SEARCHING
+            search_timer = search_time
         if not timer.is_stopped():
             timer.stop()
 

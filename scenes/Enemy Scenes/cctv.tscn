@@ -10,7 +10,7 @@ size = Vector2(60, 85)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1gps1"]
 polygon = PackedVector2Array(-31, -43, 29, -42, 30, 43, -29, 43)
 
-[node name="CCTV" type="CharacterBody2D"]
+[node name="CCTV" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_1gps1")

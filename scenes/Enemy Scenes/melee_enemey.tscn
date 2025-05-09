@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bogc4hp184e3j"]
+[gd_scene load_steps=7 format=3 uid="uid://bogc4hp184e3j"]
 
 [ext_resource type="Texture2D" uid="uid://lk0ms1kw6k4i" path="res://icon.svg" id="1_gcgcr"]
 [ext_resource type="Script" uid="uid://bwlo5n1b120cl" path="res://scripts/Enemy Scripts/melee_enemey.gd" id="1_ll32d"]
@@ -9,6 +9,9 @@ size = Vector2(128, 128)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_cg7im"]
 polygon = PackedVector2Array(-65, -64, 63, -64, 63, 65, -64, 65)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cg7im"]
+radius = 138.033
 
 [node name="Melee Enemey" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
@@ -44,5 +47,15 @@ polygon = PackedVector2Array(0, -61.5168, 156.429, 216.188, 117.175, 236.107, 50
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_cg7im")
 
+[node name="Attack area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack area"]
+shape = SubResource("CircleShape2D_cg7im")
+
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="Visiblity" to="." method="_on_visiblity_body_entered"]
 [connection signal="body_exited" from="Visiblity" to="." method="_on_visiblity_body_exited"]
+[connection signal="body_entered" from="Attack area" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="Attack area" to="." method="_on_attack_area_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

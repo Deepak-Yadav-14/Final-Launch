@@ -1,10 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dr7avmgcyp350"]
+[gd_scene load_steps=3 format=3 uid="uid://dr7avmgcyp350"]
 
 [ext_resource type="PackedScene" uid="uid://cawa06wk802cf" path="res://scenes/Player.tscn" id="1_j3d4n"]
-[ext_resource type="PackedScene" uid="uid://utpsrx778hsj" path="res://scenes/Enemy Scenes/shoot_enemy.tscn" id="2_j3d4n"]
-[ext_resource type="PackedScene" uid="uid://c2w7wbv008dph" path="res://scenes/Enemy Scenes/petrolling_enemy.tscn" id="3_274oi"]
 [ext_resource type="PackedScene" uid="uid://bogc4hp184e3j" path="res://scenes/Enemy Scenes/melee_enemey.tscn" id="4_ewvbb"]
-[ext_resource type="PackedScene" uid="uid://cnr8dmc8ywust" path="res://scenes/Enemy Scenes/cctv.tscn" id="5_jxldi"]
 
 [node name="Enemy test window" type="Node2D"]
 
@@ -12,14 +9,6 @@
 position = Vector2(130, 136)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-
-[node name="Shoot Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_j3d4n")]
-position = Vector2(116, 571)
-player = NodePath("../Player")
-
-[node name="ShootMarker" type="Marker2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(116, 571)
 
 [node name="Melee Enemey" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_ewvbb")]
 position = Vector2(-1122, 394)
@@ -29,32 +18,3 @@ player = NodePath("../Player")
 unique_name_in_owner = true
 position = Vector2(-1122, 394)
 gizmo_extents = 105.5
-
-[node name="Petrolling Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_274oi")]
-position = Vector2(1063, 322)
-markers = Array[NodePath]([NodePath("../Marker 1"), NodePath("../Marker 2"), NodePath("../Marker 3"), NodePath("../Marker 4")])
-player = NodePath("../Player")
-
-[node name="Marker 1" type="Marker2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(1255, -804)
-gizmo_extents = 105.5
-
-[node name="Marker 2" type="Marker2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(1539, -332)
-gizmo_extents = 105.5
-
-[node name="Marker 3" type="Marker2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(754, -307)
-gizmo_extents = 105.5
-
-[node name="Marker 4" type="Marker2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(285, -753)
-gizmo_extents = 105.5
-
-[node name="CCTV" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_jxldi")]
-position = Vector2(-9, -665)
-player = NodePath("../Player")
