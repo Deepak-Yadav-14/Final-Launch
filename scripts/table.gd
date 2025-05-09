@@ -7,8 +7,6 @@ func _on_hide_zone_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		body.is_in_hide_zone = true
 		body.can_assasinate = true
-		
-		
 		color_rect.color = Color(1,1,1,0.2)
 
 
