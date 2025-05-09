@@ -43,12 +43,10 @@ position = Vector2(0, 275)
 scale = Vector2(1.45953, 1.41154)
 energy = 0.5
 shadow_enabled = true
-shadow_filter = 1
-shadow_item_cull_mask = 15
+shadow_filter = 2
 texture = ExtResource("3_ognii")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-visible = false
 occluder = SubResource("OccluderPolygon2D_6luwi")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cawa06wk802cf"]
+[gd_scene load_steps=8 format=3 uid="uid://cawa06wk802cf"]
 
 [ext_resource type="Script" uid="uid://befnegaheb4mi" path="res://scripts/player_controller.gd" id="1_kpjcp"]
 [ext_resource type="Texture2D" uid="uid://lk0ms1kw6k4i" path="res://icon.svg" id="1_xhfnw"]
 [ext_resource type="PackedScene" uid="uid://c76y1ybmgjtgc" path="res://scenes/Gun.tscn" id="3_3li8b"]
+[ext_resource type="Texture2D" uid="uid://bprkbc6v5a6n6" path="res://assets/Objects/circle.png" id="4_mdl7e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v6fml"]
 size = Vector2(115, 112)
@@ -41,3 +42,8 @@ shape = SubResource("CircleShape2D_3li8b")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_3li8b")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.75
+shadow_filter = 2
+texture = ExtResource("4_mdl7e")
