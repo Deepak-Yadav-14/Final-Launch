@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ch6ucgdbgc8o7"]
+[gd_scene load_steps=6 format=3 uid="uid://ch6ucgdbgc8o7"]
 
 [ext_resource type="PackedScene" uid="uid://cawa06wk802cf" path="res://scenes/Player.tscn" id="1_elqb8"]
 [ext_resource type="PackedScene" uid="uid://bvhc5v4lsjkmy" path="res://scenes/Destructible.tscn" id="2_rvslj"]
 [ext_resource type="PackedScene" uid="uid://ckcgvcs48y6ck" path="res://scenes/enemy_test.tscn" id="3_0bbpv"]
 [ext_resource type="PackedScene" uid="uid://c84g0ufpcvp1" path="res://scenes/table.tscn" id="4_rarhs"]
+[ext_resource type="PackedScene" uid="uid://utpsrx778hsj" path="res://scenes/Enemy Scenes/shoot_enemy.tscn" id="5_vcsgt"]
 
 [node name="Main" type="Node2D"]
 
@@ -23,3 +24,13 @@ collision_layer = 6
 [node name="Table" parent="." instance=ExtResource("4_rarhs")]
 position = Vector2(-91, -285)
 scale = Vector2(2.11607, 2.11607)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(988, -11)
+rotation = -1.5708
+
+[node name="Shoot Enemy" parent="." node_paths=PackedStringArray("Marker", "player") instance=ExtResource("5_vcsgt")]
+position = Vector2(-456, -18)
+scale = Vector2(0.512192, 0.512192)
+Marker = NodePath("../Marker2D")
+player = NodePath("../Player")
