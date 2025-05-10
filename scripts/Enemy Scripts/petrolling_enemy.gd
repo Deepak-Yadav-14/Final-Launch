@@ -1,5 +1,4 @@
 extends ShootingEnemy
-class_name PatrollingShootingEnemy
 
 @export var markers: Array[NodePath] = []
 @onready var marker_nodes: Array[Marker2D] = []

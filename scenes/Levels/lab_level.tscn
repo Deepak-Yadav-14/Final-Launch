@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://pol42d3tckxq"]
+[gd_scene load_steps=39 format=4 uid="uid://pol42d3tckxq"]
 
 [ext_resource type="Texture2D" uid="uid://b4wgwwpyag8hq" path="res://assets/TileSets/Lab Tileset.png" id="1_87la8"]
 [ext_resource type="PackedScene" uid="uid://cawa06wk802cf" path="res://scenes/Player.tscn" id="2_4iyfl"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://utpsrx778hsj" path="res://scenes/Enemy Scenes/shoot_enemy.tscn" id="4_kkivo"]
 [ext_resource type="PackedScene" uid="uid://vsyvxclkoujk" path="res://scenes/Levels/tube_light.tscn" id="5_o5488"]
 [ext_resource type="PackedScene" uid="uid://ct3mcx7g0c8mo" path="res://scenes/Levels/fan_light.tscn" id="6_xy3xy"]
+[ext_resource type="PackedScene" uid="uid://b3hifq8pl6rup" path="res://scenes/table.tscn" id="7_cdlye"]
+[ext_resource type="Texture2D" uid="uid://dewyf4rwjskt8" path="res://assets/Objects/cctv table.png" id="8_am1xs"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kkivo"]
 polygon = PackedVector2Array(-32, 32, 32, 32, 32, -4.51579, -32, -6.20921)
@@ -235,10 +237,11 @@ tile_map_data = PackedByteArray("AAAYAP7/AAADAAAAAAAZAP7/AAAEAAAAAAAaAP7/AAAEAAA
 tile_set = SubResource("TileSet_nlauq")
 
 [node name="Player" parent="." instance=ExtResource("2_4iyfl")]
-position = Vector2(80, 1162)
+position = Vector2(1642, 1169)
 collision_mask = 7
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+visible = false
 
 [node name="Doors" type="Node2D" parent="."]
 
@@ -259,41 +262,81 @@ position = Vector2(1339, -39)
 scale = Vector2(0.979688, 0.91875)
 
 [node name="Shoot Enemy" parent="." node_paths=PackedStringArray("Marker", "player") instance=ExtResource("4_kkivo")]
-position = Vector2(534, 1049)
-rotation = 0.0
+position = Vector2(480, 1120)
 Marker = NodePath("../ShootMarker")
 player = NodePath("../Player")
 
 [node name="ShootMarker" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(534, 1049)
+position = Vector2(480, 1120)
+rotation = -1.57079
 
 [node name="Shoot Enemy2" parent="." node_paths=PackedStringArray("Marker", "player") instance=ExtResource("4_kkivo")]
-position = Vector2(903, 1051)
-rotation = 0.0
+position = Vector2(-92, 1668)
 Marker = NodePath("../ShootMarker2")
 player = NodePath("../Player")
 
 [node name="ShootMarker2" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(903, 1051)
+position = Vector2(-92, 1668)
+
+[node name="Shoot Enemy3" parent="." node_paths=PackedStringArray("Marker", "player") instance=ExtResource("4_kkivo")]
+position = Vector2(-92, 1890)
+Marker = NodePath("../ShootMarker3")
+player = NodePath("../Player")
+
+[node name="ShootMarker3" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-92, 1890)
 
 [node name="Shoot Enemy4" parent="." node_paths=PackedStringArray("Marker", "player") instance=ExtResource("4_kkivo")]
-position = Vector2(1393, 1072)
-rotation = 0.785398
+position = Vector2(-83, 734.858)
 Marker = NodePath("../ShootMarker4")
 player = NodePath("../Player")
 
 [node name="ShootMarker4" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(1393, 1072)
-rotation = 0.785398
+position = Vector2(-83, 735)
+
+[node name="Shoot Enemy5" parent="." node_paths=PackedStringArray("Marker", "player") instance=ExtResource("4_kkivo")]
+visible = false
+position = Vector2(916, 328.858)
+Marker = NodePath("../ShootMarker5")
+player = NodePath("../Player")
+
+[node name="ShootMarker5" type="Marker2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(916, 329)
+
+[node name="Shoot Enemy6" parent="." node_paths=PackedStringArray("Marker", "player") instance=ExtResource("4_kkivo")]
+position = Vector2(1908, 429.858)
+rotation = 0.0
+Marker = NodePath("../ShootMarker6")
+player = NodePath("../Player")
+
+[node name="ShootMarker6" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1908, 430)
 
 [node name="Lights" type="Node2D" parent="."]
 
 [node name="TubeLight" parent="Lights" instance=ExtResource("5_o5488")]
 position = Vector2(775, 201)
 rotation = 1.57079
+
+[node name="TubeLight6" parent="Lights" instance=ExtResource("5_o5488")]
+visible = false
+position = Vector2(390, 1102)
+rotation = 1.57079
+
+[node name="TubeLight7" parent="Lights" instance=ExtResource("5_o5488")]
+position = Vector2(1478, 1135)
+rotation = 1.57079
+
+[node name="TubeLight8" parent="Lights" instance=ExtResource("5_o5488")]
+position = Vector2(874, 1937)
+rotation = 3.14159
 
 [node name="TubeLight4" parent="Lights" instance=ExtResource("5_o5488")]
 position = Vector2(1982, 378)
@@ -307,8 +350,12 @@ position = Vector2(1478, 243)
 rotation = 1.57079
 
 [node name="TubeLight2" parent="Lights" instance=ExtResource("5_o5488")]
-position = Vector2(890, 278)
+position = Vector2(890, 262)
 rotation = -1.5708
+
+[node name="TubeLight9" parent="Lights" instance=ExtResource("5_o5488")]
+position = Vector2(1799, 1370)
+rotation = 1.5708
 
 [node name="Fan Light" parent="Lights" instance=ExtResource("6_xy3xy")]
 position = Vector2(1924, 698)
@@ -327,3 +374,44 @@ frame_progress = 0.0144369
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="Lights"]
 color = Color(0.396889, 0.396889, 0.396889, 1)
 blend_mode = 1
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="Table" parent="Props" instance=ExtResource("7_cdlye")]
+position = Vector2(273, 64)
+
+[node name="Table2" parent="Props" instance=ExtResource("7_cdlye")]
+position = Vector2(237, 1018)
+
+[node name="Table3" parent="Props" instance=ExtResource("7_cdlye")]
+position = Vector2(2266, 409)
+
+[node name="Table4" parent="Props" instance=ExtResource("7_cdlye")]
+position = Vector2(-32, 55)
+
+[node name="Table5" parent="Props" instance=ExtResource("7_cdlye")]
+position = Vector2(1350, -340)
+
+[node name="Table6" parent="Props" instance=ExtResource("7_cdlye")]
+position = Vector2(1355, 1009)
+
+[node name="Table7" parent="Props" instance=ExtResource("7_cdlye")]
+position = Vector2(869, 1570)
+
+[node name="Table8" parent="Props" instance=ExtResource("7_cdlye")]
+position = Vector2(830, 629)
+rotation = 1.57079
+
+[node name="Table9" parent="Props" instance=ExtResource("7_cdlye")]
+position = Vector2(1460, 771)
+rotation = 1.57079
+
+[node name="CCTV Table" type="StaticBody2D" parent="Props"]
+position = Vector2(1049, 101)
+
+[node name="Sprite2D" type="Sprite2D" parent="Props/CCTV Table"]
+scale = Vector2(0.035, 0.035)
+texture = ExtResource("8_am1xs")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Props/CCTV Table"]
+polygon = PackedVector2Array(-96, 86, -143, 66, -140, -72, 138, -73, 143, 68, 97, 87, 37, 54, 37, -72, -91, -71)

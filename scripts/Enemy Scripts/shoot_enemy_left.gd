@@ -1,5 +1,4 @@
 extends CharacterBody2D
-class_name ShootingEnemy
 
 @onready var ray_cast: RayCast2D = $RayCast
 @onready var timer: Timer = $Timer
@@ -43,7 +42,7 @@ func _physics_process(delta: float) -> void:
     match current_state:
         States.FIGHTING:
             var to_player = player.global_position - global_position
-            var target_angle = to_player.angle()- PI/2
+            var target_angle = to_player.angle() - PI /2
             rotation = lerp_angle(rotation, target_angle, 5 * delta)
 
             ray_cast.target_position = to_local(player.position)

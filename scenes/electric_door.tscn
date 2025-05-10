@@ -134,7 +134,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_skuv8"]
-size = Vector2(71, 150)
+size = Vector2(71, 215)
 
 [node name="Electric Door" type="StaticBody2D"]
 script = ExtResource("1_skuv8")
@@ -149,7 +149,7 @@ sprite_frames = SubResource("SpriteFrames_kruxe")
 [node name="Area Input" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area Input"]
-position = Vector2(103.5, 48)
+position = Vector2(103.5, 15.5)
 shape = SubResource("RectangleShape2D_skuv8")
 
 [node name="Label" type="Label" parent="."]
