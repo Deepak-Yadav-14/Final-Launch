@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://pol42d3tckxq"]
+[gd_scene load_steps=42 format=4 uid="uid://pol42d3tckxq"]
 
 [ext_resource type="Texture2D" uid="uid://b4wgwwpyag8hq" path="res://assets/TileSets/Lab Tileset.png" id="1_87la8"]
 [ext_resource type="PackedScene" uid="uid://cawa06wk802cf" path="res://scenes/Player.tscn" id="2_4iyfl"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dewyf4rwjskt8" path="res://assets/Objects/cctv table.png" id="8_am1xs"]
 [ext_resource type="PackedScene" uid="uid://bm4xuakjo4lrp" path="res://scenes/crates.tscn" id="8_k65kj"]
 [ext_resource type="PackedScene" uid="uid://cnr8dmc8ywust" path="res://scenes/Enemy Scenes/cctv.tscn" id="9_uhngs"]
+[ext_resource type="PackedScene" uid="uid://cb8kepek0u1ei" path="res://scenes/generator.tscn" id="11_dqb2b"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kkivo"]
 polygon = PackedVector2Array(-32, 32, 32, 32, 32, -4.51579, -32, -6.20921)
@@ -464,3 +465,6 @@ player = NodePath("../../Player")
 position = Vector2(1779, 1042)
 rotation = 1.5708
 player = NodePath("../../Player")
+
+[node name="Generator" parent="." instance=ExtResource("11_dqb2b")]
+position = Vector2(2216, 800)
