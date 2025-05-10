@@ -1,14 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://bm4xuakjo4lrp"]
 
-[ext_resource type="Texture2D" uid="uid://lk0ms1kw6k4i" path="res://icon.svg" id="1_jffb4"]
+[ext_resource type="Texture2D" uid="uid://b61fe3toq12py" path="res://assets/Objects/crate open.png" id="1_jffb4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ekuii"]
-size = Vector2(128, 128)
+size = Vector2(121, 143)
 
 [node name="Crates" type="StaticBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.04, 0.04)
 texture = ExtResource("1_jffb4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_ekuii")

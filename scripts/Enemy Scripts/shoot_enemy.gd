@@ -36,7 +36,6 @@ func _physics_process(delta: float) -> void:
     if player_in_range:
         ray_cast.target_position = to_local(player.global_position)
         ray_cast.force_raycast_update()
-        print(ray_cast.get_collider())
         if ray_cast.is_colliding() and ray_cast.get_collider() == player:
             if current_state != States.FIGHTING:
                 current_state = States.FIGHTING

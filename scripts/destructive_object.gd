@@ -3,23 +3,24 @@ extends Area2D
 const FUEL_PICKUP = preload("res://scenes/FuelPickup.tscn")
 
 @export var fuel_Count:int = 3
-
+@onready var timer: Timer = $Timer
 @export var health: int = 3
-#@onready var anim: AnimationPlayer = $RigidBody2D/AnimationPlayer
-#const BREAK_ANIM: String = "break"
+@onready var crate: Sprite2D = $Crate
+@onready var crate_break: Sprite2D = $"Crate break"
+@onready var explosion: AnimatedSprite2D = $Explosion
+@onready var collision: CollisionShape2D = $StaticBody2D/Collision
 
 func take_damage(amount):
     health -= amount
-    print("damage_happens")
-    # Details can be added after each hit
     if health <= 0:
-        # Add destroying animation than add the queue free in that animation
-        break_apart()
+        crate.visible = false
+        explosion.play()
+        
     
     
 func break_apart():
     _spawn_fuel()
-    call_deferred("queue_free")
+    #call_deferred("queue_free")
         
 func _spawn_fuel(_anim_name=""):
     for i in range(fuel_Count):
@@ -29,3 +30,13 @@ func _spawn_fuel(_anim_name=""):
         fuel.position = global_position + Vector2(cos(angle), sin(angle)) * distance
         get_parent().call_deferred("add_child",fuel)
     
+
+func _on_explosion_animation_finished() -> void:
+    crate_break.visible = true
+    collision.disabled = true
+    break_apart()
+    timer.start()
+
+
+func _on_timer_timeout() -> void:
+    queue_free()

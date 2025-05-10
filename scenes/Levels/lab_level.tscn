@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://pol42d3tckxq"]
+[gd_scene load_steps=43 format=4 uid="uid://pol42d3tckxq"]
 
 [ext_resource type="Texture2D" uid="uid://b4wgwwpyag8hq" path="res://assets/TileSets/Lab Tileset.png" id="1_87la8"]
 [ext_resource type="PackedScene" uid="uid://cawa06wk802cf" path="res://scenes/Player.tscn" id="2_4iyfl"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bm4xuakjo4lrp" path="res://scenes/crates.tscn" id="8_k65kj"]
 [ext_resource type="PackedScene" uid="uid://cnr8dmc8ywust" path="res://scenes/Enemy Scenes/cctv.tscn" id="9_uhngs"]
 [ext_resource type="PackedScene" uid="uid://cb8kepek0u1ei" path="res://scenes/generator.tscn" id="11_dqb2b"]
+[ext_resource type="PackedScene" uid="uid://bvhc5v4lsjkmy" path="res://scenes/Destructible.tscn" id="12_hco02"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kkivo"]
 polygon = PackedVector2Array(-32, 32, 32, 32, 32, -4.51579, -32, -6.20921)
@@ -382,10 +383,6 @@ scale = Vector2(0.5, 0.5)
 position = Vector2(1873, 1105)
 scale = Vector2(0.5, 0.5)
 
-[node name="Crates7" parent="Props" instance=ExtResource("8_k65kj")]
-position = Vector2(676, 88)
-scale = Vector2(0.5, 0.5)
-
 [node name="Enemys" type="Node2D" parent="."]
 
 [node name="Shoot Enemy" parent="Enemys" node_paths=PackedStringArray("Marker", "player") instance=ExtResource("4_kkivo")]
@@ -468,3 +465,57 @@ player = NodePath("../../Player")
 
 [node name="Generator" parent="." instance=ExtResource("11_dqb2b")]
 position = Vector2(2216, 800)
+
+[node name="Colectables" type="Node2D" parent="."]
+
+[node name="Destructible" parent="Colectables" instance=ExtResource("12_hco02")]
+position = Vector2(715, 587)
+scale = Vector2(0.5, 0.5)
+
+[node name="Destructible2" parent="Colectables" instance=ExtResource("12_hco02")]
+position = Vector2(936, 789)
+scale = Vector2(0.5, 0.5)
+
+[node name="Destructible3" parent="Colectables" instance=ExtResource("12_hco02")]
+position = Vector2(1351, 344)
+scale = Vector2(0.5, 0.5)
+
+[node name="Destructible4" parent="Colectables" instance=ExtResource("12_hco02")]
+position = Vector2(2122, 434)
+scale = Vector2(0.5, 0.5)
+
+[node name="Destructible5" parent="Colectables" instance=ExtResource("12_hco02")]
+position = Vector2(13, 167)
+scale = Vector2(0.5, 0.5)
+
+[node name="Destructible6" parent="Colectables" instance=ExtResource("12_hco02")]
+position = Vector2(133, 1109)
+scale = Vector2(0.5, 0.5)
+
+[node name="Destructible7" parent="Colectables" instance=ExtResource("12_hco02")]
+position = Vector2(1417, 1392)
+scale = Vector2(0.5, 0.5)
+
+[node name="Destructible8" parent="Colectables" instance=ExtResource("12_hco02")]
+position = Vector2(1215, 1022)
+scale = Vector2(0.5, 0.5)
+
+[node name="Destructible9" parent="Colectables" instance=ExtResource("12_hco02")]
+position = Vector2(1567, 1217)
+scale = Vector2(0.5, 0.5)
+
+[node name="Destructible10" parent="Colectables" instance=ExtResource("12_hco02")]
+position = Vector2(1718, 1889)
+scale = Vector2(0.5, 0.5)
+
+[node name="Destructible11" parent="Colectables" instance=ExtResource("12_hco02")]
+position = Vector2(725, 1594)
+scale = Vector2(0.5, 0.5)
+
+[node name="Destructible12" parent="Colectables" instance=ExtResource("12_hco02")]
+position = Vector2(648, 120)
+scale = Vector2(0.5, 0.5)
+
+[node name="Destructible13" parent="Colectables" instance=ExtResource("12_hco02")]
+position = Vector2(1735, -291)
+scale = Vector2(0.5, 0.5)

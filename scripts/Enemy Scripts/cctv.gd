@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var ray_cast: RayCast2D = $RayCast
 @export var player: CharacterBody2D
-@export var health: int = 10
+@export var health: int = 3
 @export var search_time: float = 10.0
 @export var rotation_speed: float = 1.0 
 @export_range(-180, 0, 1) var min_angle: float = -45.0
