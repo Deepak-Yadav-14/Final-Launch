@@ -58,8 +58,8 @@ func _physics_process(_delta: float) -> void:
 	else:
 		%"Gun".visible = true	
 		
-	if Input.is_action_just_pressed("melee_attack")  :
-		anim.play("Attack")
+	#if Input.is_action_just_pressed("melee_attack")  :
+		#anim.play("Attack")
 		
 
 	var base_scale_x = abs($"Torso".scale.x)

@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://befnegaheb4mi" path="res://scripts/player_controller.gd" id="1_kpjcp"]
 [ext_resource type="Texture2D" uid="uid://dtwjamgfqjkma" path="res://assets/Character/character spritesheet.png" id="2_3li8b"]
 [ext_resource type="PackedScene" uid="uid://c76y1ybmgjtgc" path="res://scenes/Gun.tscn" id="3_3li8b"]
-[ext_resource type="PackedScene" uid="uid://dj7tnqmmp6kxg" path="res://scenes/Melee.tscn" id="4_mdl7e"]
 
 [sub_resource type="Animation" id="Animation_qu4a1"]
 length = 0.001
@@ -855,11 +854,7 @@ shape = SubResource("RectangleShape2D_v6fml")
 unique_name_in_owner = true
 position = Vector2(-26, -28)
 
-[node name="Melee" parent="." instance=ExtResource("4_mdl7e")]
-visible = false
-
 [node name="AssasinateZone" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 3
 
