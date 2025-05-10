@@ -1237,11 +1237,11 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_mb8td")
 
 [node name="RayCast" type="RayCast2D" parent="."]
-position = Vector2(83.498, 3.25161)
+position = Vector2(1.498, 3.25131)
 collision_mask = 7
 
 [node name="Visiblity" type="Area2D" parent="."]
-position = Vector2(83.498, 3.25161)
+position = Vector2(1.498, 3.25131)
 collision_layer = 8
 collision_mask = 3
 
@@ -1251,7 +1251,7 @@ scale = Vector2(1.70685, 1.70685)
 polygon = PackedVector2Array(0, -61.5168, 156.429, 216.188, 117.175, 236.107, 50.3852, 257.785, -21.0915, 262.472, -90.2247, 246.653, -150.57, 222.046)
 
 [node name="Vision" type="PointLight2D" parent="."]
-position = Vector2(83.498, 278.252)
+position = Vector2(1.49799, 278.252)
 scale = Vector2(1.45953, 1.41154)
 energy = 0.5
 shadow_enabled = true
@@ -1262,9 +1262,12 @@ texture = ExtResource("3_ognii")
 wait_time = 0.4
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(8.00004, -12)
+scale = Vector2(4.40868, 1.22709)
 occluder = SubResource("OccluderPolygon2D_6luwi")
 
 [node name="Torso" type="Sprite2D" parent="."]
+z_index = 1
 rotation = 1.5708
 texture = ExtResource("4_mb8td")
 region_enabled = true
