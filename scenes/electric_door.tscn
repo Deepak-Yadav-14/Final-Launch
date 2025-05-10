@@ -137,6 +137,8 @@ animations = [{
 size = Vector2(71, 215)
 
 [node name="Electric Door" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 7
 script = ExtResource("1_skuv8")
 
 [node name="Door Collision" type="CollisionShape2D" parent="."]

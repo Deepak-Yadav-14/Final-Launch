@@ -5,8 +5,9 @@ extends CharacterBody2D
 @export var health: int = 10
 @export var search_time: float = 10.0
 @export var rotation_speed: float = 1.0 
-@export_range(-90, 0, 1) var min_angle: float = -45.0
-@export_range(0, 90, 1) var max_angle: float = 45.0
+@export_range(-180, 0, 1) var min_angle: float = -45.0
+@export_range(0, 180, 1) var max_angle: float = 45.0
+@onready var vision: PointLight2D = $Vision
 
 var base_rotation: float
 var min_rotation: float

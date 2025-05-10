@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://pol42d3tckxq"]
+[gd_scene load_steps=41 format=4 uid="uid://pol42d3tckxq"]
 
 [ext_resource type="Texture2D" uid="uid://b4wgwwpyag8hq" path="res://assets/TileSets/Lab Tileset.png" id="1_87la8"]
 [ext_resource type="PackedScene" uid="uid://cawa06wk802cf" path="res://scenes/Player.tscn" id="2_4iyfl"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://ct3mcx7g0c8mo" path="res://scenes/Levels/fan_light.tscn" id="6_xy3xy"]
 [ext_resource type="PackedScene" uid="uid://b3hifq8pl6rup" path="res://scenes/table.tscn" id="7_cdlye"]
 [ext_resource type="Texture2D" uid="uid://dewyf4rwjskt8" path="res://assets/Objects/cctv table.png" id="8_am1xs"]
+[ext_resource type="PackedScene" uid="uid://bm4xuakjo4lrp" path="res://scenes/crates.tscn" id="8_k65kj"]
+[ext_resource type="PackedScene" uid="uid://cnr8dmc8ywust" path="res://scenes/Enemy Scenes/cctv.tscn" id="9_uhngs"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kkivo"]
 polygon = PackedVector2Array(-32, 32, 32, 32, 32, -4.51579, -32, -6.20921)
@@ -237,7 +239,7 @@ tile_map_data = PackedByteArray("AAAYAP7/AAADAAAAAAAZAP7/AAAEAAAAAAAaAP7/AAAEAAA
 tile_set = SubResource("TileSet_nlauq")
 
 [node name="Player" parent="." instance=ExtResource("2_4iyfl")]
-position = Vector2(1642, 1169)
+position = Vector2(357, 269)
 collision_mask = 7
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -261,64 +263,6 @@ scale = Vector2(0.979688, 0.91875)
 position = Vector2(1339, -39)
 scale = Vector2(0.979688, 0.91875)
 
-[node name="Shoot Enemy" parent="." node_paths=PackedStringArray("Marker", "player") instance=ExtResource("4_kkivo")]
-position = Vector2(480, 1120)
-Marker = NodePath("../ShootMarker")
-player = NodePath("../Player")
-
-[node name="ShootMarker" type="Marker2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(480, 1120)
-rotation = -1.57079
-
-[node name="Shoot Enemy2" parent="." node_paths=PackedStringArray("Marker", "player") instance=ExtResource("4_kkivo")]
-position = Vector2(-92, 1668)
-Marker = NodePath("../ShootMarker2")
-player = NodePath("../Player")
-
-[node name="ShootMarker2" type="Marker2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(-92, 1668)
-
-[node name="Shoot Enemy3" parent="." node_paths=PackedStringArray("Marker", "player") instance=ExtResource("4_kkivo")]
-position = Vector2(-92, 1890)
-Marker = NodePath("../ShootMarker3")
-player = NodePath("../Player")
-
-[node name="ShootMarker3" type="Marker2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(-92, 1890)
-
-[node name="Shoot Enemy4" parent="." node_paths=PackedStringArray("Marker", "player") instance=ExtResource("4_kkivo")]
-position = Vector2(-83, 734.858)
-Marker = NodePath("../ShootMarker4")
-player = NodePath("../Player")
-
-[node name="ShootMarker4" type="Marker2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(-83, 735)
-
-[node name="Shoot Enemy5" parent="." node_paths=PackedStringArray("Marker", "player") instance=ExtResource("4_kkivo")]
-visible = false
-position = Vector2(916, 328.858)
-Marker = NodePath("../ShootMarker5")
-player = NodePath("../Player")
-
-[node name="ShootMarker5" type="Marker2D" parent="."]
-unique_name_in_owner = true
-visible = false
-position = Vector2(916, 329)
-
-[node name="Shoot Enemy6" parent="." node_paths=PackedStringArray("Marker", "player") instance=ExtResource("4_kkivo")]
-position = Vector2(1908, 429.858)
-rotation = 0.0
-Marker = NodePath("../ShootMarker6")
-player = NodePath("../Player")
-
-[node name="ShootMarker6" type="Marker2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(1908, 430)
-
 [node name="Lights" type="Node2D" parent="."]
 
 [node name="TubeLight" parent="Lights" instance=ExtResource("5_o5488")]
@@ -326,7 +270,6 @@ position = Vector2(775, 201)
 rotation = 1.57079
 
 [node name="TubeLight6" parent="Lights" instance=ExtResource("5_o5488")]
-visible = false
 position = Vector2(390, 1102)
 rotation = 1.57079
 
@@ -415,3 +358,109 @@ texture = ExtResource("8_am1xs")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Props/CCTV Table"]
 polygon = PackedVector2Array(-96, 86, -143, 66, -140, -72, 138, -73, 143, 68, 97, 87, 37, 54, 37, -72, -91, -71)
+
+[node name="Crates" parent="Props" instance=ExtResource("8_k65kj")]
+position = Vector2(1433, 613)
+
+[node name="Crates2" parent="Props" instance=ExtResource("8_k65kj")]
+position = Vector2(799, 788)
+
+[node name="Crates3" parent="Props" instance=ExtResource("8_k65kj")]
+position = Vector2(1875, 304)
+scale = Vector2(0.5, 0.5)
+
+[node name="Crates4" parent="Props" instance=ExtResource("8_k65kj")]
+position = Vector2(2468, 345)
+scale = Vector2(0.5, 0.5)
+
+[node name="Crates5" parent="Props" instance=ExtResource("8_k65kj")]
+position = Vector2(2470, 1059)
+scale = Vector2(0.5, 0.5)
+
+[node name="Crates6" parent="Props" instance=ExtResource("8_k65kj")]
+position = Vector2(1873, 1105)
+scale = Vector2(0.5, 0.5)
+
+[node name="Crates7" parent="Props" instance=ExtResource("8_k65kj")]
+position = Vector2(676, 88)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemys" type="Node2D" parent="."]
+
+[node name="Shoot Enemy" parent="Enemys" node_paths=PackedStringArray("Marker", "player") instance=ExtResource("4_kkivo")]
+position = Vector2(480, 1120)
+Marker = NodePath("../ShootMarker")
+player = NodePath("../../Player")
+
+[node name="ShootMarker" type="Marker2D" parent="Enemys"]
+unique_name_in_owner = true
+position = Vector2(480, 1120)
+rotation = -1.57079
+
+[node name="Shoot Enemy2" parent="Enemys" node_paths=PackedStringArray("Marker", "player") instance=ExtResource("4_kkivo")]
+position = Vector2(-92, 1668)
+Marker = NodePath("../ShootMarker2")
+player = NodePath("../../Player")
+
+[node name="ShootMarker2" type="Marker2D" parent="Enemys"]
+unique_name_in_owner = true
+position = Vector2(-92, 1668)
+
+[node name="Shoot Enemy3" parent="Enemys" node_paths=PackedStringArray("Marker", "player") instance=ExtResource("4_kkivo")]
+position = Vector2(-92, 1890)
+Marker = NodePath("../ShootMarker3")
+player = NodePath("../../Player")
+
+[node name="ShootMarker3" type="Marker2D" parent="Enemys"]
+unique_name_in_owner = true
+position = Vector2(-92, 1890)
+
+[node name="Shoot Enemy4" parent="Enemys" node_paths=PackedStringArray("Marker", "player") instance=ExtResource("4_kkivo")]
+position = Vector2(-99, 1326.86)
+Marker = NodePath("../ShootMarker4")
+player = NodePath("../../Player")
+
+[node name="ShootMarker4" type="Marker2D" parent="Enemys"]
+unique_name_in_owner = true
+position = Vector2(-99, 1327)
+
+[node name="Shoot Enemy5" parent="Enemys" node_paths=PackedStringArray("Marker", "player") instance=ExtResource("4_kkivo")]
+visible = false
+position = Vector2(916, 328.858)
+Marker = NodePath("../ShootMarker5")
+player = NodePath("../../Player")
+
+[node name="ShootMarker5" type="Marker2D" parent="Enemys"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(916, 329)
+
+[node name="Shoot Enemy6" parent="Enemys" node_paths=PackedStringArray("Marker", "player") instance=ExtResource("4_kkivo")]
+position = Vector2(1908, 429.858)
+rotation = 0.0
+Marker = NodePath("../ShootMarker6")
+player = NodePath("../../Player")
+
+[node name="ShootMarker6" type="Marker2D" parent="Enemys"]
+unique_name_in_owner = true
+position = Vector2(1908, 430)
+
+[node name="CCTV2" parent="Enemys" node_paths=PackedStringArray("player") instance=ExtResource("9_uhngs")]
+position = Vector2(1778, 457)
+rotation = 1.5708
+player = NodePath("../../Player")
+
+[node name="CCTV4" parent="Enemys" node_paths=PackedStringArray("player") instance=ExtResource("9_uhngs")]
+position = Vector2(-114, 737)
+rotation = -1.5708
+player = NodePath("../../Player")
+
+[node name="CCTV5" parent="Enemys" node_paths=PackedStringArray("player") instance=ExtResource("9_uhngs")]
+position = Vector2(1778, 1746)
+rotation = 1.5708
+player = NodePath("../../Player")
+
+[node name="CCTV3" parent="Enemys" node_paths=PackedStringArray("player") instance=ExtResource("9_uhngs")]
+position = Vector2(1779, 1042)
+rotation = 1.5708
+player = NodePath("../../Player")
