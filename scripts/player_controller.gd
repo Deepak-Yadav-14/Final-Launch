@@ -13,7 +13,7 @@ extends CharacterBody2D
 @export var crouch_speed_factor: float = 0.5
 @export var health: float = 10
 @export var is_detected: bool = false
-
+@export var melee_cooldown_time: float = 0.6
 
 var collected_fuel_tank: int = 0
 
@@ -24,8 +24,6 @@ var can_assasinate: bool = false
 var curr_speed: float  = speed
 
 #func _ready() -> void:
-func _ready() -> void:
-	pass
 	#melee_cooldown.wait_time = melee_cooldown_time
 	#melee_cooldown.one_shot  = true
 	#melee_cooldown.autostart  = false

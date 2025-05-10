@@ -853,10 +853,10 @@ shape = SubResource("RectangleShape2D_v6fml")
 
 [node name="Gun" parent="." instance=ExtResource("3_3li8b")]
 unique_name_in_owner = true
-visible = false
 scale = Vector2(0.483301, 0.483301)
 
 [node name="Melee" parent="." instance=ExtResource("4_mdl7e")]
+visible = false
 
 [node name="AssasinateZone" type="Area2D" parent="."]
 visible = false
