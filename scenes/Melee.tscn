@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dj7tnqmmp6kxg"]
+[gd_scene load_steps=8 format=3 uid="uid://dj7tnqmmp6kxg"]
 
 [ext_resource type="Script" uid="uid://dicowc8vcibao" path="res://scripts/melee_attack.gd" id="1_iew0g"]
 [ext_resource type="Texture2D" uid="uid://lxdrakooejus" path="res://assets/Melee/model (1).png" id="2_wlxw1"]
@@ -6,18 +6,336 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iew0g"]
 size = Vector2(23.0276, 86.0855)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_iew0g"]
-radius = 44.4018
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tus3i"]
+size = Vector2(0.108637, 2.85641)
+
+[sub_resource type="Animation" id="Animation_iew0g"]
+resource_name = "Attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Weapon Pivot/Gun Right:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Weapon Pivot/Gun Right:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.497189, 0.614886, -0.497189]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Weapon Pivot/Gun Right:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.737862, 0.737862), Vector2(0.737862, 0.737862), Vector2(0.737862, 0.737862)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Weapon Pivot/Gun Left:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Weapon Pivot/Gun Left:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.458446, -1.27442, 0.458446]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Weapon Pivot/Gun Left:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.760031, 0.760031), Vector2(0.760031, 0.760031), Vector2(0.760031, 0.760031)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Weapon Pivot/Gun Up:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Weapon Pivot/Gun Up:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -1.7785, 0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Weapon Pivot/Gun Up:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.768419, 0.768419), Vector2(0.768419, 0.768419), Vector2(0.768419, 0.768419)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Weapon Pivot/Gun Down:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Weapon Pivot/Gun Down:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.48938, 0.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Weapon Pivot/Gun Down:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.865866, 0.865866), Vector2(0.865866, 0.865866), Vector2(0.865866, 0.865866)]
+}
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath(".")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"perform_melee_attack"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_tus3i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Weapon Pivot/Gun Right:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Weapon Pivot/Gun Right:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.893124]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Weapon Pivot/Gun Right:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.737862, 0.737862)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Weapon Pivot/Gun Left:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Weapon Pivot/Gun Left:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.0894638]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Weapon Pivot/Gun Left:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.760031, 0.760031)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Weapon Pivot/Gun Up:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Weapon Pivot/Gun Up:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Weapon Pivot/Gun Up:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.768419, 0.768419)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Weapon Pivot/Gun Down:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Weapon Pivot/Gun Down:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Weapon Pivot/Gun Down:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.865866, 0.865866)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tus3i"]
+_data = {
+&"Attack": SubResource("Animation_iew0g"),
+&"RESET": SubResource("Animation_tus3i")
+}
 
 [node name="Melee" type="Area2D"]
-collision_layer = 2
-collision_mask = 4
+rotation = 0.791127
+collision_layer = 4
 script = ExtResource("1_iew0g")
 
 [node name="Weapon Pivot" type="Marker2D" parent="."]
 
 [node name="Gun Right" type="Area2D" parent="Weapon Pivot"]
+rotation = -0.893124
 scale = Vector2(0.737862, 0.737862)
+collision_layer = 4
+collision_mask = 3
 
 [node name="Gun Right" type="Sprite2D" parent="Weapon Pivot/Gun Right"]
 position = Vector2(158, -34)
@@ -36,7 +354,10 @@ shape = SubResource("RectangleShape2D_iew0g")
 
 [node name="Gun Left" type="Area2D" parent="Weapon Pivot"]
 visible = false
+rotation = -0.0894638
 scale = Vector2(0.760031, 0.760031)
+collision_layer = 4
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon Pivot/Gun Left"]
 position = Vector2(126, -13)
@@ -56,6 +377,8 @@ region_rect = Rect2(357.932, -0.13427, 302.43, 952.941)
 [node name="Gun Up" type="Area2D" parent="Weapon Pivot"]
 visible = false
 scale = Vector2(0.768419, 0.768419)
+collision_layer = 4
+collision_mask = 3
 
 [node name="Gun Up" type="Sprite2D" parent="Weapon Pivot/Gun Up"]
 position = Vector2(124, -1.72804e-11)
@@ -75,6 +398,8 @@ shape = SubResource("RectangleShape2D_iew0g")
 [node name="Gun Down" type="Area2D" parent="Weapon Pivot"]
 visible = false
 scale = Vector2(0.865866, 0.865866)
+collision_layer = 4
+collision_mask = 3
 
 [node name="Gun Down" type="Sprite2D" parent="Weapon Pivot/Gun Down"]
 position = Vector2(163, 8.41282e-12)
@@ -91,9 +416,15 @@ rotation = -1.4849
 scale = Vector2(3.09007, -3.09007)
 shape = SubResource("RectangleShape2D_iew0g")
 
-[node name="Shoot Point" type="Marker2D" parent="Weapon Pivot"]
-position = Vector2(130, -1)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(93, 0)
-shape = SubResource("CircleShape2D_iew0g")
+position = Vector2(10.269, 13.4072)
+rotation = -0.764929
+scale = Vector2(5.92708, -0.184156)
+shape = SubResource("RectangleShape2D_tus3i")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_tus3i")
+}
+
+[node name="MeleeCooldown" type="Timer" parent="."]

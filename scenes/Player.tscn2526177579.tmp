@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://cawa06wk802cf"]
+
+[ext_resource type="Script" uid="uid://befnegaheb4mi" path="res://scripts/player_controller.gd" id="1_kpjcp"]
+[ext_resource type="Texture2D" uid="uid://lk0ms1kw6k4i" path="res://icon.svg" id="1_xhfnw"]
+[ext_resource type="PackedScene" uid="uid://c76y1ybmgjtgc" path="res://scenes/Gun.tscn" id="3_3li8b"]
+[ext_resource type="PackedScene" uid="uid://dj7tnqmmp6kxg" path="res://scenes/Melee.tscn" id="4_mdl7e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v6fml"]
+size = Vector2(115, 112)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3li8b"]
+radius = 334.006
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+z_index = 1
+collision_mask = 3
+script = ExtResource("1_kpjcp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_xhfnw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_v6fml")
+
+[node name="Gun" parent="." instance=ExtResource("3_3li8b")]
+unique_name_in_owner = true
+visible = false
+scale = Vector2(0.483301, 0.483301)
+
+[node name="Melee" parent="." instance=ExtResource("4_mdl7e")]
+
+[node name="AssasinateZone" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AssasinateZone"]
+shape = SubResource("CircleShape2D_3li8b")
+
+[node name="MeleeCooldown" type="Timer" parent="."]

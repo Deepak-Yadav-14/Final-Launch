@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c76y1ybmgjtgc"]
 
 [ext_resource type="Script" uid="uid://bdtinpvndnge3" path="res://scripts/gun_shoot.gd" id="1_gp53h"]
-[ext_resource type="Texture2D" uid="uid://cl0lyeklk1am4" path="res://assets/Gun/Prototype Gun.png" id="2_h5px7"]
+[ext_resource type="Texture2D" uid="uid://dtwjamgfqjkma" path="res://assets/Character/character spritesheet.png" id="3_ljf13"]
 
 [node name="Gun" type="Node2D"]
 script = ExtResource("1_gp53h")
@@ -9,38 +9,112 @@ script = ExtResource("1_gp53h")
 [node name="Weapon Pivot" type="Marker2D" parent="."]
 
 [node name="Gun Right" type="Sprite2D" parent="Weapon Pivot"]
-visible = false
-position = Vector2(200, 4)
-texture = ExtResource("2_h5px7")
+position = Vector2(41.1557, 8)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_ljf13")
 offset = Vector2(41, 21)
 region_enabled = true
-region_rect = Rect2(330.104, 358.264, 183.804, 103.098)
+region_rect = Rect2(32, 572, 351, 149)
 
 [node name="Gun Left" type="Sprite2D" parent="Weapon Pivot"]
 visible = false
-position = Vector2(200, -3)
-rotation = 3.14159
-texture = ExtResource("2_h5px7")
+position = Vector2(35.1557, -11.1649)
+rotation = -3.14159
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_ljf13")
 offset = Vector2(-41.1888, 23.1702)
+flip_h = true
 region_enabled = true
-region_rect = Rect2(635.554, 359.191, 185.124, 102.479)
-
-[node name="Gun Up" type="Sprite2D" parent="Weapon Pivot"]
-visible = false
-position = Vector2(200, 0)
-rotation = 1.5708
-texture = ExtResource("2_h5px7")
-offset = Vector2(1.0034, -57.3045)
-region_enabled = true
-region_rect = Rect2(354.727, 567.909, 51.8182, 188.182)
-
-[node name="Gun Down" type="Sprite2D" parent="Weapon Pivot"]
-position = Vector2(200, 0)
-rotation = -1.5708
-texture = ExtResource("2_h5px7")
-offset = Vector2(-0.579302, 51.3672)
-region_enabled = true
-region_rect = Rect2(696.545, 588.815, 52.7273, 184.545)
+region_rect = Rect2(32, 572, 351, 149)
 
 [node name="Shoot Point" type="Marker2D" parent="Weapon Pivot"]
-position = Vector2(342, -2)
+visible = false
+position = Vector2(149, 3)
+
+[node name="Hand Left" type="Node2D" parent="Weapon Pivot"]
+z_index = -1
+
+[node name="Upper Left" type="Sprite2D" parent="Weapon Pivot/Hand Left"]
+z_index = 1
+position = Vector2(-6, -6)
+texture = ExtResource("3_ljf13")
+offset = Vector2(1, 17)
+region_enabled = true
+region_rect = Rect2(266.338, 240.639, 33.1567, 49.7351)
+
+[node name="Lower Left" type="Sprite2D" parent="Weapon Pivot/Hand Left"]
+z_index = 2
+position = Vector2(11, 22)
+rotation = 0.0795008
+texture = ExtResource("3_ljf13")
+offset = Vector2(-5, 13)
+region_enabled = true
+region_rect = Rect2(267, 325, 49, 21)
+
+[node name="Hand Right" type="Node2D" parent="Weapon Pivot"]
+z_index = -1
+
+[node name="Upper Right" type="Sprite2D" parent="Weapon Pivot/Hand Right"]
+z_index = -1
+position = Vector2(57, -4)
+texture = ExtResource("3_ljf13")
+offset = Vector2(1, 17)
+region_enabled = true
+region_rect = Rect2(403, 245, 29, 49)
+
+[node name="Lower Right" type="Sprite2D" parent="Weapon Pivot/Hand Right"]
+z_index = -1
+position = Vector2(84, 18)
+rotation = -0.072486
+texture = ExtResource("3_ljf13")
+offset = Vector2(-5, 13)
+region_enabled = true
+region_rect = Rect2(403, 324, 50, 21)
+
+[node name="Hand Left2" type="Node2D" parent="Weapon Pivot"]
+visible = false
+z_index = -1
+position = Vector2(0.15567, -0.16489)
+rotation = 3.14159
+scale = Vector2(-1, 1)
+
+[node name="Upper Left" type="Sprite2D" parent="Weapon Pivot/Hand Left2"]
+z_index = 1
+position = Vector2(-6, -6)
+texture = ExtResource("3_ljf13")
+offset = Vector2(1, 17)
+region_enabled = true
+region_rect = Rect2(266.338, 240.639, 33.1567, 49.7351)
+
+[node name="Lower Left" type="Sprite2D" parent="Weapon Pivot/Hand Left2"]
+z_index = 2
+position = Vector2(11, 22)
+rotation = 0.0795008
+texture = ExtResource("3_ljf13")
+offset = Vector2(-5, 13)
+region_enabled = true
+region_rect = Rect2(267, 325, 49, 21)
+
+[node name="Hand Right2" type="Node2D" parent="Weapon Pivot"]
+visible = false
+z_index = -1
+position = Vector2(0.15567, -0.16489)
+rotation = 3.14159
+scale = Vector2(-1, 1)
+
+[node name="Upper Right" type="Sprite2D" parent="Weapon Pivot/Hand Right2"]
+z_index = -1
+position = Vector2(57, -4)
+texture = ExtResource("3_ljf13")
+offset = Vector2(1, 17)
+region_enabled = true
+region_rect = Rect2(403, 245, 29, 49)
+
+[node name="Lower Right" type="Sprite2D" parent="Weapon Pivot/Hand Right2"]
+z_index = -1
+position = Vector2(84, 18)
+rotation = -0.072486
+texture = ExtResource("3_ljf13")
+offset = Vector2(-5, 13)
+region_enabled = true
+region_rect = Rect2(403, 324, 50, 21)

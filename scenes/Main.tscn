@@ -14,7 +14,6 @@
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_0bbpv")]
 position = Vector2(399, -211)
-collision_layer = 6
 player = NodePath("../Player")
 
 [node name="Destructible" parent="." instance=ExtResource("2_rvslj")]
