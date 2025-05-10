@@ -1,9 +1,11 @@
-[gd_scene load_steps=35 format=4 uid="uid://pol42d3tckxq"]
+[gd_scene load_steps=37 format=4 uid="uid://pol42d3tckxq"]
 
 [ext_resource type="Texture2D" uid="uid://b4wgwwpyag8hq" path="res://assets/TileSets/Lab Tileset.png" id="1_87la8"]
 [ext_resource type="PackedScene" uid="uid://cawa06wk802cf" path="res://scenes/Player.tscn" id="2_4iyfl"]
 [ext_resource type="PackedScene" uid="uid://tby0b5ajxgki" path="res://scenes/electric_door.tscn" id="3_nlauq"]
 [ext_resource type="PackedScene" uid="uid://utpsrx778hsj" path="res://scenes/Enemy Scenes/shoot_enemy.tscn" id="4_kkivo"]
+[ext_resource type="PackedScene" uid="uid://vsyvxclkoujk" path="res://scenes/Levels/tube_light.tscn" id="5_o5488"]
+[ext_resource type="PackedScene" uid="uid://ct3mcx7g0c8mo" path="res://scenes/Levels/fan_light.tscn" id="6_xy3xy"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kkivo"]
 polygon = PackedVector2Array(-32, 32, 32, 32, 32, -4.51579, -32, -6.20921)
@@ -89,7 +91,7 @@ polygon = PackedVector2Array(16.0875, -32, -32, -32, -32, 32, 16.0875, 32)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_o26ll"]
 polygon = PackedVector2Array(16.652, -32, -32, -32, -32, 2.2579, 17.2164, 2.2579)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4iyfl"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kkivo"]
 texture = ExtResource("1_87la8")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
@@ -203,10 +205,11 @@ texture_region_size = Vector2i(64, 64)
 
 [sub_resource type="TileSet" id="TileSet_nlauq"]
 tile_size = Vector2i(64, 64)
-occlusion_layer_0/light_mask = 15
+occlusion_layer_0/light_mask = 1
+occlusion_layer_0/sdf_collision = true
 physics_layer_0/collision_layer = 4
 physics_layer_0/collision_mask = 3
-sources/0 = SubResource("TileSetAtlasSource_4iyfl")
+sources/0 = SubResource("TileSetAtlasSource_kkivo")
 
 [node name="Lab level" type="Node2D"]
 
@@ -231,27 +234,27 @@ tile_set = SubResource("TileSet_nlauq")
 tile_map_data = PackedByteArray("AAAYAP7/AAADAAAAAAAZAP7/AAAEAAAAAAAaAP7/AAAEAAAAAAAbAP7/AAAFAAAAAAAYAP//AAADAAEAAAAYAAAAAAADAAEAAAAYAAEAAAADAAEAAAAYAAIAAAADAAIAAAAZAAIAAAAEAAIAAAAaAAIAAAAEAAIAAAAbAAIAAAAFAAIAAAAbAAEAAAAFAAEAAAAbAAAAAAAFAAEAAAAbAP//AAAFAAEAAAAZAP//AAAEAAEAAAAaAP//AAAEAAEAAAAaAAAAAAAEAAEAAAAZAAAAAAAEAAEAAAAaAAEAAAAEAAEAAAAZAAEAAAAEAAEAAAD+/wcAAAADAAIAAAD//wcAAAAEAAIAAAAAAAcAAAAFAAIAAAD+/wYAAAADAAEAAAD//wYAAAAEAAEAAAAAAAYAAAAFAAEAAAD+/wQAAAADAAAAAAD//wQAAAAEAAAAAAAAAAQAAAAFAAAAAAD+/wUAAAADAAEAAAD//wUAAAAEAAEAAAAAAAUAAAAFAAEAAAA=")
 tile_set = SubResource("TileSet_nlauq")
 
-[node name="Collisions" type="Node2D" parent="."]
-
 [node name="Player" parent="." instance=ExtResource("2_4iyfl")]
 position = Vector2(80, 1162)
 collision_mask = 7
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
-[node name="Gun Fight" parent="." instance=ExtResource("3_nlauq")]
+[node name="Doors" type="Node2D" parent="."]
+
+[node name="Gun Fight" parent="Doors" instance=ExtResource("3_nlauq")]
 position = Vector2(1019.6, 920)
 scale = Vector2(0.979688, 0.91875)
 
-[node name="Player Room" parent="." instance=ExtResource("3_nlauq")]
+[node name="Player Room" parent="Doors" instance=ExtResource("3_nlauq")]
 position = Vector2(443, 473)
 scale = Vector2(0.979688, 0.91875)
 
-[node name="Security entry" parent="." instance=ExtResource("3_nlauq")]
+[node name="Security entry" parent="Doors" instance=ExtResource("3_nlauq")]
 position = Vector2(1147, 474)
 scale = Vector2(0.979688, 0.91875)
 
-[node name="Security exit" parent="." instance=ExtResource("3_nlauq")]
+[node name="Security exit" parent="Doors" instance=ExtResource("3_nlauq")]
 position = Vector2(1339, -39)
 scale = Vector2(0.979688, 0.91875)
 
@@ -285,3 +288,42 @@ player = NodePath("../Player")
 unique_name_in_owner = true
 position = Vector2(1393, 1072)
 rotation = 0.785398
+
+[node name="Lights" type="Node2D" parent="."]
+
+[node name="TubeLight" parent="Lights" instance=ExtResource("5_o5488")]
+position = Vector2(775, 201)
+rotation = 1.57079
+
+[node name="TubeLight4" parent="Lights" instance=ExtResource("5_o5488")]
+position = Vector2(1982, 378)
+
+[node name="TubeLight5" parent="Lights" instance=ExtResource("5_o5488")]
+position = Vector2(1990, 1030)
+rotation = -3.14159
+
+[node name="TubeLight3" parent="Lights" instance=ExtResource("5_o5488")]
+position = Vector2(1478, 243)
+rotation = 1.57079
+
+[node name="TubeLight2" parent="Lights" instance=ExtResource("5_o5488")]
+position = Vector2(890, 278)
+rotation = -1.5708
+
+[node name="Fan Light" parent="Lights" instance=ExtResource("6_xy3xy")]
+position = Vector2(1924, 698)
+scale = Vector2(0.566, 0.566)
+
+[node name="Fan Light2" parent="Lights" instance=ExtResource("6_xy3xy")]
+position = Vector2(1292, 1772)
+scale = Vector2(0.566, 0.566)
+frame_progress = 0.0144369
+
+[node name="Fan Light3" parent="Lights" instance=ExtResource("6_xy3xy")]
+position = Vector2(392, 1785)
+scale = Vector2(0.566, 0.566)
+frame_progress = 0.0144369
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Lights"]
+color = Color(0.396889, 0.396889, 0.396889, 1)
+blend_mode = 1

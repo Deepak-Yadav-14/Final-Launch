@@ -14,7 +14,6 @@ func _process(delta: float) -> void:
         if keyboard == true and Input.is_action_just_pressed("Interaction"):
             electric_door.z_index = 1
             door_animation.play()
-            door_collision.disabled = true
             door_opened = true
 
 func _on_area_input_body_entered(body: Node2D) -> void:
@@ -33,3 +32,7 @@ func _on_area_input_body_exited(body: Node2D) -> void:
             keyboard = false
         elif door_opened:
             label.visible = false
+
+
+func _on_door_animation_animation_finished() -> void:
+     door_collision.disabled = true
