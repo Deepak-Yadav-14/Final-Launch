@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bndlpdy07kq5q"]
 
 [ext_resource type="Script" uid="uid://dvtggd3sj54m6" path="res://scripts/Enemy Scripts/enemy_bullet.gd" id="1_qhs8y"]
-[ext_resource type="Texture2D" uid="uid://cl0lyeklk1am4" path="res://assets/Gun/Prototype Gun.png" id="2_45ome"]
+[ext_resource type="Texture2D" uid="uid://gwo6bvdqwt5t" path="res://assets/Gun/01.png" id="2_qhs8y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p1sfj"]
 radius = 14.0357
@@ -13,8 +13,8 @@ collision_mask = 5
 script = ExtResource("1_qhs8y")
 
 [node name="PrototypeGun" type="Sprite2D" parent="."]
-texture = ExtResource("2_45ome")
-region_enabled = true
+modulate = Color(100, 1, 1, 1)
+texture = ExtResource("2_qhs8y")
 region_rect = Rect2(102.271, 69.3469, 27.3591, 27.1668)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

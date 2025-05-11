@@ -126,8 +126,6 @@ func perform_assasination(enemy: Node2D) -> void:
 	enemy.queue_free()
 	print("Enemy Assasinated")
 	
-<< << << < HEAD
-== == == =
 func pick_up_weapon(weapon: Node) -> void:
 	# Remove any existing weapon in the slot
 	if current_weapon:
@@ -142,9 +140,6 @@ func pick_up_weapon(weapon: Node) -> void:
 	weapon.position = Vector2.ZERO
 	current_weapon = weapon
 	# (Optional: you could initialize weapon-specific logic here)
-
-
->> >> >> > 0ecfafe98702a0faeefe11e4e5ac9057c2150984
 
 func take_damage(damage: float) -> void:
 	health -= damage

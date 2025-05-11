@@ -10,13 +10,13 @@ func _process(delta: float) -> void:
 	if time_span >= lifetime:
 		call_deferred("queue_free")
 		time_span=0;
-
+		
 func _on_body_entered(body) -> void:
-    if body.is_in_group("Player"):
-        body.add_fuel()
-        collect.play()
-        
+	if body.is_in_group("Player"):
+		body.add_fuel()
+		collect.play()
+		
 
 
 func _on_collect_finished() -> void:
-    queue_free()
+	queue_free()

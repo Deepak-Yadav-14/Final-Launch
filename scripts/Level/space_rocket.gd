@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 				player.get_child(0)
 				burst_animation.play("Burst animation")
 		
-                
+				
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		player = body
