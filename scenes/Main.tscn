@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cawa06wk802cf" path="res://scenes/Player.tscn" id="1_elqb8"]
 [ext_resource type="PackedScene" uid="uid://bvhc5v4lsjkmy" path="res://scenes/Destructible.tscn" id="2_rvslj"]
 [ext_resource type="PackedScene" uid="uid://ckcgvcs48y6ck" path="res://scenes/enemy_test.tscn" id="3_0bbpv"]
-[ext_resource type="PackedScene" uid="uid://c84g0ufpcvp1" path="res://scenes/table.tscn" id="4_rarhs"]
+[ext_resource type="PackedScene" uid="uid://b3hifq8pl6rup" path="res://scenes/table.tscn" id="4_rarhs"]
 [ext_resource type="PackedScene" uid="uid://utpsrx778hsj" path="res://scenes/Enemy Scenes/shoot_enemy.tscn" id="5_vcsgt"]
 
 [node name="Main" type="Node2D"]

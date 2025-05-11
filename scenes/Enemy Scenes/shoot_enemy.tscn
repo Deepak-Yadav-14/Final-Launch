@@ -1,16 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://utpsrx778hsj"]
+[gd_scene load_steps=12 format=3 uid="uid://utpsrx778hsj"]
 
 [ext_resource type="Script" uid="uid://b0latt6toj6ah" path="res://scripts/Enemy Scripts/shoot_enemy.gd" id="1_6luwi"]
-[ext_resource type="Texture2D" uid="uid://lk0ms1kw6k4i" path="res://icon.svg" id="2_ognii"]
 [ext_resource type="Texture2D" uid="uid://4lao71qtcp1s" path="res://assets/Enemy/enemy_triangle[1].png" id="3_ognii"]
 [ext_resource type="Texture2D" uid="uid://vsye7gd411ru" path="res://assets/Enemy/Shooter enemy spriteshet.png" id="4_mb8td"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mb8td"]
-radius = 76.0
-height = 227.0
+radius = 28.0
+height = 122.0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6luwi"]
-polygon = PackedVector2Array(-24.9998, -49.0001, 25.0002, -47.9999, 25.9998, 48.0001, -26.0002, 48.9999)
+polygon = PackedVector2Array(14.0001, -41, 15.0002, -45.9999, 47.0001, -39.9998, 61.0001, -40.9998, 63.0001, -40.9998, 63.0001, -32.9998, 57.0001, -30.9998, 63.0001, -27.9998, 69.0001, -23.9998, 74.0001, -16.9997, 76, -4.99972, 75, 5.00027, 73, 6.00026, 71, 4.00026, 71, -3.99974, 68, -9.99975, 65, -12.9998, 63, -12.9998, 63, 10.0002, 69, 12.0002, 73.9999, 17.0003, 75.9999, 24.0003, 75.9999, 33.0003, 75.9999, 39.0003, 72.9999, 39.0003, 72.9999, 35.0003, 70.9999, 30.0003, 69.9999, 27.0003, 63.9999, 23.0002, 60.9999, 25.0002, 57.9999, 27.0002, 62.9999, 31.0002, 63.9999, 40.0002, 48.9999, 33.0002, 27.9999, 34.0001, 9.99987, 36, 10.9999, 28, 16.9999, 28.0001, 12.9999, 25, 12, 11, -17, 13.0001, -32, 8.00012, -43, 9.00016, -48, 9.00017, -54, 9.0002, -54.0001, -22.9998, -48.0001, -22.9998, -45.0001, -16.9998, -38.0001, -18.9999, -21.0001, -18.9999, 11.9999, -19, 13.0001, -30, 17.0001, -31.9999, 22.0001, -32.9999)
 
 [sub_resource type="Animation" id="Animation_qu4a1"]
 length = 0.001
@@ -1223,13 +1222,8 @@ _data = {
 [node name="Shoot Enemy" type="CharacterBody2D" groups=["enemy"]]
 rotation = -1.5708
 collision_layer = 2
-collision_mask = 3
+collision_mask = 7
 script = ExtResource("1_6luwi")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-scale = Vector2(0.390625, 0.75)
-texture = ExtResource("2_ognii")
 
 [node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2(9, 3.21865e-05)
@@ -1237,11 +1231,11 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_mb8td")
 
 [node name="RayCast" type="RayCast2D" parent="."]
-position = Vector2(1.498, 3.25131)
-collision_mask = 7
+position = Vector2(42.498, 11.2511)
+collision_mask = 5
 
 [node name="Visiblity" type="Area2D" parent="."]
-position = Vector2(1.498, 3.25131)
+position = Vector2(42.498, 11.2511)
 collision_layer = 8
 collision_mask = 3
 
@@ -1251,7 +1245,7 @@ scale = Vector2(1.70685, 1.70685)
 polygon = PackedVector2Array(0, -61.5168, 156.429, 216.188, 117.175, 236.107, 50.3852, 257.785, -21.0915, 262.472, -90.2247, 246.653, -150.57, 222.046)
 
 [node name="Vision" type="PointLight2D" parent="."]
-position = Vector2(1.49799, 278.252)
+position = Vector2(42.498, 286.251)
 scale = Vector2(1.45953, 1.41154)
 energy = 0.5
 shadow_enabled = true
@@ -1262,13 +1256,13 @@ texture = ExtResource("3_ognii")
 wait_time = 0.4
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-position = Vector2(8.00004, -12)
-scale = Vector2(4.40868, 1.22709)
+position = Vector2(1.086e-05, -3)
+scale = Vector2(1, -1)
 occluder = SubResource("OccluderPolygon2D_6luwi")
 
 [node name="Torso" type="Sprite2D" parent="."]
-z_index = 1
 rotation = 1.5708
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_mb8td")
 region_enabled = true
 region_rect = Rect2(86.6295, 239.169, 66.5833, 89.4846)
