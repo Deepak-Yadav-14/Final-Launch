@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://utpsrx778hsj"]
+[gd_scene load_steps=14 format=3 uid="uid://utpsrx778hsj"]
 
 [ext_resource type="Script" uid="uid://b0latt6toj6ah" path="res://scripts/Enemy Scripts/shoot_enemy.gd" id="1_6luwi"]
+[ext_resource type="Script" uid="uid://r5m8yfl2cf25" path="res://scenes/Enemy Scenes/enemy_gun_rotation.gd" id="3_cgr1m"]
 [ext_resource type="Texture2D" uid="uid://dtwjamgfqjkma" path="res://assets/Character/character spritesheet.png" id="3_mb8td"]
 [ext_resource type="Texture2D" uid="uid://4lao71qtcp1s" path="res://assets/Enemy/enemy_triangle[1].png" id="3_ognii"]
 [ext_resource type="Texture2D" uid="uid://vsye7gd411ru" path="res://assets/Enemy/Shooter enemy spriteshet.png" id="4_mb8td"]
@@ -1315,8 +1316,9 @@ next/player_run = &"player_run"
 
 [node name="Gun" type="Node2D" parent="."]
 z_index = 1
-position = Vector2(10, -13)
+position = Vector2(-12, -10)
 scale = Vector2(0.5, 0.5)
+script = ExtResource("3_cgr1m")
 
 [node name="Weapon Pivot" type="Marker2D" parent="Gun"]
 
@@ -1432,12 +1434,14 @@ region_enabled = true
 region_rect = Rect2(403, 324, 50, 21)
 
 [node name="RayCast" type="RayCast2D" parent="Gun"]
+position = Vector2(-12, 16)
 scale = Vector2(2, 2)
 target_position = Vector2(59, -1.00004)
 collision_mask = 21
 collide_with_areas = true
 
 [node name="Visiblity" type="Area2D" parent="Gun"]
+position = Vector2(-26, 1.48926)
 scale = Vector2(2, 2)
 collision_layer = 8
 collision_mask = 19
@@ -1446,10 +1450,10 @@ collision_mask = 19
 position = Vector2(167, 5.99996)
 rotation = -1.5708
 scale = Vector2(1.70685, 1.70685)
-polygon = PackedVector2Array(0, -61.5168, 156.429, 216.188, 117.175, 236.107, 50.3852, 257.785, -21.0915, 262.472, -90.2247, 246.653, -150.57, 222.046)
+polygon = PackedVector2Array(143.391, -325.16, 251.191, -168.145, 250.019, 43.9415, 115.267, 181.036, -106.194, 182.207, -233.914, 24.02, -233.913, -184.551, -56.9782, -339.222)
 
 [node name="Vision" type="PointLight2D" parent="Gun"]
-position = Vector2(112, 15.9999)
+position = Vector2(86, 17.4892)
 rotation = -1.5708
 scale = Vector2(2.57417, 2.44267)
 energy = 0.5

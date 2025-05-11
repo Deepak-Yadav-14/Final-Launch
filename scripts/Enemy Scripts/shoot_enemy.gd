@@ -7,6 +7,7 @@ class_name ShootingEnemy
 @export var player: CharacterBody2D
 @export var health: int = 10
 @export var search_time: float = 10.0
+@onready var torso: Sprite2D = $Torso
 
 var gun_rotation: float
 var enemy_position: Vector2
@@ -44,10 +45,17 @@ func custome_process(delta: float) -> void:
 			#print(ray_cast.get_collider())
 			var collider = ray_cast.get_collider()
 			if collider.is_in_group("Hurt_Detector"):
-				print("hit")
+				#print("hit")
 				var target = collider.get_parent()
 				if target == player and current_state != States.FIGHTING:
 					current_state = States.FIGHTING
+
+	# Flip torso based on gun aim direction
+	if cos(gun.rotation) < 0:
+		torso.scale.x = -abs(torso.scale.x)  # Facing left
+	else:
+		torso.scale.x = abs(torso.scale.x)   # Facing right
+			
 
 	match current_state:
 		States.FIGHTING:

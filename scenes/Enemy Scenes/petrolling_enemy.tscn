@@ -7,5 +7,8 @@
 script = ExtResource("2_j76l2")
 markers = Array[NodePath]([])
 
-[node name="Torso" parent="." index="6"]
-rotation = 0.0
+[node name="Gun" parent="." index="4"]
+position = Vector2(10, -13)
+
+[node name="Vision" parent="Gun" index="3"]
+position = Vector2(112, 15.9999)

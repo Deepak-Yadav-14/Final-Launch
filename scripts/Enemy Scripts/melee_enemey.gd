@@ -90,16 +90,16 @@ func take_damage(value):
 func attack_player(body) -> void:
 	body.take_damage(1.0)
 
-func _on_attack_area_body_entered(body: Node2D) -> void:
-	if body == player:
+func _on_timer_timeout() -> void:
+	attack_player(player)
+
+func _on_attack_area_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Hide_Detector"):
 		can_attack = true
 		timer.start()
 
-func _on_attack_area_body_exited(body: Node2D) -> void:
-	if body == player:
+
+func _on_attack_area_area_exited(area: Area2D) -> void:
+	if area.is_in_group("Hide_Detector"):
 		can_attack = false
 		timer.stop()
-
-
-func _on_timer_timeout() -> void:
-	attack_player(player)
