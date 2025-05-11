@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkuhhci10jq0i"]
+
+[ext_resource type="PackedScene" uid="uid://sc7l7eif6rv6" path="res://scenes/Trees and stones/Obstacle_base.tscn" id="1_rnefy"]
+[ext_resource type="Texture2D" uid="uid://d4kp8m3lfudne" path="res://assets/Trees and stones/tree3.png" id="2_7ivg7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bmc3j"]
+size = Vector2(140, 249)
+
+[node name="Tree" instance=ExtResource("1_rnefy")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_7ivg7")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-14, 114.5)
+shape = SubResource("RectangleShape2D_bmc3j")
