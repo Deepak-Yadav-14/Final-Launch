@@ -354,6 +354,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 442.848, 836.239)
 
 [node name="Label" type="Label" parent="."]
+layout_mode = 0
 offset_left = 1143.0
 offset_top = 195.0
 offset_right = 1273.0
@@ -364,6 +365,7 @@ theme_override_font_sizes/font_size = 64
 text = "See Yaaaa"
 
 [node name="Label2" type="Label" parent="."]
+layout_mode = 0
 offset_left = 384.0
 offset_top = 185.0
 offset_right = 938.0
