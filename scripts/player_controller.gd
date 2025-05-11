@@ -23,11 +23,18 @@ var can_assasinate: bool = false
 var curr_speed: float  = speed
 var current_weapon: Node2D = null
 
+
 func _ready() -> void:
 	pass
 
 func _physics_process(_delta: float) -> void:
 	# Basic Movement Logic
+	
+	if not current_weapon:
+		var temp = %"Torso"
+		temp.get_node("Hand Left").visible = true 
+		temp.get_node("Hand Right").visible = true
+	
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var base_scale_x = abs($"Torso".scale.x)
 	if (direction.x < 0):
@@ -62,9 +69,7 @@ func _physics_process(_delta: float) -> void:
 			print("Hello")
 			check_for_assasination()
 		return
-	else:
-		if current_weapon != null:
-			%"Gun".visible = true
+	
 	#if Input.is_action_just_pressed("melee_attack") and melee_cooldown.is_stopped():
 		#perform_melee_attack()
 		
@@ -128,6 +133,11 @@ func pick_up_weapon(weapon: Node) -> void:
 		current_weapon.queue_free()
 	# Attach the new weapon and reset its position
 	add_child(weapon)
+	
+	var temp = %"Torso"
+	temp.get_node("Hand Left").visible = false 
+	temp.get_node("Hand Right").visible = false
+	
 	weapon.position = Vector2.ZERO
 	current_weapon = weapon
 	# (Optional: you could initialize weapon-specific logic here)

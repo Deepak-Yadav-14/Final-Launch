@@ -7,6 +7,7 @@ func _on_GunPickup_body_entered(body: Node) -> void:
 	if body.is_in_group("Player"):
 		# Instantiate the new weapon and hand it to the player
 		var new_weapon = Gun.instantiate()
+		
 		body.pick_up_weapon(new_weapon)
 		# Remove the pickup from the scene
 		queue_free()
