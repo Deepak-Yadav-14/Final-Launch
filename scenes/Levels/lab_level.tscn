@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cb8kepek0u1ei" path="res://scenes/generator.tscn" id="11_dqb2b"]
 [ext_resource type="PackedScene" uid="uid://bvhc5v4lsjkmy" path="res://scenes/Destructible.tscn" id="12_hco02"]
 [ext_resource type="PackedScene" uid="uid://cajevu2onjh22" path="res://scenes/GunPickup.tscn" id="15_1ys27"]
-[ext_resource type="PackedScene" path="res://scenes/dialogbox.tscn" id="16_a7hi0"]
+[ext_resource type="PackedScene" uid="uid://cc8e811p0yu2v" path="res://scenes/dialogbox.tscn" id="16_a7hi0"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kkivo"]
 polygon = PackedVector2Array(-32, 32, 32, 32, 32, -4.51579, -32, -6.20921)

@@ -32,8 +32,8 @@ func _physics_process(_delta: float) -> void:
 	
 	if not current_weapon:
 		var temp = %"Torso"
-		temp.get_node("Hand Left").visible = true 
-		temp.get_node("Hand Right").visible = true
+		temp.get_node("Hand Left").visible = false 
+		temp.get_node("Hand Right").visible = false
 	
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var base_scale_x = abs($"Torso".scale.x)
