@@ -1,6 +1,7 @@
-[gd_scene load_steps=43 format=4 uid="uid://pol42d3tckxq"]
+[gd_scene load_steps=45 format=4 uid="uid://pol42d3tckxq"]
 
 [ext_resource type="Texture2D" uid="uid://b4wgwwpyag8hq" path="res://assets/TileSets/Lab Tileset.png" id="1_87la8"]
+[ext_resource type="Script" uid="uid://df588uhl62vvj" path="res://scripts/Level/lab_level.gd" id="1_qblx2"]
 [ext_resource type="PackedScene" uid="uid://cawa06wk802cf" path="res://scenes/Player.tscn" id="2_4iyfl"]
 [ext_resource type="PackedScene" uid="uid://tby0b5ajxgki" path="res://scenes/electric_door.tscn" id="3_nlauq"]
 [ext_resource type="PackedScene" uid="uid://utpsrx778hsj" path="res://scenes/Enemy Scenes/shoot_enemy.tscn" id="4_kkivo"]
@@ -217,7 +218,11 @@ physics_layer_0/collision_layer = 4
 physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_kkivo")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_agrhd"]
+size = Vector2(65, 150)
+
 [node name="Lab level" type="Node2D"]
+script = ExtResource("1_qblx2")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -1566.0
@@ -241,7 +246,7 @@ tile_map_data = PackedByteArray("AAAYAP7/AAADAAAAAAAZAP7/AAAEAAAAAAAaAP7/AAAEAAA
 tile_set = SubResource("TileSet_nlauq")
 
 [node name="Player" parent="." instance=ExtResource("2_4iyfl")]
-position = Vector2(357, 269)
+position = Vector2(350, 258)
 collision_mask = 7
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -444,21 +449,25 @@ unique_name_in_owner = true
 position = Vector2(1908, 430)
 
 [node name="CCTV2" parent="Enemys" node_paths=PackedStringArray("player") instance=ExtResource("9_uhngs")]
+unique_name_in_owner = true
 position = Vector2(1778, 457)
 rotation = 1.5708
 player = NodePath("../../Player")
 
 [node name="CCTV4" parent="Enemys" node_paths=PackedStringArray("player") instance=ExtResource("9_uhngs")]
+unique_name_in_owner = true
 position = Vector2(-114, 737)
 rotation = -1.5708
 player = NodePath("../../Player")
 
 [node name="CCTV5" parent="Enemys" node_paths=PackedStringArray("player") instance=ExtResource("9_uhngs")]
+unique_name_in_owner = true
 position = Vector2(1778, 1746)
 rotation = 1.5708
 player = NodePath("../../Player")
 
 [node name="CCTV3" parent="Enemys" node_paths=PackedStringArray("player") instance=ExtResource("9_uhngs")]
+unique_name_in_owner = true
 position = Vector2(1779, 1042)
 rotation = 1.5708
 player = NodePath("../../Player")
@@ -519,3 +528,11 @@ scale = Vector2(0.5, 0.5)
 [node name="Destructible13" parent="Colectables" instance=ExtResource("12_hco02")]
 position = Vector2(1735, -291)
 scale = Vector2(0.5, 0.5)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-207, 1794)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_agrhd")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

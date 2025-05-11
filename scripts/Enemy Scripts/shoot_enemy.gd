@@ -33,6 +33,9 @@ func _ready() -> void:
     print(enemy_position)
 
 func _physics_process(delta: float) -> void:
+    custome_process(delta)
+
+func custome_process(delta: float) -> void:
     if player_in_range:
         ray_cast.target_position = to_local(player.global_position)
         ray_cast.force_raycast_update()

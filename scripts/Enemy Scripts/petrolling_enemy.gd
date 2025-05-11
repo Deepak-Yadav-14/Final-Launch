@@ -13,19 +13,27 @@ func _ready() -> void:
     pick_new_marker()
 
 func _physics_process(delta: float) -> void:
+    if player_in_range:
+        ray_cast.target_position = to_local(player.global_position)
+        ray_cast.force_raycast_update()
+        if ray_cast.is_colliding() and ray_cast.get_collider() == player:
+            if current_state != States.FIGHTING:
+                current_state = States.FIGHTING
     match current_state:
-        States.PATROLLING:
-            patrol_to_marker(delta)
         States.FIGHTING:
-            var target_angle = (player.global_position - global_position).angle() - PI / 2
+            var to_player = player.global_position - global_position
+            var target_angle = to_player.angle()- PI/2
             rotation = lerp_angle(rotation, target_angle, 5 * delta)
+
             ray_cast.target_position = to_local(player.position)
+
             if ray_cast.get_collider() == player:
                 if timer.is_stopped():
                     timer.start()
             else:
                 if not timer.is_stopped():
                     timer.stop()
+                    
             velocity = Vector2.ZERO
         States.SEARCHING:
             rotation += search_rotation_speed * delta
@@ -34,6 +42,8 @@ func _physics_process(delta: float) -> void:
                 current_state = States.PATROLLING
                 pick_new_marker()
             velocity = Vector2.ZERO
+        States.PATROLLING:
+            patrol_to_marker(delta)
 
     move_and_slide()
 
