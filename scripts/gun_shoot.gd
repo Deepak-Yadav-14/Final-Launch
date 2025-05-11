@@ -8,7 +8,7 @@ extends Node2D
 @onready var hand_left: Node2D = $"Weapon Pivot/Hand Left"
 @onready var hand_left_2: Node2D = $"Weapon Pivot/Hand Left2"
 @onready var hand_right_2: Node2D = $"Weapon Pivot/Hand Right2"
-@onready var bullet_sound: AudioStreamPlayer2D = $"../bullet sound"
+@onready var bullet_sound: AudioStreamPlayer2D = $"bullet sound"
 
 @export var fire_rate:float = 0.2
 
@@ -58,7 +58,7 @@ func _process(delta: float) -> void:
 		time_since_last_shot = 0.0
 		
 func shoot_bullet(direction: Vector2):
-	var bullet = BULLET.instantiate()
-	get_tree().current_scene.add_child(bullet)
-	bullet.global_position = shoot_point.global_position
-	bullet.rotation = direction.angle()
+    var bullet = BULLET.instantiate()
+    get_tree().current_scene.add_child(bullet)
+    bullet.global_position = shoot_point.global_position
+    bullet.rotation = direction.angle()
