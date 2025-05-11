@@ -1223,6 +1223,44 @@ autoplay = "player_idle"
 speed_scale = 4.0
 next/player_run = &"player_run"
 
+[node name="Hand Left" type="Node2D" parent="Player/Torso"]
+rotation = 0.0136101
+
+[node name="Upper Left" type="Sprite2D" parent="Player/Torso/Hand Left"]
+z_index = 1
+position = Vector2(-33, -36)
+texture = ExtResource("3_r6fia")
+offset = Vector2(1, 17)
+region_enabled = true
+region_rect = Rect2(266.338, 240.639, 33.1567, 49.7351)
+
+[node name="Lower Left" type="Sprite2D" parent="Player/Torso/Hand Left"]
+z_index = 2
+position = Vector2(-17, -11)
+texture = ExtResource("3_r6fia")
+offset = Vector2(-5, 13)
+region_enabled = true
+region_rect = Rect2(267, 325, 49, 21)
+
+[node name="Hand Right" type="Node2D" parent="Player/Torso"]
+rotation = 0.0136101
+
+[node name="Upper Right" type="Sprite2D" parent="Player/Torso/Hand Right"]
+z_index = -1
+position = Vector2(26, -32)
+texture = ExtResource("3_r6fia")
+offset = Vector2(1, 17)
+region_enabled = true
+region_rect = Rect2(403, 245, 29, 49)
+
+[node name="Lower Right" type="Sprite2D" parent="Player/Torso/Hand Right"]
+z_index = -1
+position = Vector2(52, -5)
+texture = ExtResource("3_r6fia")
+offset = Vector2(-5, 13)
+region_enabled = true
+region_rect = Rect2(403, 324, 50, 21)
+
 [node name="Player Collider" type="CollisionShape2D" parent="Player"]
 position = Vector2(6, 92)
 scale = Vector2(1.20292, 1.20292)
