@@ -138,3 +138,9 @@ func on_detected_by_enemy() -> void:
 func add_fuel() -> void:
 	collected_fuel_tank += 1
 	print("Collected Fuel : " , collected_fuel_tank)
+
+
+func _on_hurt_detector_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Hurt_Zone"):
+		take_damage(area.bullet_damage)
+		area.queue_free()

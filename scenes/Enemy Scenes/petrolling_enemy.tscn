@@ -6,3 +6,6 @@
 [node name="Petrolling Enemy" instance=ExtResource("1_2715e")]
 script = ExtResource("2_j76l2")
 markers = Array[NodePath]([])
+
+[node name="Torso" parent="." index="6"]
+rotation = 0.0

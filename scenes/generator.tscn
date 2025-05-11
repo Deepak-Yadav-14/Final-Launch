@@ -27,13 +27,14 @@ shape = SubResource("RectangleShape2D_w5vnv")
 shape = SubResource("CircleShape2D_5yxne")
 
 [node name="Label" type="Label" parent="."]
-visible = false
-offset_left = -145.0
-offset_top = -107.0
-offset_right = 148.0
-offset_bottom = -20.0
+offset_left = -383.0
+offset_top = -135.0
+offset_right = 366.0
+offset_bottom = 22.0
 theme_override_font_sizes/font_size = 56
-text = "Generator!"
+text = "Generator!
+Turn it off to get rid of CCTV
+(E)"
 horizontal_alignment = 1
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

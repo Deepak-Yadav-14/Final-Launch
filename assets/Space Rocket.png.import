@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bq1e758ocbs3t"
-path="res://.godot/imported/ChatGPT Image May 3, 2025, 07_27_30 AM.png-aacbd7947e912a78f77e7f432f75e72a.ctex"
+uid="uid://iu6xoxkoqx4w"
+path="res://.godot/imported/Space Rocket.png-2bacaaf4150f82f03b94e2bbbe3b6e62.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/TileSets/ChatGPT Image May 3, 2025, 07_27_30 AM.png"
-dest_files=["res://.godot/imported/ChatGPT Image May 3, 2025, 07_27_30 AM.png-aacbd7947e912a78f77e7f432f75e72a.ctex"]
+source_file="res://assets/Space Rocket.png"
+dest_files=["res://.godot/imported/Space Rocket.png-2bacaaf4150f82f03b94e2bbbe3b6e62.ctex"]
 
 [params]
 

@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var player: CharacterBody2D
 @export var health: int = 10
 @export var search_time: float = 10.0
-@onready var Marker: Marker2D = %Marker2D
+@export var Marker: Marker2D
 @onready var timer: Timer = $Timer
 
 var enemy_rotation: float
@@ -31,9 +31,6 @@ func _ready() -> void:
 	print(enemy_position)
 
 func _physics_process(delta: float) -> void:
-	custome_process(delta)
-
-func custome_process(delta: float) -> void:
 	if player_in_range:
 		ray_cast.target_position = to_local(player.global_position)
 		ray_cast.force_raycast_update()
@@ -45,7 +42,7 @@ func custome_process(delta: float) -> void:
 		States.FIGHTING:
 			if !can_attack:
 				var to_player = player.global_position - global_position
-				var target_angle = to_player.angle() - PI / 2
+				var target_angle = to_player.angle() 
 				rotation = lerp_angle(rotation, target_angle, 5 * delta)
 				ray_cast.target_position = to_local(player.position)
 				if ray_cast.get_collider() == player:
@@ -91,7 +88,7 @@ func take_damage(value):
 		queue_free()
 
 func attack_player(body) -> void:
-	body.take_damage(1)
+	body.take_damage(1.0)
 
 func _on_attack_area_body_entered(body: Node2D) -> void:
 	if body == player:

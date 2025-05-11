@@ -1,31 +1,53 @@
-[gd_scene load_steps=7 format=3 uid="uid://bogc4hp184e3j"]
+[gd_scene load_steps=12 format=3 uid="uid://bogc4hp184e3j"]
 
-[ext_resource type="Texture2D" uid="uid://lk0ms1kw6k4i" path="res://icon.svg" id="1_gcgcr"]
 [ext_resource type="Script" uid="uid://bwlo5n1b120cl" path="res://scripts/Enemy Scripts/melee_enemey.gd" id="1_ll32d"]
 [ext_resource type="Texture2D" uid="uid://4lao71qtcp1s" path="res://assets/Enemy/enemy_triangle[1].png" id="3_cg7im"]
+[ext_resource type="Texture2D" uid="uid://pwpp0qsmd2b4" path="res://assets/Enemy/enemy parts.png" id="4_hj0a7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ll32d"]
-size = Vector2(128, 128)
+size = Vector2(194, 134)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_cg7im"]
-polygon = PackedVector2Array(-65, -64, 63, -64, 63, 65, -64, 65)
+polygon = PackedVector2Array(-196, -36, -166, -40, -172, -60, -152, -56, -136, -38, -140, -24, -122, -22, -52, -32, -26, -36, 0, -22, 24, -34, 50, -54, 66, -72, 70, -100, 66, -132, 88, -128, 92, -84, 126, -54, 144, -28, 146, -4, 128, -2, 98, -14, 78, 4, 64, 30, 50, 44, 22, 42, 10, 70, 6, 92, 12, 116, 46, 170, 72, 186, -12, 183, -64, 120, -86, 66, -126, 28, -136, 84, -150, 118, -180, 144, -182, 162, -166, 178, -188, 186, -222, 178, -212, 144, -208, 102, -196, 54, -198, 42, -204, 20, -234, 6, -240, -12, -222, -30)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cg7im"]
-radius = 138.033
+radius = 134.015
+
+[sub_resource type="Animation" id="Animation_aaxt1"]
+resource_name = "Attack"
+length = 0.5
+
+[sub_resource type="Animation" id="Animation_6etqx"]
+resource_name = "Idle"
+
+[sub_resource type="Animation" id="Animation_h4jrb"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_651uv"]
+resource_name = "Walk1"
+length = 2.0
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h4jrb"]
+_data = {
+&"Attack": SubResource("Animation_aaxt1"),
+&"Idle": SubResource("Animation_6etqx"),
+&"RESET": SubResource("Animation_h4jrb"),
+&"Walk1": SubResource("Animation_651uv")
+}
 
 [node name="Melee Enemey" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_ll32d")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_gcgcr")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-10, 17)
 shape = SubResource("RectangleShape2D_ll32d")
 
 [node name="Vision" type="PointLight2D" parent="."]
-position = Vector2(0, 275)
+position = Vector2(275, -1)
+rotation = -1.5708
 scale = Vector2(1.45953, 1.41154)
 energy = 0.5
 shadow_enabled = true
@@ -36,6 +58,7 @@ texture = ExtResource("3_cg7im")
 collision_mask = 7
 
 [node name="Visiblity" type="Area2D" parent="."]
+rotation = -1.5708
 collision_layer = 8
 collision_mask = 3
 
@@ -45,14 +68,171 @@ scale = Vector2(1.70685, 1.70685)
 polygon = PackedVector2Array(0, -61.5168, 156.429, 216.188, 117.175, 236.107, 50.3852, 257.785, -21.0915, 262.472, -90.2247, 246.653, -150.57, 222.046)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(13, -10)
+scale = Vector2(0.5, 0.5)
 occluder = SubResource("OccluderPolygon2D_cg7im")
 
 [node name="Attack area" type="Area2D" parent="."]
+collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack area"]
 shape = SubResource("CircleShape2D_cg7im")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="Tail" type="Node2D" parent="."]
+position = Vector2(8, 16)
+scale = Vector2(0.5, 0.5)
+
+[node name="Tail" type="Sprite2D" parent="Tail"]
+position = Vector2(-152, -33)
+texture = ExtResource("4_hj0a7")
+offset = Vector2(-36, -46)
+region_enabled = true
+region_rect = Rect2(15.0768, 232.359, 155.897, 126.667)
+
+[node name="Back Legs" type="Node2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="Left Leg" type="Sprite2D" parent="Back Legs"]
+position = Vector2(17, -10)
+rotation = -0.204353
+texture = ExtResource("4_hj0a7")
+offset = Vector2(-5, 21)
+region_enabled = true
+region_rect = Rect2(712.718, 557.795, 185.069, 190.927)
+
+[node name="Down2" type="Sprite2D" parent="Back Legs/Left Leg"]
+position = Vector2(-22.6611, 89.0869)
+rotation = 0.386763
+texture = ExtResource("4_hj0a7")
+offset = Vector2(16, 15)
+region_enabled = true
+region_rect = Rect2(738.867, 762.935, 134.119, 120.459)
+
+[node name="Foot" type="Sprite2D" parent="Back Legs/Left Leg/Down2"]
+position = Vector2(57, 58)
+rotation = -0.0157383
+texture = ExtResource("4_hj0a7")
+offset = Vector2(29, 19)
+region_enabled = true
+region_rect = Rect2(652.794, 851.05, 90.9092, 67.7687)
+
+[node name="Left Leg Backside" type="Sprite2D" parent="Back Legs"]
+position = Vector2(-119, -29)
+rotation = 0.280447
+texture = ExtResource("4_hj0a7")
+offset = Vector2(13, 52)
+region_enabled = true
+region_rect = Rect2(127.836, 588.764, 130.759, 139.333)
+
+[node name="Down" type="Sprite2D" parent="Back Legs/Left Leg Backside"]
+position = Vector2(17, 101)
+rotation = 0.190614
+texture = ExtResource("4_hj0a7")
+offset = Vector2(-8, 38)
+region_enabled = true
+region_rect = Rect2(119.74, 757.464, 78.857, 131.635)
+
+[node name="Foot" type="Sprite2D" parent="Back Legs/Left Leg Backside/Down"]
+position = Vector2(-3.94734, 84.9496)
+rotation = -0.518842
+texture = ExtResource("4_hj0a7")
+offset = Vector2(15, 8)
+region_enabled = true
+region_rect = Rect2(347.617, 793.637, 41.1324, 18.8282)
+
+[node name="Body" type="Node2D" parent="."]
+position = Vector2(-14, -11)
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Body"]
+position = Vector2(-117, 6)
+rotation = -0.0338387
+texture = ExtResource("4_hj0a7")
+offset = Vector2(85, -2)
+region_enabled = true
+region_rect = Rect2(297.641, 407.744, 374.154, 134.462)
+
+[node name="Neck" type="Node2D" parent="."]
+position = Vector2(40, -19)
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Neck"]
+position = Vector2(-22, 34)
+rotation = -0.0866067
+texture = ExtResource("4_hj0a7")
+offset = Vector2(22, -34)
+region_enabled = true
+region_rect = Rect2(521.743, 230.411, 181.231, 163.692)
+
+[node name="Head" type="Node2D" parent="Neck/Sprite2D"]
+position = Vector2(75, -81)
+rotation = -0.290538
+
+[node name="Sprite2D" type="Sprite2D" parent="Neck/Sprite2D/Head"]
+position = Vector2(-20, 13)
+rotation = 0.249205
+texture = ExtResource("4_hj0a7")
+offset = Vector2(20, -13)
+region_enabled = true
+region_rect = Rect2(712.513, 99.9999, 134.462, 183.179)
+
+[node name="Fore Legs" type="Node2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="Right Up" type="Sprite2D" parent="Fore Legs"]
+position = Vector2(1, -4)
+rotation = 0.0328032
+texture = ExtResource("4_hj0a7")
+offset = Vector2(-7, 41)
+region_enabled = true
+region_rect = Rect2(744.769, 594.752, 111.532, 139.848)
+
+[node name="Down" type="Sprite2D" parent="Fore Legs/Right Up"]
+position = Vector2(-24, 100)
+rotation = 0.0922151
+texture = ExtResource("4_hj0a7")
+offset = Vector2(21, 9)
+region_enabled = true
+region_rect = Rect2(738.867, 762.935, 134.119, 120.459)
+
+[node name="Foot" type="Sprite2D" parent="Fore Legs/Right Up/Down"]
+position = Vector2(59, 56)
+rotation = -0.0376759
+texture = ExtResource("4_hj0a7")
+offset = Vector2(29, 14)
+region_enabled = true
+region_rect = Rect2(652.794, 851.05, 90.9092, 67.7687)
+
+[node name="Left Back Leg Up" type="Sprite2D" parent="Fore Legs"]
+position = Vector2(-152, -7.99999)
+rotation = 0.147958
+texture = ExtResource("4_hj0a7")
+offset = Vector2(5, 22)
+region_enabled = true
+region_rect = Rect2(119.4, 564, 123.2, 156.2)
+
+[node name="Right Back Leg Down" type="Sprite2D" parent="Fore Legs/Left Back Leg Up"]
+position = Vector2(19, 79)
+rotation = 0.357847
+texture = ExtResource("4_hj0a7")
+offset = Vector2(-6, 45)
+region_enabled = true
+region_rect = Rect2(119.74, 757.464, 78.857, 131.635)
+
+[node name="Foot" type="Sprite2D" parent="Fore Legs/Left Back Leg Up/Right Back Leg Down"]
+position = Vector2(-3, 92)
+rotation = -0.392185
+texture = ExtResource("4_hj0a7")
+offset = Vector2(15, 8)
+region_enabled = true
+region_rect = Rect2(347.617, 793.637, 41.1324, 18.8282)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_h4jrb")
+}
 
 [connection signal="body_entered" from="Visiblity" to="." method="_on_visiblity_body_entered"]
 [connection signal="body_exited" from="Visiblity" to="." method="_on_visiblity_body_exited"]

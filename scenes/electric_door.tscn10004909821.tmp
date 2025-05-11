@@ -77,7 +77,7 @@ region = Rect2(4096, 0, 256, 160)
 [sub_resource type="SpriteFrames" id="SpriteFrames_kruxe"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_skuv8")
 }, {
 "duration": 1.0,
@@ -130,7 +130,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 30.0
+"speed": 6.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_skuv8"]
