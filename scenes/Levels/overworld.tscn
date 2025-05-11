@@ -1749,7 +1749,6 @@ rotation = 1.5708
 shape = SubResource("WorldBoundaryShape2D_p8eod")
 
 [node name="Space Rocket" parent="." instance=ExtResource("14_02ffl")]
-position = Vector2(550, 376)
 
 [node name="Dialogbox" parent="." instance=ExtResource("15_cj7ky")]
 unique_name_in_owner = true

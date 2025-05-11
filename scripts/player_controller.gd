@@ -14,13 +14,13 @@ extends CharacterBody2D
 @export var melee_cooldown_time: float = 0.6
 
 
-var collected_fuel_tank: int = 0
+var collected_fuel_tank: int = 100
 
 var is_attacking: bool = false
 var is_in_hide_zone: bool = false
 var is_crouching: bool = false
 var can_assasinate: bool = false
-var curr_speed: float  = speed
+var curr_speed: float = speed
 var current_weapon: Node2D = null
 
 
@@ -29,7 +29,6 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	# Basic Movement Logic
-	
 	if not current_weapon:
 		var temp = %"Torso"
 		temp.get_node("Hand Left").visible = false 
@@ -127,6 +126,8 @@ func perform_assasination(enemy: Node2D) -> void:
 	enemy.queue_free()
 	print("Enemy Assasinated")
 	
+<< << << < HEAD
+== == == =
 func pick_up_weapon(weapon: Node) -> void:
 	# Remove any existing weapon in the slot
 	if current_weapon:
@@ -135,7 +136,7 @@ func pick_up_weapon(weapon: Node) -> void:
 	add_child(weapon)
 	
 	var temp = %"Torso"
-	temp.get_node("Hand Left").visible = false 
+	temp.get_node("Hand Left").visible = false
 	temp.get_node("Hand Right").visible = false
 	
 	weapon.position = Vector2.ZERO
@@ -143,6 +144,7 @@ func pick_up_weapon(weapon: Node) -> void:
 	# (Optional: you could initialize weapon-specific logic here)
 
 
+>> >> >> > 0ecfafe98702a0faeefe11e4e5ac9057c2150984
 
 func take_damage(damage: float) -> void:
 	health -= damage
