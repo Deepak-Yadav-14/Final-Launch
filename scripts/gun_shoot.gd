@@ -8,6 +8,7 @@ extends Node2D
 @onready var hand_left: Node2D = $"Weapon Pivot/Hand Left"
 @onready var hand_left_2: Node2D = $"Weapon Pivot/Hand Left2"
 @onready var hand_right_2: Node2D = $"Weapon Pivot/Hand Right2"
+@onready var bullet_sound: AudioStreamPlayer2D = $"../bullet sound"
 
 @export var fire_rate:float = 0.2
 
@@ -52,6 +53,7 @@ func _process(delta: float) -> void:
     
     time_since_last_shot += delta
     if Input.is_action_pressed("shoot") and time_since_last_shot >= fire_rate:
+        bullet_sound.play()
         shoot_bullet(to_mouse)
         time_since_last_shot = 0.0
         

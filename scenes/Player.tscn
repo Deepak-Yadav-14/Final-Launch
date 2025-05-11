@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cawa06wk802cf"]
+[gd_scene load_steps=12 format=3 uid="uid://cawa06wk802cf"]
 
 [ext_resource type="Script" uid="uid://befnegaheb4mi" path="res://scripts/player_controller.gd" id="1_kpjcp"]
 [ext_resource type="Texture2D" uid="uid://dtwjamgfqjkma" path="res://assets/Character/character spritesheet.png" id="2_3li8b"]
 [ext_resource type="PackedScene" uid="uid://c76y1ybmgjtgc" path="res://scenes/Gun.tscn" id="3_3li8b"]
+[ext_resource type="AudioStream" uid="uid://ctw8l68ig45ob" path="res://assets/Sounds/error_004.ogg" id="4_mdl7e"]
 
 [sub_resource type="Animation" id="Animation_qu4a1"]
 length = 0.001
@@ -878,5 +879,8 @@ collision_mask = 16
 position = Vector2(2, -29)
 shape = SubResource("RectangleShape2D_3li8b")
 debug_color = Color(1, 0, 0.0922566, 0.42)
+
+[node name="bullet sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_mdl7e")
 
 [connection signal="area_entered" from="Hurt Detector" to="." method="_on_hurt_detector_area_entered"]

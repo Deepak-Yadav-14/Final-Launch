@@ -19,6 +19,7 @@ func _process(delta: float) -> void:
                 dialog_lines = ["Well....Now I have enough fuel for the take off.", "See you (I hope not) folks of this planet."]
                 dialogbox.show_dialog(dialog_lines)
                 #play the animation
+                get_tree().change_scene_to_file("res://scenes/UI/game_complete.tscn")
                 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
