@@ -17,46 +17,46 @@ var time_since_last_shot: float = 0.0
 
 func _process(delta: float) -> void:
 
-    if not is_visible_in_tree():
-        return
-    var mouse_pos = get_global_mouse_position()
-    var to_mouse = (mouse_pos - global_position).normalized()
-    var angle = to_mouse.angle()
-    
-    rotation = angle
-    
-    gun_right.visible = false;
-    gun_left.visible = false;
-    hand_left_2.visible = false;
-    hand_right_2.visible = false;
-    hand_left.visible = false;
-    hand_right.visible = false;
-    
-    var deg = rad_to_deg(angle)
-    deg = fposmod(deg,360)
-    
-    
-    
-    if deg >= 90 and deg < 270:
-        # HARD CODED FOR HAND PLACEMENT
-        position.x = 32
-        ###
-        gun_left.visible = true
-        hand_left_2.visible = true
-        hand_right_2.visible = true
-    else:
-        position.x = -26
-        gun_right.visible = true
-        hand_left.visible = true
-        hand_right.visible = true
-    
-    time_since_last_shot += delta
-    if Input.is_action_pressed("shoot") and time_since_last_shot >= fire_rate:
-        shoot_bullet(to_mouse)
-        time_since_last_shot = 0.0
-        
+	if not is_visible_in_tree():
+		return
+	var mouse_pos = get_global_mouse_position()
+	var to_mouse = (mouse_pos - global_position).normalized()
+	var angle = to_mouse.angle()
+	
+	rotation = angle
+	
+	gun_right.visible = false;
+	gun_left.visible = false;
+	hand_left_2.visible = false;
+	hand_right_2.visible = false;
+	hand_left.visible = false;
+	hand_right.visible = false;
+	
+	var deg = rad_to_deg(angle)
+	deg = fposmod(deg,360)
+	
+	
+	
+	if deg >= 90 and deg < 270:
+		# HARD CODED FOR HAND PLACEMENT
+		position.x = 32
+		###
+		gun_left.visible = true
+		hand_left_2.visible = true
+		hand_right_2.visible = true
+	else:
+		position.x = -26
+		gun_right.visible = true
+		hand_left.visible = true
+		hand_right.visible = true
+	
+	time_since_last_shot += delta
+	if Input.is_action_pressed("shoot") and time_since_last_shot >= fire_rate:
+		shoot_bullet(to_mouse)
+		time_since_last_shot = 0.0
+		
 func shoot_bullet(direction: Vector2):
-    var bullet = BULLET.instantiate()
-    get_tree().current_scene.add_child(bullet)
-    bullet.global_position = shoot_point.global_position
-    bullet.rotation = direction.angle()
+	var bullet = BULLET.instantiate()
+	get_tree().current_scene.add_child(bullet)
+	bullet.global_position = shoot_point.global_position
+	bullet.rotation = direction.angle()

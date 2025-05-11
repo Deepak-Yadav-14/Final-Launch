@@ -615,66 +615,58 @@ rotation = -1.5708
 position = Vector2(834, 1859)
 rotation = -1.5708
 
-[node name="Melee Enemey" parent="Enemies" node_paths=PackedStringArray("player", "Marker") instance=ExtResource("5_1i7vg")]
+[node name="Melee Enemey" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("5_1i7vg")]
 position = Vector2(-222, -841)
 player = NodePath("../../Player")
-Marker = NodePath("../marker 10")
 
 [node name="marker 10" type="Marker2D" parent="Enemies"]
 position = Vector2(-222, -841)
 
-[node name="Melee Enemey2" parent="Enemies" node_paths=PackedStringArray("player", "Marker") instance=ExtResource("5_1i7vg")]
+[node name="Melee Enemey2" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("5_1i7vg")]
 position = Vector2(1764, 286)
 player = NodePath("../../Player")
-Marker = NodePath("../marker 11")
 
 [node name="marker 11" type="Marker2D" parent="Enemies"]
 position = Vector2(1764, 286)
 
-[node name="Melee Enemey3" parent="Enemies" node_paths=PackedStringArray("player", "Marker") instance=ExtResource("5_1i7vg")]
+[node name="Melee Enemey3" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("5_1i7vg")]
 position = Vector2(-2622, 1413)
 player = NodePath("../../Player")
-Marker = NodePath("../marker 12")
 
 [node name="marker 12" type="Marker2D" parent="Enemies"]
 position = Vector2(-2622, 1413)
 
-[node name="Melee Enemey4" parent="Enemies" node_paths=PackedStringArray("player", "Marker") instance=ExtResource("5_1i7vg")]
+[node name="Melee Enemey4" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("5_1i7vg")]
 position = Vector2(-2666, -814)
 player = NodePath("../../Player")
-Marker = NodePath("../marker 13")
 
 [node name="marker 13" type="Marker2D" parent="Enemies"]
 position = Vector2(-2666, -814)
 
-[node name="Melee Enemey5" parent="Enemies" node_paths=PackedStringArray("player", "Marker") instance=ExtResource("5_1i7vg")]
+[node name="Melee Enemey5" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("5_1i7vg")]
 position = Vector2(2625, -977)
 player = NodePath("../../Player")
-Marker = NodePath("../marker 14")
 
 [node name="marker 14" type="Marker2D" parent="Enemies"]
 position = Vector2(2625, -977)
 
-[node name="Melee Enemey6" parent="Enemies" node_paths=PackedStringArray("player", "Marker") instance=ExtResource("5_1i7vg")]
+[node name="Melee Enemey6" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("5_1i7vg")]
 position = Vector2(2011, 2124)
 player = NodePath("../../Player")
-Marker = NodePath("../marker 15")
 
 [node name="marker 15" type="Marker2D" parent="Enemies"]
 position = Vector2(2011, 2124)
 
-[node name="Melee Enemey7" parent="Enemies" node_paths=PackedStringArray("player", "Marker") instance=ExtResource("5_1i7vg")]
+[node name="Melee Enemey7" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("5_1i7vg")]
 position = Vector2(5288, 758)
 player = NodePath("../../Player")
-Marker = NodePath("../marker 16")
 
 [node name="marker 16" type="Marker2D" parent="Enemies"]
 position = Vector2(5288, 758)
 
-[node name="Melee Enemey8" parent="Enemies" node_paths=PackedStringArray("player", "Marker") instance=ExtResource("5_1i7vg")]
+[node name="Melee Enemey8" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("5_1i7vg")]
 position = Vector2(4068, 537)
 player = NodePath("../../Player")
-Marker = NodePath("../marker 17")
 
 [node name="marker 17" type="Marker2D" parent="Enemies"]
 position = Vector2(4068, 537)
@@ -923,7 +915,6 @@ rotation = 1.5708
 shape = SubResource("WorldBoundaryShape2D_p8eod")
 
 [node name="Space Rocket" parent="." instance=ExtResource("14_02ffl")]
-position = Vector2(550, 376)
 
 [node name="Dialogbox" parent="." instance=ExtResource("15_cj7ky")]
 unique_name_in_owner = true

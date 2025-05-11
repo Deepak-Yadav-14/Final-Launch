@@ -14,7 +14,7 @@ extends CharacterBody2D
 @export var melee_cooldown_time: float = 0.6
 
 
-var collected_fuel_tank: int = 0
+var collected_fuel_tank: int = 100
 
 var is_attacking: bool = false
 var is_in_hide_zone: bool = false
@@ -27,13 +27,13 @@ func _ready() -> void:
 	pass
 
 func _physics_process(_delta: float) -> void:
-    # Basic Movement Logic
-    var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-    var base_scale_x = abs($"Torso".scale.x)
-    if (direction.x < 0):
-        $"Torso".scale.x = - base_scale_x
-    elif (direction.x > 0):
-        $"Torso".scale.x = base_scale_x
+	# Basic Movement Logic
+	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	var base_scale_x = abs($"Torso".scale.x)
+	if (direction.x < 0):
+		$"Torso".scale.x = - base_scale_x
+	elif (direction.x > 0):
+		$"Torso".scale.x = base_scale_x
 
 	
 	velocity = direction * curr_speed
@@ -69,77 +69,77 @@ func _physics_process(_delta: float) -> void:
 		#perform_melee_attack()
 		
 func _update_animation(input_vec: Vector2) -> void:
-    if is_crouching:
-        if input_vec.length() > 0:
-            #animation_player.play("crouch_run")
-            pass
-        else:
-            #animation_player.play("crouch_idle")
-            pass
-    else:
-        if input_vec.length() > 0:
-            animation_player.play("player_run")
-        else:
-            animation_player.play("player_idle")
+	if is_crouching:
+		if input_vec.length() > 0:
+			#animation_player.play("crouch_run")
+			pass
+		else:
+			#animation_player.play("crouch_idle")
+			pass
+	else:
+		if input_vec.length() > 0:
+			animation_player.play("player_run")
+		else:
+			animation_player.play("player_idle")
 #func perform_melee_attack() -> void:
-    #is_attacking=true
-    #melee_cooldown.start()
-    ## Optional: Add animation or visual feedback here
-    #
-    #print("Player performs melee attack")
-    #
-    #var bodies = melee_area.get_overlapping_bodies()
-    #var objects =  melee_area.get_overlapping_areas() 
-    #print(bodies)
-    #
-    #for body in bodies:
-        #if body.is_in_group("enemy") or body.is_in_group("destructible") :
-            #print("Enemy Detected")
-            #body.take_damage(100)
-    #for area in objects:
-        #if area.is_in_group("destructible") :
-            #print("Object Detected")
-            #area.take_damage(100)
-    #
-    #is_attacking = false
+	#is_attacking=true
+	#melee_cooldown.start()
+	## Optional: Add animation or visual feedback here
+	#
+	#print("Player performs melee attack")
+	#
+	#var bodies = melee_area.get_overlapping_bodies()
+	#var objects =  melee_area.get_overlapping_areas() 
+	#print(bodies)
+	#
+	#for body in bodies:
+		#if body.is_in_group("enemy") or body.is_in_group("destructible") :
+			#print("Enemy Detected")
+			#body.take_damage(100)
+	#for area in objects:
+		#if area.is_in_group("destructible") :
+			#print("Object Detected")
+			#area.take_damage(100)
+	#
+	#is_attacking = false
 
 func check_for_assasination() -> void:
-    if not can_assasinate and not is_in_hide_zone:
-        return
-    
-    var enemies = assasinate_zone.get_overlapping_bodies()
-    print(enemies)
-    for enemy in enemies:
-        if enemy.is_in_group("enemy"):
-            perform_assasination(enemy)
-            break
+	if not can_assasinate and not is_in_hide_zone:
+		return
+	
+	var enemies = assasinate_zone.get_overlapping_bodies()
+	print(enemies)
+	for enemy in enemies:
+		if enemy.is_in_group("enemy"):
+			perform_assasination(enemy)
+			break
 
 
 func perform_assasination(enemy: Node2D) -> void:
-    global_position = enemy.global_position
-    # add enemy assasinating animation here
-    enemy.queue_free()
-    print("Enemy Assasinated")
-    
+	global_position = enemy.global_position
+	# add enemy assasinating animation here
+	enemy.queue_free()
+	print("Enemy Assasinated")
+	
 
 func take_damage(damage: float) -> void:
-    health -= damage
-    # play hurt animation
-    if health <= 0:
-        # play animation of death
-        print("YOU DIED")
-        get_tree().reload_current_scene()
-        
+	health -= damage
+	# play hurt animation
+	if health <= 0:
+		# play animation of death
+		print("YOU DIED")
+		get_tree().reload_current_scene()
+		
 func on_detected_by_enemy() -> void:
-    is_detected = true
-    print("Player has been caught stealth disabled ")
+	is_detected = true
+	print("Player has been caught stealth disabled ")
 
 func add_fuel() -> void:
-    collected_fuel_tank += 1
-    print("Collected Fuel : ", collected_fuel_tank)
+	collected_fuel_tank += 1
+	print("Collected Fuel : ", collected_fuel_tank)
 
 
 func _on_hurt_detector_area_entered(area: Area2D) -> void:
-    if area.is_in_group("Hurt_Zone"):
-        take_damage(area.bullet_damage)
-        area.queue_free()
+	if area.is_in_group("Hurt_Zone"):
+		take_damage(area.bullet_damage)
+		area.queue_free()
