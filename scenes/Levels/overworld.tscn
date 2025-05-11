@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://bg38x0strjjty"]
+[gd_scene load_steps=23 format=4 uid="uid://bg38x0strjjty"]
 
 [ext_resource type="PackedScene" uid="uid://cawa06wk802cf" path="res://scenes/Player.tscn" id="1_bpbyw"]
 [ext_resource type="Texture2D" uid="uid://ckge3131djtn4" path="res://assets/TileSets/World.png" id="2_1i7vg"]
@@ -7,8 +7,16 @@
 [ext_resource type="PackedScene" uid="uid://c2w7wbv008dph" path="res://scenes/Enemy Scenes/petrolling_enemy.tscn" id="4_fk70n"]
 [ext_resource type="PackedScene" uid="uid://bogc4hp184e3j" path="res://scenes/Enemy Scenes/melee_enemey.tscn" id="5_1i7vg"]
 [ext_resource type="PackedScene" uid="uid://bvhc5v4lsjkmy" path="res://scenes/Destructible.tscn" id="7_fk70n"]
+[ext_resource type="PackedScene" uid="uid://bmexmov623aj5" path="res://scenes/Trees and stones/tree_1.tscn" id="8_vaibc"]
+[ext_resource type="PackedScene" uid="uid://cs81otxxxycfm" path="res://scenes/Trees and stones/tree_2.tscn" id="9_ixw0a"]
+[ext_resource type="PackedScene" uid="uid://dkuhhci10jq0i" path="res://scenes/Trees and stones/tree_3.tscn" id="10_02ffl"]
+[ext_resource type="PackedScene" uid="uid://d3gcjbwojipf3" path="res://scenes/Trees and stones/stone_1.tscn" id="11_cj7ky"]
+[ext_resource type="PackedScene" uid="uid://ctw1sedn1yaye" path="res://scenes/Trees and stones/stone_2.tscn" id="12_em54q"]
+[ext_resource type="PackedScene" uid="uid://bvj7kadbglvxb" path="res://scenes/Trees and stones/stone_3.tscn" id="13_mfaxk"]
+[ext_resource type="PackedScene" uid="uid://50s2u7gtt5m7" path="res://scenes/space_rocket.tscn" id="14_02ffl"]
+[ext_resource type="PackedScene" uid="uid://cc8e811p0yu2v" path="res://scenes/dialogbox.tscn" id="15_cj7ky"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vaibc"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cj7ky"]
 texture = ExtResource("2_1i7vg")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
@@ -268,7 +276,7 @@ texture_region_size = Vector2i(64, 64)
 14:15/0 = 0
 15:15/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p8eod"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_em54q"]
 texture = ExtResource("3_fk70n")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
@@ -326,8 +334,8 @@ texture_region_size = Vector2i(64, 64)
 
 [sub_resource type="TileSet" id="TileSet_p8eod"]
 tile_size = Vector2i(64, 64)
-sources/0 = SubResource("TileSetAtlasSource_vaibc")
-sources/1 = SubResource("TileSetAtlasSource_p8eod")
+sources/0 = SubResource("TileSetAtlasSource_cj7ky")
+sources/1 = SubResource("TileSetAtlasSource_em54q")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bm6rv"]
 texture = ExtResource("3_fk70n")
@@ -392,6 +400,8 @@ sources/0 = SubResource("TileSetAtlasSource_bm6rv")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cswp7"]
 size = Vector2(100, 223)
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p8eod"]
+
 [node name="Overworld" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -403,9 +413,13 @@ color = Color(0.0846899, 0.0846899, 0.0846899, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_bpbyw")]
 z_index = 2
-position = Vector2(6053, 496)
+position = Vector2(1227, 489)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = -4500
+limit_top = -2000
+limit_right = 8000
+limit_bottom = 3500
 
 [node name="Tileset" type="Node2D" parent="."]
 
@@ -434,7 +448,7 @@ horizontal_alignment = 1
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(6188, 481)
 collision_layer = 2
-collision_mask = 7
+collision_mask = 31
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_cswp7")
@@ -736,3 +750,181 @@ position = Vector2(4420, -99)
 
 [node name="Crate22" parent="Collectables" instance=ExtResource("7_fk70n")]
 position = Vector2(3680, -809)
+
+[node name="Crate23" parent="Collectables" instance=ExtResource("7_fk70n")]
+position = Vector2(3271, -555)
+
+[node name="Crate24" parent="Collectables" instance=ExtResource("7_fk70n")]
+position = Vector2(4022, -532)
+
+[node name="Crate25" parent="Collectables" instance=ExtResource("7_fk70n")]
+position = Vector2(5091, -870)
+
+[node name="Crate26" parent="Collectables" instance=ExtResource("7_fk70n")]
+position = Vector2(6559, -386)
+
+[node name="Crate27" parent="Collectables" instance=ExtResource("7_fk70n")]
+position = Vector2(6414, -1142)
+
+[node name="Crate28" parent="Collectables" instance=ExtResource("7_fk70n")]
+position = Vector2(6178, 2187)
+
+[node name="Crate29" parent="Collectables" instance=ExtResource("7_fk70n")]
+position = Vector2(2246, 2741)
+
+[node name="Crate30" parent="Collectables" instance=ExtResource("7_fk70n")]
+position = Vector2(260, 2212)
+
+[node name="Crate31" parent="Collectables" instance=ExtResource("7_fk70n")]
+position = Vector2(-896, 2484)
+
+[node name="Crate32" parent="Collectables" instance=ExtResource("7_fk70n")]
+position = Vector2(-2347, 616)
+
+[node name="Crate33" parent="Collectables" instance=ExtResource("7_fk70n")]
+position = Vector2(-2695, -361)
+
+[node name="Crate34" parent="Collectables" instance=ExtResource("7_fk70n")]
+position = Vector2(-3116, -993)
+
+[node name="Crate35" parent="Collectables" instance=ExtResource("7_fk70n")]
+position = Vector2(-1204, -1351)
+
+[node name="Crate36" parent="Collectables" instance=ExtResource("7_fk70n")]
+position = Vector2(900, 961)
+
+[node name="Crate37" parent="Collectables" instance=ExtResource("7_fk70n")]
+position = Vector2(198, 908)
+
+[node name="Crate38" parent="Collectables" instance=ExtResource("7_fk70n")]
+position = Vector2(123, 104)
+
+[node name="Obstacles" type="Node2D" parent="."]
+z_index = 2
+
+[node name="Tree" parent="Obstacles" instance=ExtResource("8_vaibc")]
+position = Vector2(-396, -156)
+
+[node name="Tree5" parent="Obstacles" instance=ExtResource("8_vaibc")]
+position = Vector2(6839, -887)
+
+[node name="Tree11" parent="Obstacles" instance=ExtResource("8_vaibc")]
+position = Vector2(4115, 1423)
+
+[node name="Tree14" parent="Obstacles" instance=ExtResource("8_vaibc")]
+position = Vector2(-648, 2695)
+
+[node name="Tree17" parent="Obstacles" instance=ExtResource("8_vaibc")]
+position = Vector2(-3792, 1228)
+
+[node name="Tree2" parent="Obstacles" instance=ExtResource("9_ixw0a")]
+position = Vector2(1290, -162)
+
+[node name="Tree3" parent="Obstacles" instance=ExtResource("9_ixw0a")]
+position = Vector2(2115, -1282)
+
+[node name="Tree4" parent="Obstacles" instance=ExtResource("9_ixw0a")]
+position = Vector2(5830, -1334)
+
+[node name="Tree6" parent="Obstacles" instance=ExtResource("9_ixw0a")]
+position = Vector2(6537, 1675)
+
+[node name="Tree7" parent="Obstacles" instance=ExtResource("9_ixw0a")]
+position = Vector2(1030, 2642)
+
+[node name="Tree8" parent="Obstacles" instance=ExtResource("10_02ffl")]
+position = Vector2(-3308, -439)
+
+[node name="Tree9" parent="Obstacles" instance=ExtResource("10_02ffl")]
+position = Vector2(-3008, 2213)
+
+[node name="Tree10" parent="Obstacles" instance=ExtResource("10_02ffl")]
+position = Vector2(7057, 2451)
+
+[node name="Tree12" parent="Obstacles" instance=ExtResource("10_02ffl")]
+position = Vector2(7371, 252)
+
+[node name="Tree13" parent="Obstacles" instance=ExtResource("10_02ffl")]
+position = Vector2(-538, -1352)
+
+[node name="Stone" parent="Obstacles" instance=ExtResource("11_cj7ky")]
+position = Vector2(3948, -1351)
+
+[node name="Stone2" parent="Obstacles" instance=ExtResource("11_cj7ky")]
+position = Vector2(7305, -1418)
+
+[node name="Stone3" parent="Obstacles" instance=ExtResource("11_cj7ky")]
+position = Vector2(6114, 2746)
+
+[node name="Stone4" parent="Obstacles" instance=ExtResource("11_cj7ky")]
+position = Vector2(-3606, 2760)
+
+[node name="Stone5" parent="Obstacles" instance=ExtResource("11_cj7ky")]
+position = Vector2(-3750, -1249)
+
+[node name="Stone6" parent="Obstacles" instance=ExtResource("11_cj7ky")]
+position = Vector2(937, -1321)
+
+[node name="Obstacle" parent="Obstacles" instance=ExtResource("12_em54q")]
+position = Vector2(4257, 2686)
+
+[node name="Obstacle2" parent="Obstacles" instance=ExtResource("12_em54q")]
+position = Vector2(5208, -1613)
+
+[node name="Obstacle3" parent="Obstacles" instance=ExtResource("12_em54q")]
+position = Vector2(7366, 1234)
+
+[node name="Obstacle4" parent="Obstacles" instance=ExtResource("12_em54q")]
+position = Vector2(1844, 2807)
+
+[node name="Obstacle5" parent="Obstacles" instance=ExtResource("13_mfaxk")]
+position = Vector2(2144, 912)
+
+[node name="Obstacle6" parent="Obstacles" instance=ExtResource("13_mfaxk")]
+position = Vector2(5180, 2923)
+
+[node name="Obstacle7" parent="Obstacles" instance=ExtResource("13_mfaxk")]
+position = Vector2(7256, 1897)
+
+[node name="Obstacle8" parent="Obstacles" instance=ExtResource("13_mfaxk")]
+position = Vector2(-2781, -1304)
+
+[node name="Obstacle9" parent="Obstacles" instance=ExtResource("13_mfaxk")]
+position = Vector2(-3848, 354)
+
+[node name="Obstacle10" parent="Obstacles" instance=ExtResource("13_mfaxk")]
+position = Vector2(-1685, 2950)
+
+[node name="Bottom" type="StaticBody2D" parent="."]
+position = Vector2(421, 3148)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
+shape = SubResource("WorldBoundaryShape2D_p8eod")
+
+[node name="Up" type="StaticBody2D" parent="."]
+position = Vector2(332, -1672)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Up"]
+rotation = -3.14159
+shape = SubResource("WorldBoundaryShape2D_p8eod")
+
+[node name="Left" type="StaticBody2D" parent="."]
+position = Vector2(7756, -69)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_p8eod")
+
+[node name="Right" type="StaticBody2D" parent="."]
+position = Vector2(-4299, -217)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_p8eod")
+
+[node name="Space Rocket" parent="." instance=ExtResource("14_02ffl")]
+position = Vector2(550, 376)
+
+[node name="Dialogbox" parent="." instance=ExtResource("15_cj7ky")]
+unique_name_in_owner = true
+visible = false

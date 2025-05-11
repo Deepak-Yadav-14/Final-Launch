@@ -1,105 +1,47 @@
 extends CharacterBody2D
 
-@onready var ray_cast: RayCast2D = $RayCast
 @export var player: CharacterBody2D
 @export var health: int = 10
-@export var search_time: float = 10.0
-@export var Marker: Marker2D
+@export var move_speed: float = 150.0
+@export var detection_range: float = 300.0
+@export var attack_range: float = 100.0
 @onready var timer: Timer = $Timer
 
-var enemy_rotation: float
-var enemy_position: Vector2
-var Marker_position: Vector2
-var move_speed: float = 250.0
-var search_rotation_speed: float = 1.0
-var search_timer: float = 0.0
-var player_in_range: bool = false
+
 var can_attack: bool = false
 
-enum States {
-	PATROLLING,
-	FIGHTING,
-	SEARCHING
-}
-
-var current_state = States.PATROLLING
-
-func _ready() -> void:
-	Marker_position = Marker.global_position
-	enemy_rotation = global_rotation
-	enemy_position = Marker_position
-	print(enemy_position)
-
 func _physics_process(delta: float) -> void:
-	if player_in_range:
-		ray_cast.target_position = to_local(player.global_position)
-		ray_cast.force_raycast_update()
-		if ray_cast.is_colliding() and ray_cast.get_collider() == player:
-			if current_state != States.FIGHTING:
-				current_state = States.FIGHTING
+	if not is_instance_valid(player):
+		return
 
-	match current_state:
-		States.FIGHTING:
-			if !can_attack:
-				var to_player = player.global_position - global_position
-				var target_angle = to_player.angle() 
-				rotation = lerp_angle(rotation, target_angle, 5 * delta)
-				ray_cast.target_position = to_local(player.position)
-				if ray_cast.get_collider() == player:
-					velocity = to_player.normalized() * move_speed
-				else:
-					velocity = Vector2.ZERO
-			elif can_attack:
-				velocity = Vector2.ZERO
-		States.SEARCHING:
-			rotation += search_rotation_speed * delta
-			search_timer -= delta
-			if search_timer <= 0:
-				current_state = States.PATROLLING
+	var distance = global_position.distance_to(player.global_position)
+
+	if distance <= detection_range:
+		#look_at(player.global_position)
+
+		if distance > attack_range:
+			can_attack = false
+			velocity = (player.global_position - global_position).normalized() * move_speed
+		else:
 			velocity = Vector2.ZERO
-		States.PATROLLING:
-			var distance_to_target = global_position.distance_to(enemy_position)
-			if distance_to_target > 1.0:
-				var target = enemy_position - global_position
-				var return_angle = target.angle() - PI / 2
-				rotation = lerp_angle(rotation, return_angle, 5 * delta)
-				velocity = target.normalized() * move_speed
-			else:
-				rotation = lerp_angle(rotation, enemy_rotation, 0.1)
-				velocity = Vector2.ZERO
+			if not can_attack:
+				can_attack = true
+				timer.start()
+
+	else:
+		velocity = Vector2.ZERO
+		can_attack = false
+		if timer.is_stopped() == false:
+			timer.stop()
+
 	move_and_slide()
 
-func _on_visiblity_body_entered(body: Node2D) -> void:
-	if body == player:
-		player_in_range = true
-
-
-func _on_visiblity_body_exited(body: Node2D) -> void:
-	if body == player:
-		player_in_range = false
-		if current_state == States.FIGHTING:
-			current_state = States.SEARCHING
-			search_timer = search_time
+func _on_timer_timeout() -> void:
+	if is_instance_valid(player) and global_position.distance_to(player.global_position) <= attack_range:
+		player.take_damage(2)  # Assumes player has a take_damage() method
 
 func take_damage(value):
 	health -= value
 	if health <= 0:
 		print("Enemy Dies")
 		queue_free()
-
-func attack_player(body) -> void:
-	body.take_damage(1.0)
-
-func _on_timer_timeout() -> void:
-	attack_player(player)
-
-func _on_attack_area_area_entered(area: Area2D) -> void:
-	if area.is_in_group("Hide_Detector"):
-		can_attack = true
-		timer.start()
-
-
-func _on_attack_area_area_exited(area: Area2D) -> void:
-	if area.is_in_group("Hide_Detector"):
-		can_attack = false
-		timer.stop()

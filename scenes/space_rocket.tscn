@@ -1,19 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://50s2u7gtt5m7"]
+[gd_scene load_steps=6 format=3 uid="uid://50s2u7gtt5m7"]
 
 [ext_resource type="Texture2D" uid="uid://iu6xoxkoqx4w" path="res://assets/Space Rocket.png" id="1_pibds"]
+[ext_resource type="Script" uid="uid://b4oqd2m63jf8s" path="res://scripts/Level/space_rocket.gd" id="2_kdaj5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pibds"]
+radius = 7.28161
 
-[node name="Space Rocket" type="Sprite2D"]
+[sub_resource type="Animation" id="Animation_kdaj5"]
+resource_name = "Burst animation"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m5e0m"]
+_data = {
+&"Burst animation": SubResource("Animation_kdaj5")
+}
+
+[node name="Space Rocket" type="StaticBody2D"]
 z_index = 2
+script = ExtResource("2_kdaj5")
+
+[node name="Space Rocket" type="Sprite2D" parent="."]
 texture = ExtResource("1_pibds")
 region_enabled = true
-region_rect = Rect2(31, 31, 378, 752)
+region_rect = Rect2(0, 0, 428.77, 799.461)
 
 [node name="Burst" type="Sprite2D" parent="."]
 visible = false
 z_index = -1
-position = Vector2(-2, 365)
+position = Vector2(2, 370)
 scale = Vector2(0.814096, 0.814096)
 texture = ExtResource("1_pibds")
 region_enabled = true
@@ -24,3 +37,23 @@ region_rect = Rect2(506, 261, 382, 316)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 scale = Vector2(78.9671, 78.9671)
 shape = SubResource("CircleShape2D_pibds")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -264.0
+offset_top = -448.0
+offset_right = 310.0
+offset_bottom = -360.0
+theme_override_font_sizes/font_size = 64
+text = "Pree (E) to interact"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-100, -220, -77, -140, -55, -237, -35, -305, -8, -352, 7, -370, 22, -351, 44, -306, 62, -258, 76, -207, 86, -144, 112, -221, 142, -142, 145, 227, 171, 251, 190, 290, 152, 290, 155, 327, 149, 341, 82, 340, 75, 325, 79, 281, 65, 281, 61, 333, 66, 376, 59, 382, 11, 383, 7, 375, 2, 383, -45, 383, -54, 375, -49, 336, -64, 327, -69, 339, -136, 341, -144, 326, -142, 291, -182, 290, -171, 254, -159, 235, -132, 218, -130, -142, -112, -201, -107, -220)
+
+[node name="Burst Animation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_m5e0m")
+}
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

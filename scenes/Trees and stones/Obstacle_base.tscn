@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://sc7l7eif6rv6"]
+
+[node name="Obstacle" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

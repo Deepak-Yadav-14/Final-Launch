@@ -1,13 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3hifq8pl6rup"]
+[gd_scene load_steps=5 format=3 uid="uid://b3hifq8pl6rup"]
 
 [ext_resource type="Texture2D" uid="uid://djqch2k8hmpfq" path="res://assets/Objects/table.png" id="1_02ppr"]
+[ext_resource type="Script" uid="uid://dr5hbc26djtad" path="res://scripts/table.gd" id="1_eotx8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eotx8"]
 size = Vector2(294, 176)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_02ppr"]
+radius = 127.393
+
 [node name="Table" type="StaticBody2D"]
 collision_layer = 4
 collision_mask = 3
+script = ExtResource("1_eotx8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.03, 0.03)
@@ -17,3 +22,11 @@ texture = ExtResource("1_02ppr")
 position = Vector2(-1, 0)
 scale = Vector2(0.6, 0.6)
 shape = SubResource("RectangleShape2D_eotx8")
+
+[node name="hide zone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hide zone"]
+shape = SubResource("CircleShape2D_02ppr")
+
+[connection signal="body_entered" from="hide zone" to="." method="_on_hide_zone_body_entered"]
+[connection signal="body_exited" from="hide zone" to="." method="_on_hide_zone_body_exited"]
