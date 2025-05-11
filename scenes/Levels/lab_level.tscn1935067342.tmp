@@ -443,6 +443,7 @@ position = Vector2(916, 329)
 
 [node name="Shoot Enemy6" parent="Enemys" node_paths=PackedStringArray("Marker", "player") instance=ExtResource("4_kkivo")]
 position = Vector2(1908, 429.858)
+rotation = 0.0
 Marker = NodePath("../ShootMarker6")
 player = NodePath("../../Player")
 

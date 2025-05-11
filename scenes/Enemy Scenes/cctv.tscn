@@ -31,7 +31,8 @@ color = Color(0.980392, 1, 0.917647, 0.462745)
 polygon = PackedVector2Array(13.3833, 0, 311, 553, -258.745, 553)
 
 [node name="RayCast" type="RayCast2D" parent="."]
-collision_mask = 7
+collision_mask = 23
+collide_with_areas = true
 
 [node name="Visiblity" type="Area2D" parent="."]
 collision_layer = 8

@@ -11,13 +11,17 @@ config_version=5
 [application]
 
 config/name="Final-Launch"
-run/main_scene="uid://ch6ucgdbgc8o7"
+run/main_scene="uid://pol42d3tckxq"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
 window/size/mode=2
+
+[global_group]
+
+Hurt_Detector=""
 
 [input]
 

@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://50s2u7gtt5m7"]
+
+[ext_resource type="Texture2D" uid="uid://iu6xoxkoqx4w" path="res://assets/Space Rocket.png" id="1_pibds"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pibds"]
+
+[node name="Space Rocket" type="Sprite2D"]
+z_index = 2
+texture = ExtResource("1_pibds")
+region_enabled = true
+region_rect = Rect2(31, 31, 378, 752)
+
+[node name="Burst" type="Sprite2D" parent="."]
+visible = false
+z_index = -1
+position = Vector2(-2, 365)
+scale = Vector2(0.814096, 0.814096)
+texture = ExtResource("1_pibds")
+region_enabled = true
+region_rect = Rect2(506, 261, 382, 316)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(78.9671, 78.9671)
+shape = SubResource("CircleShape2D_pibds")

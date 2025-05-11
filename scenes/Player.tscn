@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cawa06wk802cf"]
+[gd_scene load_steps=11 format=3 uid="uid://cawa06wk802cf"]
 
 [ext_resource type="Script" uid="uid://befnegaheb4mi" path="res://scripts/player_controller.gd" id="1_kpjcp"]
 [ext_resource type="Texture2D" uid="uid://dtwjamgfqjkma" path="res://assets/Character/character spritesheet.png" id="2_3li8b"]
@@ -720,12 +720,14 @@ _data = {
 &"player_run": SubResource("Animation_3li8b")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3li8b"]
-radius = 86.0
-height = 296.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_mdl7e"]
+radius = 26.6019
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3li8b"]
 radius = 334.006
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3li8b"]
+size = Vector2(76, 262)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
@@ -833,6 +835,7 @@ region_enabled = true
 region_rect = Rect2(57.7187, 489.974, 33.9979, 22.0811)
 
 [node name="Head" type="Sprite2D" parent="Torso"]
+z_index = 1
 position = Vector2(0, -40)
 texture = ExtResource("2_3li8b")
 offset = Vector2(-3, -90)
@@ -847,13 +850,15 @@ autoplay = "player_idle"
 speed_scale = 4.0
 next/player_run = &"player_run"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, -42)
-shape = SubResource("CapsuleShape2D_3li8b")
+[node name="Player Collider" type="CollisionShape2D" parent="."]
+position = Vector2(6, 92)
+scale = Vector2(1.20292, 1.20292)
+shape = SubResource("CircleShape2D_mdl7e")
 
 [node name="Gun" parent="." instance=ExtResource("3_3li8b")]
 unique_name_in_owner = true
-scale = Vector2(0.483301, 0.483301)
+z_index = 1
+position = Vector2(-28, -28)
 
 [node name="AssasinateZone" type="Area2D" parent="."]
 visible = false
@@ -864,3 +869,14 @@ collision_mask = 3
 shape = SubResource("CircleShape2D_3li8b")
 
 [node name="MeleeCooldown" type="Timer" parent="."]
+
+[node name="Hurt Detector" type="Area2D" parent="." groups=["Hurt_Detector"]]
+collision_layer = 16
+collision_mask = 16
+
+[node name="Hurt Collider" type="CollisionShape2D" parent="Hurt Detector"]
+position = Vector2(2, -29)
+shape = SubResource("RectangleShape2D_3li8b")
+debug_color = Color(1, 0, 0.0922566, 0.42)
+
+[connection signal="area_entered" from="Hurt Detector" to="." method="_on_hurt_detector_area_entered"]
