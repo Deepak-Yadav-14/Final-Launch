@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://utpsrx778hsj"]
 
 [ext_resource type="Script" uid="uid://b0latt6toj6ah" path="res://scripts/Enemy Scripts/shoot_enemy.gd" id="1_6luwi"]
-[ext_resource type="Script" uid="uid://r5m8yfl2cf25" path="res://scenes/Enemy Scenes/enemy_gun_rotation.gd" id="3_cgr1m"]
+[ext_resource type="Script" uid="uid://r5m8yfl2cf25" path="res://scripts/enemy_gun_rotation.gd" id="3_cgr1m"]
 [ext_resource type="Texture2D" uid="uid://dtwjamgfqjkma" path="res://assets/Character/character spritesheet.png" id="3_mb8td"]
 [ext_resource type="Texture2D" uid="uid://4lao71qtcp1s" path="res://assets/Enemy/enemy_triangle[1].png" id="3_ognii"]
 [ext_resource type="Texture2D" uid="uid://vsye7gd411ru" path="res://assets/Enemy/Shooter enemy spriteshet.png" id="4_mb8td"]

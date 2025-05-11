@@ -21,6 +21,7 @@ var is_in_hide_zone: bool = false
 var is_crouching: bool = false
 var can_assasinate: bool = false
 var curr_speed: float  = speed
+var current_weapon: Node2D = null
 
 func _ready() -> void:
 	pass
@@ -68,6 +69,7 @@ func _physics_process(_delta: float) -> void:
 		%"Gun".visible = true	
 	#if Input.is_action_just_pressed("melee_attack") and melee_cooldown.is_stopped():
 		#perform_melee_attack()
+		
 		
 func _update_animation(input_vec: Vector2) -> void:
 	if is_crouching:
@@ -122,6 +124,17 @@ func perform_assasination(enemy: Node2D) -> void:
 	enemy.queue_free()
 	print("Enemy Assasinated")
 	
+func pick_up_weapon(weapon: Node) -> void:
+	# Remove any existing weapon in the slot
+	if current_weapon:
+		current_weapon.queue_free()
+	# Attach the new weapon and reset its position
+	add_child(weapon)
+	weapon.position = Vector2.ZERO
+	current_weapon = weapon
+	# (Optional: you could initialize weapon-specific logic here)
+
+
 
 func take_damage(damage:float) -> void:
 	health -= damage
