@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://cawa06wk802cf"]
+[gd_scene load_steps=10 format=3 uid="uid://cawa06wk802cf"]
 
 [ext_resource type="Script" uid="uid://befnegaheb4mi" path="res://scripts/player_controller.gd" id="1_kpjcp"]
 [ext_resource type="Texture2D" uid="uid://dtwjamgfqjkma" path="res://assets/Character/character spritesheet.png" id="2_3li8b"]
-[ext_resource type="PackedScene" uid="uid://c76y1ybmgjtgc" path="res://scenes/Gun.tscn" id="3_3li8b"]
 
 [sub_resource type="Animation" id="Animation_qu4a1"]
 length = 0.001
@@ -736,46 +735,6 @@ collision_mask = 3
 script = ExtResource("1_kpjcp")
 metadata/_edit_vertical_guides_ = [-185.0]
 
-[node name="Hand Left" type="Node2D" parent="."]
-visible = false
-z_index = -1
-
-[node name="Upper Left" type="Sprite2D" parent="Hand Left"]
-z_index = 1
-position = Vector2(-33, -36)
-texture = ExtResource("2_3li8b")
-offset = Vector2(1, 17)
-region_enabled = true
-region_rect = Rect2(266.338, 240.639, 33.1567, 49.7351)
-
-[node name="Lower Left" type="Sprite2D" parent="Hand Left"]
-z_index = 2
-position = Vector2(-17, -11)
-texture = ExtResource("2_3li8b")
-offset = Vector2(-5, 13)
-region_enabled = true
-region_rect = Rect2(267, 325, 49, 21)
-
-[node name="Hand Right" type="Node2D" parent="."]
-visible = false
-z_index = -1
-
-[node name="Upper Right" type="Sprite2D" parent="Hand Right"]
-z_index = -1
-position = Vector2(26, -32)
-texture = ExtResource("2_3li8b")
-offset = Vector2(1, 17)
-region_enabled = true
-region_rect = Rect2(403, 245, 29, 49)
-
-[node name="Lower Right" type="Sprite2D" parent="Hand Right"]
-z_index = -1
-position = Vector2(52, -5)
-texture = ExtResource("2_3li8b")
-offset = Vector2(-5, 13)
-region_enabled = true
-region_rect = Rect2(403, 324, 50, 21)
-
 [node name="Torso" type="Sprite2D" parent="."]
 rotation = -0.0136101
 texture = ExtResource("2_3li8b")
@@ -850,15 +809,48 @@ autoplay = "player_idle"
 speed_scale = 4.0
 next/player_run = &"player_run"
 
+[node name="Hand Left" type="Node2D" parent="Torso"]
+rotation = 0.0136101
+
+[node name="Upper Left" type="Sprite2D" parent="Torso/Hand Left"]
+z_index = 1
+position = Vector2(-33, -36)
+texture = ExtResource("2_3li8b")
+offset = Vector2(1, 17)
+region_enabled = true
+region_rect = Rect2(266.338, 240.639, 33.1567, 49.7351)
+
+[node name="Lower Left" type="Sprite2D" parent="Torso/Hand Left"]
+z_index = 2
+position = Vector2(-17, -11)
+texture = ExtResource("2_3li8b")
+offset = Vector2(-5, 13)
+region_enabled = true
+region_rect = Rect2(267, 325, 49, 21)
+
+[node name="Hand Right" type="Node2D" parent="Torso"]
+rotation = 0.0136101
+
+[node name="Upper Right" type="Sprite2D" parent="Torso/Hand Right"]
+z_index = -1
+position = Vector2(26, -32)
+texture = ExtResource("2_3li8b")
+offset = Vector2(1, 17)
+region_enabled = true
+region_rect = Rect2(403, 245, 29, 49)
+
+[node name="Lower Right" type="Sprite2D" parent="Torso/Hand Right"]
+z_index = -1
+position = Vector2(52, -5)
+texture = ExtResource("2_3li8b")
+offset = Vector2(-5, 13)
+region_enabled = true
+region_rect = Rect2(403, 324, 50, 21)
+
 [node name="Player Collider" type="CollisionShape2D" parent="."]
 position = Vector2(6, 92)
 scale = Vector2(1.20292, 1.20292)
 shape = SubResource("CircleShape2D_mdl7e")
-
-[node name="Gun" parent="." instance=ExtResource("3_3li8b")]
-unique_name_in_owner = true
-z_index = 1
-position = Vector2(-28, -28)
 
 [node name="AssasinateZone" type="Area2D" parent="."]
 visible = false
@@ -878,5 +870,49 @@ collision_mask = 16
 position = Vector2(2, -29)
 shape = SubResource("RectangleShape2D_3li8b")
 debug_color = Color(1, 0, 0.0922566, 0.42)
+
+[node name="Hand Left2" type="Node2D" parent="."]
+visible = false
+z_index = -1
+position = Vector2(-32, -28)
+
+[node name="Upper Left" type="Sprite2D" parent="Hand Left2"]
+z_index = 1
+position = Vector2(-6, -6)
+texture = ExtResource("2_3li8b")
+offset = Vector2(1, 17)
+region_enabled = true
+region_rect = Rect2(266.338, 240.639, 33.1567, 49.7351)
+
+[node name="Lower Left" type="Sprite2D" parent="Hand Left2"]
+z_index = 2
+position = Vector2(11, 22)
+rotation = 0.0795008
+texture = ExtResource("2_3li8b")
+offset = Vector2(-5, 13)
+region_enabled = true
+region_rect = Rect2(267, 325, 49, 21)
+
+[node name="Hand Right2" type="Node2D" parent="."]
+visible = false
+z_index = -1
+position = Vector2(-32, -28)
+
+[node name="Upper Right" type="Sprite2D" parent="Hand Right2"]
+z_index = -1
+position = Vector2(57, -4)
+texture = ExtResource("2_3li8b")
+offset = Vector2(1, 17)
+region_enabled = true
+region_rect = Rect2(403, 245, 29, 49)
+
+[node name="Lower Right" type="Sprite2D" parent="Hand Right2"]
+z_index = -1
+position = Vector2(84, 18)
+rotation = -0.072486
+texture = ExtResource("2_3li8b")
+offset = Vector2(-5, 13)
+region_enabled = true
+region_rect = Rect2(403, 324, 50, 21)
 
 [connection signal="area_entered" from="Hurt Detector" to="." method="_on_hurt_detector_area_entered"]

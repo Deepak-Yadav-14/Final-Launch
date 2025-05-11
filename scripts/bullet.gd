@@ -24,6 +24,5 @@ func _on_area_entered(area):
 func _on_body_entered(body):
 	if body.is_in_group("enemy"):
 		# Implement take damage function for each enemy or destructible object
-		
 		body.take_damage(1)
 	queue_free() 
