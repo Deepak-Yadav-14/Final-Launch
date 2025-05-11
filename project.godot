@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Final-Launch"
-run/main_scene="uid://pol42d3tckxq"
+run/main_scene="uid://bg38x0strjjty"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

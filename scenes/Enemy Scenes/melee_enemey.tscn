@@ -73,6 +73,7 @@ scale = Vector2(0.5, 0.5)
 occluder = SubResource("OccluderPolygon2D_cg7im")
 
 [node name="Attack area" type="Area2D" parent="."]
+scale = Vector2(1.17152, 1.17152)
 collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack area"]
@@ -236,6 +237,9 @@ libraries = {
 
 [connection signal="body_entered" from="Visiblity" to="." method="_on_visiblity_body_entered"]
 [connection signal="body_exited" from="Visiblity" to="." method="_on_visiblity_body_exited"]
+[connection signal="area_entered" from="Attack area" to="." method="_on_attack_area_area_entered"]
+[connection signal="area_exited" from="Attack area" to="." method="_on_attack_area_area_exited"]
+[connection signal="area_shape_entered" from="Attack area" to="." method="_on_attack_area_area_shape_entered"]
 [connection signal="body_entered" from="Attack area" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="Attack area" to="." method="_on_attack_area_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
