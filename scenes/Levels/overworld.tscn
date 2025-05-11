@@ -1,6 +1,7 @@
-[gd_scene load_steps=23 format=4 uid="uid://bg38x0strjjty"]
+[gd_scene load_steps=24 format=4 uid="uid://bg38x0strjjty"]
 
 [ext_resource type="PackedScene" uid="uid://cawa06wk802cf" path="res://scenes/Player.tscn" id="1_bpbyw"]
+[ext_resource type="Script" uid="uid://d2kvxuhcipu87" path="res://scripts/Level/overworld.gd" id="1_em54q"]
 [ext_resource type="Texture2D" uid="uid://ckge3131djtn4" path="res://assets/TileSets/World.png" id="2_1i7vg"]
 [ext_resource type="Texture2D" uid="uid://b4wgwwpyag8hq" path="res://assets/TileSets/Lab Tileset.png" id="3_fk70n"]
 [ext_resource type="PackedScene" uid="uid://utpsrx778hsj" path="res://scenes/Enemy Scenes/shoot_enemy.tscn" id="3_lukh1"]
@@ -403,6 +404,7 @@ size = Vector2(100, 223)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p8eod"]
 
 [node name="Overworld" type="Node2D"]
+script = ExtResource("1_em54q")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -5619.0
@@ -413,7 +415,7 @@ color = Color(0.0846899, 0.0846899, 0.0846899, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_bpbyw")]
 z_index = 2
-position = Vector2(1227, 489)
+position = Vector2(6127, 500)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_left = -4500
@@ -919,3 +921,9 @@ shape = SubResource("WorldBoundaryShape2D_p8eod")
 [node name="Dialogbox" parent="." instance=ExtResource("15_cj7ky")]
 unique_name_in_owner = true
 visible = false
+
+[node name="Dialogbox2" parent="." instance=ExtResource("15_cj7ky")]
+offset_left = 5752.0
+offset_top = 227.0
+offset_right = 5752.0
+offset_bottom = 227.0

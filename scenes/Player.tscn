@@ -736,6 +736,7 @@ script = ExtResource("1_kpjcp")
 metadata/_edit_vertical_guides_ = [-185.0]
 
 [node name="Torso" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 rotation = -0.0136101
 texture = ExtResource("2_3li8b")
 region_enabled = true
@@ -870,49 +871,5 @@ collision_mask = 16
 position = Vector2(2, -29)
 shape = SubResource("RectangleShape2D_3li8b")
 debug_color = Color(1, 0, 0.0922566, 0.42)
-
-[node name="Hand Left2" type="Node2D" parent="."]
-visible = false
-z_index = -1
-position = Vector2(-32, -28)
-
-[node name="Upper Left" type="Sprite2D" parent="Hand Left2"]
-z_index = 1
-position = Vector2(-6, -6)
-texture = ExtResource("2_3li8b")
-offset = Vector2(1, 17)
-region_enabled = true
-region_rect = Rect2(266.338, 240.639, 33.1567, 49.7351)
-
-[node name="Lower Left" type="Sprite2D" parent="Hand Left2"]
-z_index = 2
-position = Vector2(11, 22)
-rotation = 0.0795008
-texture = ExtResource("2_3li8b")
-offset = Vector2(-5, 13)
-region_enabled = true
-region_rect = Rect2(267, 325, 49, 21)
-
-[node name="Hand Right2" type="Node2D" parent="."]
-visible = false
-z_index = -1
-position = Vector2(-32, -28)
-
-[node name="Upper Right" type="Sprite2D" parent="Hand Right2"]
-z_index = -1
-position = Vector2(57, -4)
-texture = ExtResource("2_3li8b")
-offset = Vector2(1, 17)
-region_enabled = true
-region_rect = Rect2(403, 245, 29, 49)
-
-[node name="Lower Right" type="Sprite2D" parent="Hand Right2"]
-z_index = -1
-position = Vector2(84, 18)
-rotation = -0.072486
-texture = ExtResource("2_3li8b")
-offset = Vector2(-5, 13)
-region_enabled = true
-region_rect = Rect2(403, 324, 50, 21)
 
 [connection signal="area_entered" from="Hurt Detector" to="." method="_on_hurt_detector_area_entered"]

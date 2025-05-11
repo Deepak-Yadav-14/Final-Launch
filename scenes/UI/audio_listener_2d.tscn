@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt5nsghru7jnx"]
+
+[ext_resource type="AudioStream" uid="uid://dwxbtdr1ubxt4" path="res://assets/Sounds/Epic-Chase(chosic.com).mp3" id="1_prw6v"]
+[ext_resource type="Script" uid="uid://jtygdkvwtccp" path="res://scripts/UI/audio_listener_2d.gd" id="2_a5huq"]
+
+[node name="AudioListener2D" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_prw6v")
+volume_db = 0.01
+autoplay = true
+script = ExtResource("2_a5huq")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
