@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://cc8e811p0yu2v"]
+
+[ext_resource type="Script" uid="uid://b1lth21rnuqvj" path="res://scripts/dialogbox.gd" id="1_ajgfv"]
+[ext_resource type="Texture2D" uid="uid://clpeuamgmsofk" path="res://assets/Fonts and Dialog/DialogBox.png" id="2_jnost"]
+
+[node name="Dialogbox" type="Control"]
+z_index = 2
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ajgfv")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -334.0
+offset_top = 493.0
+offset_right = 1201.0
+offset_bottom = 713.0
+texture = ExtResource("2_jnost")
+
+[node name="panel" type="NinePatchRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextLable" type="RichTextLabel" parent="panel"]
+layout_mode = 0
+offset_left = -276.0
+offset_top = 538.0
+offset_right = 1058.0
+offset_bottom = 670.0
+theme_override_font_sizes/normal_font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextIndicator" type="ColorRect" parent="panel"]
+layout_mode = 0
+offset_left = 1082.0
+offset_top = 644.0
+offset_right = 1125.0
+offset_bottom = 656.0
+color = Color(0.905882, 0.14902, 0.188235, 1)

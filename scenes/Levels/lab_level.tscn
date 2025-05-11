@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://pol42d3tckxq"]
+[gd_scene load_steps=46 format=4 uid="uid://pol42d3tckxq"]
 
 [ext_resource type="Texture2D" uid="uid://b4wgwwpyag8hq" path="res://assets/TileSets/Lab Tileset.png" id="1_87la8"]
 [ext_resource type="Script" uid="uid://df588uhl62vvj" path="res://scripts/Level/lab_level.gd" id="1_qblx2"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cnr8dmc8ywust" path="res://scenes/Enemy Scenes/cctv.tscn" id="9_uhngs"]
 [ext_resource type="PackedScene" uid="uid://cb8kepek0u1ei" path="res://scenes/generator.tscn" id="11_dqb2b"]
 [ext_resource type="PackedScene" uid="uid://bvhc5v4lsjkmy" path="res://scenes/Destructible.tscn" id="12_hco02"]
+[ext_resource type="PackedScene" uid="uid://cc8e811p0yu2v" path="res://scenes/dialogbox.tscn" id="16_a7hi0"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kkivo"]
 polygon = PackedVector2Array(-32, 32, 32, 32, 32, -4.51579, -32, -6.20921)
@@ -246,7 +247,7 @@ tile_map_data = PackedByteArray("AAAYAP7/AAADAAAAAAAZAP7/AAAEAAAAAAAaAP7/AAAEAAA
 tile_set = SubResource("TileSet_nlauq")
 
 [node name="Player" parent="." instance=ExtResource("2_4iyfl")]
-position = Vector2(308, 261)
+position = Vector2(392, 273)
 collision_mask = 7
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -524,5 +525,8 @@ position = Vector2(-207, 1794)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -32.5)
 shape = SubResource("RectangleShape2D_agrhd")
+
+[node name="Dialogbox" parent="." instance=ExtResource("16_a7hi0")]
+unique_name_in_owner = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
